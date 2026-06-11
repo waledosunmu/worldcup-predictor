@@ -1,0 +1,44 @@
+name: Daily forecast update
+
+on:
+  schedule:
+    - cron: "0 12 * * *"  # 12:00 UTC daily — after overnight matches land upstream
+  workflow_dispatch: {}    # manual trigger from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pandas numpy scipy
+
+      - name: Run update pipeline
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          PYTHON: python
+        run: bash scripts/update_all.sh
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes today."
+            exit 0
+          fi
+          git commit -m "Daily update $(date -u +%F)"
+          git push

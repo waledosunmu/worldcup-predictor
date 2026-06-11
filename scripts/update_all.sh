@@ -1,7 +1,9 @@
 #!/bin/bash
 # Daily tournament update: refresh data, snapshot odds, re-forecast, rebuild site.
+# Uses .venv/bin/python locally; CI overrides with PYTHON=python.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+PY="${PYTHON:-.venv/bin/python}"
 
 echo "== refresh results & Elo =="
 for f in results.csv shootouts.csv; do
@@ -10,14 +12,14 @@ done
 curl -sL -o data/raw/elo_world.tsv "https://eloratings.net/World.tsv"
 
 echo "== snapshot odds =="
-.venv/bin/python scripts/snapshot_odds.py || echo "(odds snapshot failed; continuing)"
+"$PY" scripts/snapshot_odds.py || echo "(odds snapshot failed; continuing)"
 
 echo "== forecast (conditional on played results) =="
-.venv/bin/python scripts/run_forecast.py --sims 100000
+"$PY" scripts/run_forecast.py --sims 100000
 
 echo "== consensus =="
-.venv/bin/python scripts/run_consensus.py
+"$PY" scripts/run_consensus.py
 
 echo "== site =="
-.venv/bin/python scripts/build_site.py
+"$PY" scripts/build_site.py
 echo "Done. Commit and push to publish."
