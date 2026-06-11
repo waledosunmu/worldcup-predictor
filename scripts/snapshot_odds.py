@@ -58,6 +58,9 @@ def main():
         except Exception as e:  # key without active markets
             print(f"  {key}: skipped ({e})")
             continue
+        if not data:
+            print(f"  {key}: no events, not saved")
+            continue
         path = outdir / f"{key}_{stamp}.json"
         path.write_text(json.dumps(
             {"captured": stamp, "sport_key": key, "markets": markets, "data": data},

@@ -23,18 +23,35 @@ World Cups, published with per-prediction reasoning.
       ([output/backtest_2006_2022.md](output/backtest_2006_2022.md)):
       elo_poisson beats both baselines on log loss (0.972 vs 1.021/1.067)
       and ties the Elo-expectancy baseline on RPS (0.196)
-- [ ] Bookmaker-consensus model (Leitner/Zeileis/Hornik overround recipe)
-- [ ] Hybrid model with covariates (Groll et al. style)
-- [ ] Explanation generator (per-match factors → narrative)
-- [ ] Static site (model JSON → daily rebuild)
+- [x] Bookmaker-consensus model (Leitner overround removal, geometric-mean
+      pooling): 5 full-field outright books, 72 match markets (up to 49 books
+      per match) snapshotted pre-kickoff on opening day
+- [x] Explanation generator: templated, fully traceable narratives per fixture
+      (Elo gap, xG, market divergence, head-to-head, recent form)
+- [x] Static site → [docs/](docs/) (GitHub Pages-ready): forecast, all 72
+      fixtures with reasoning, methodology + backtest
+- [ ] Conditional re-forecasting during the tournament (fix played results,
+      re-simulate the rest; currently re-runs assume opening day)
+- [ ] Hybrid model with covariates (Groll et al. style) + Dixon-Coles
+- [ ] Tournament-level backtest (champion distributions for 2006–2022)
 
 ## Quick start
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install pandas numpy scipy
+cp .env.example .env                                  # add your ODDS_API_KEY
 .venv/bin/python scripts/run_opening_forecast.py --sims 100000
-ODDS_API_KEY=... .venv/bin/python scripts/snapshot_odds.py   # daily!
+.venv/bin/python scripts/run_backtest.py              # 2006-2022 validation
+.venv/bin/python scripts/snapshot_odds.py             # capture odds (daily!)
+.venv/bin/python scripts/run_consensus.py             # bookmaker consensus
+.venv/bin/python scripts/build_site.py                # render docs/
+bash scripts/update_all.sh                            # ...or all of the above
+open docs/index.html
 ```
+
+Hosting: push to GitHub and enable Pages (Settings → Pages → deploy from
+branch, `/docs` folder). Netlify/Cloudflare Pages also work — point them at
+`docs/`.
 
 ## Architecture
 
