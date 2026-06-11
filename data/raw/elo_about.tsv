@@ -1,0 +1,91 @@
+<p>
+The <a href="http://eloratings.net/">World Football Elo Ratings</a> are based on the Elo rating system, developed by Dr. Arpad Elo. This system is used by FIDE, the international chess federation, to rate chess players.
+</p><p>
+<a href="http://eloratings.net/">Eloratings.net</a> applies the Elo rating system to international football, by adding a weighting for the kind of match, an adjustment for the home team advantage, and an adjustment for goal difference in the match result.
+</p><p>
+The ratings take into account all international &quot;A&quot; matches for which results could be found. International football data is primarily obtained from <a href="http://www.rsssf.com/">rsssf.com</a>, <a href="http://www.theroonba.com/">theroonba.com</a>, and <a href="http://www.soccer-db.info/">soccer-db.info</a> (discontinued).
+</p><p>
+Ratings tend to converge on a team's true strength relative to its competitors after about 30 matches. Ratings for teams with fewer than 30 matches should be considered provisional.
+</p><p>
+The ratings are based on the following formulas:
+</p>
+<h3>R<sub>n</sub> = R<sub>o</sub> + K &times; (W - W<sub>e</sub>)</h3>
+<p>
+<b>R<sub>n</sub></b> is the new rating, <b>R<sub>o</sub></b> is the old (pre-match) rating.
+</p>
+<p>
+<b>K</b> is the weight constant for the tournament played:
+</p>
+<ul><li><b>60</b> for World Cup finals;
+<li><b>50</b> for continental championship finals and major intercontinental tournaments;
+<li><b>40</b> for World Cup and continental qualifiers and major tournaments;
+<li><b>30</b> for all other tournaments;
+<li><b>20</b> for friendly matches.</ul>
+<p>
+<b>K</b> is then adjusted for the goal difference in the game. It is increased by <b>half</b> if a game is won by two goals, by <b>3/4</b> if a game is won by three goals, and by <b>3/4 + (N-3)/8</b> if the game is won by four or more goals, where <b>N</b> is the goal difference.
+</p><p>
+<b>W</b> is the result of the game (<b>1</b> for a win, <b>0.5</b> for a draw, and <b>0</b> for a loss).
+</p><p>
+<b>W<sub>e</sub></b> is the expected result (win expectancy), either from the chart or the following formula:
+</p>
+<h3>W<sub>e</sub> = 1 / (10<sup>(-dr/400)</sup> + 1)</h3>
+<p>
+<b>dr</b> equals the difference in ratings plus <b>100</b> points for a team playing at home.
+</p>
+<table>
+<tr colspan="3" class="nt"><b>Sample Winning Expectancies</b></tr>
+<tr class="nt"><td width="100">Difference<br>in Ratings</td>
+<td width="100">Higher<br>Rated</td>
+<td width="100">Lower<br>Rated</td></tr>
+<tr class="nt"><td>0</td><td>0.500</td><td>0.500</td></tr>
+<tr class="nt"><td>10</td><td>0.514</td><td>0.486</td></tr>
+<tr class="nt"><td>20</td><td>0.529</td><td>0.471</td></tr>
+<tr class="nt"><td>30</td><td>0.543</td><td>0.457</td></tr>
+<tr class="nt"><td>40</td><td>0.557</td><td>0.443</td></tr>
+<tr class="nt"><td>50</td><td>0.571</td><td>0.429</td></tr>
+<tr class="nt"><td>60</td><td>0.585</td><td>0.415</td></tr>
+<tr class="nt"><td>70</td><td>0.599</td><td>0.401</td></tr>
+<tr class="nt"><td>80</td><td>0.613</td><td>0.387</td></tr>
+<tr class="nt"><td>90</td><td>0.627</td><td>0.373</td></tr>
+<tr class="nt"><td>100</td><td>0.640</td><td>0.360</td></tr>
+<tr class="nt"><td>110</td><td>0.653</td><td>0.347</td></tr>
+<tr class="nt"><td>120</td><td>0.666</td><td>0.334</td></tr>
+<tr class="nt"><td>130</td><td>0.679</td><td>0.321</td></tr>
+<tr class="nt"><td>140</td><td>0.691</td><td>0.309</td></tr>
+<tr class="nt"><td>150</td><td>0.703</td><td>0.297</td></tr>
+<tr class="nt"><td>160</td><td>0.715</td><td>0.285</td></tr>
+<tr class="nt"><td>170</td><td>0.727</td><td>0.273</td></tr>
+<tr class="nt"><td>180</td><td>0.738</td><td>0.262</td></tr>
+<tr class="nt"><td>190</td><td>0.749</td><td>0.251</td></tr>
+<tr class="nt"><td>200</td><td>0.760</td><td>0.240</td></tr>
+<tr class="nt"><td>210</td><td>0.770</td><td>0.230</td></tr>
+<tr class="nt"><td>220</td><td>0.780</td><td>0.220</td></tr>
+<tr class="nt"><td>230</td><td>0.790</td><td>0.210</td></tr>
+<tr class="nt"><td>240</td><td>0.799</td><td>0.201</td></tr>
+<tr class="nt"><td>250</td><td>0.808</td><td>0.192</td></tr>
+<tr class="nt"><td>260</td><td>0.817</td><td>0.183</td></tr>
+<tr class="nt"><td>270</td><td>0.826</td><td>0.174</td></tr>
+<tr class="nt"><td>280</td><td>0.834</td><td>0.166</td></tr>
+<tr class="nt"><td>290</td><td>0.841</td><td>0.159</td></tr>
+<tr class="nt"><td>300</td><td>0.849</td><td>0.151</td></tr>
+<tr class="nt"><td>325</td><td>0.867</td><td>0.133</td></tr>
+<tr class="nt"><td>350</td><td>0.882</td><td>0.118</td></tr>
+<tr class="nt"><td>375</td><td>0.896</td><td>0.104</td></tr>
+<tr class="nt"><td>400</td><td>0.909</td><td>0.091</td></tr>
+<tr class="nt"><td>425</td><td>0.920</td><td>0.080</td></tr>
+<tr class="nt"><td>450</td><td>0.930</td><td>0.070</td></tr>
+<tr class="nt"><td>475</td><td>0.939</td><td>0.061</td></tr>
+<tr class="nt"><td>500</td><td>0.947</td><td>0.053</td></tr>
+<tr class="nt"><td>525</td><td>0.954</td><td>0.046</td></tr>
+<tr class="nt"><td>550</td><td>0.960</td><td>0.040</td></tr>
+<tr class="nt"><td>575</td><td>0.965</td><td>0.035</td></tr>
+<tr class="nt"><td>600</td><td>0.969</td><td>0.031</td></tr>
+<tr class="nt"><td>625</td><td>0.973</td><td>0.027</td></tr>
+<tr class="nt"><td>650</td><td>0.977</td><td>0.023</td></tr>
+<tr class="nt"><td>675</td><td>0.980</td><td>0.020</td></tr>
+<tr class="nt"><td>700</td><td>0.983</td><td>0.017</td></tr>
+<tr class="nt"><td>725</td><td>0.985</td><td>0.015</td></tr>
+<tr class="nt"><td>750</td><td>0.987</td><td>0.013</td></tr>
+<tr class="nt"><td>775</td><td>0.989</td><td>0.011</td></tr>
+<tr class="nt"><td>800</td><td>0.990</td><td>0.010</td></tr>
+</table>

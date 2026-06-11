@@ -1,0 +1,67 @@
+{
+  "comment": "2026 FIFA World Cup format. Groups verified against Wikipedia per-group pages AND derived independently from martj42 fixture cliques (exact match, 2026-06-11). Bracket from en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage.",
+  "groups": {
+    "A": ["Mexico", "South Africa", "South Korea", "Czech Republic"],
+    "B": ["Canada", "Bosnia and Herzegovina", "Qatar", "Switzerland"],
+    "C": ["Brazil", "Morocco", "Haiti", "Scotland"],
+    "D": ["United States", "Paraguay", "Australia", "Turkey"],
+    "E": ["Germany", "Curaçao", "Ivory Coast", "Ecuador"],
+    "F": ["Netherlands", "Japan", "Sweden", "Tunisia"],
+    "G": ["Belgium", "Egypt", "Iran", "New Zealand"],
+    "H": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"],
+    "I": ["France", "Senegal", "Iraq", "Norway"],
+    "J": ["Argentina", "Algeria", "Austria", "Jordan"],
+    "K": ["Portugal", "DR Congo", "Uzbekistan", "Colombia"],
+    "L": ["England", "Croatia", "Ghana", "Panama"]
+  },
+  "round_of_32": {
+    "73": {"home": "2A", "away": "2B"},
+    "74": {"home": "1E", "away": "3:ABCDF"},
+    "75": {"home": "1F", "away": "2C"},
+    "76": {"home": "1C", "away": "2F"},
+    "77": {"home": "1I", "away": "3:CDFGH"},
+    "78": {"home": "2E", "away": "2I"},
+    "79": {"home": "1A", "away": "3:CEFHI"},
+    "80": {"home": "1L", "away": "3:EHIJK"},
+    "81": {"home": "1D", "away": "3:BEFIJ"},
+    "82": {"home": "1G", "away": "3:AEHIJ"},
+    "83": {"home": "2K", "away": "2L"},
+    "84": {"home": "1H", "away": "2J"},
+    "85": {"home": "1B", "away": "3:EFGIJ"},
+    "86": {"home": "1J", "away": "2H"},
+    "87": {"home": "1K", "away": "3:DEIJL"},
+    "88": {"home": "2D", "away": "2G"}
+  },
+  "round_of_16": {
+    "89": ["74", "77"],
+    "90": ["73", "75"],
+    "91": ["76", "78"],
+    "92": ["79", "80"],
+    "93": ["83", "84"],
+    "94": ["81", "82"],
+    "95": ["86", "88"],
+    "96": ["85", "87"]
+  },
+  "quarterfinals": {
+    "97": ["89", "90"],
+    "98": ["93", "94"],
+    "99": ["91", "92"],
+    "100": ["95", "96"]
+  },
+  "semifinals": {
+    "101": ["97", "98"],
+    "102": ["99", "100"]
+  },
+  "final": {"104": ["101", "102"]},
+  "third_place_match": {"103": ["101", "102"]},
+  "dates": {
+    "group_stage": "2026-06-11 to 2026-06-27",
+    "round_of_32": "2026-06-28 to 2026-07-03",
+    "round_of_16": "2026-07-04 to 2026-07-07",
+    "quarterfinals": "2026-07-09 to 2026-07-11",
+    "semifinals": "2026-07-14 to 2026-07-15",
+    "third_place": "2026-07-18",
+    "final": "2026-07-19"
+  },
+  "tiebreakers_note": "Group: points; then head-to-head (points, GD, goals) among tied teams; then overall GD, goals scored; then conduct score (not simulated); then FIFA ranking (proxied by pre-tournament Elo). Third-place table: points, GD, goals, conduct (skipped), FIFA ranking (Elo proxy). Third-place slot allocation uses FIFA's 495-combination table; we approximate with constraint-satisfying bipartite matching over the slot eligibility sets."
+}

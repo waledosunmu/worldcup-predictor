@@ -1,0 +1,18 @@
+{
+  "captured": "2026-06-11",
+  "market": "outright winner, 2026 FIFA World Cup",
+  "source": "vegasinsider.com/soccer/odds/world-cup/ (BetMGM lines, page dated 2026-06-03)",
+  "format": "american",
+  "note": "Partial manual snapshot captured on opening day before group results. Teams beyond Norway listed only as '+3300 or greater'. Use scripts/snapshot_odds.py with an ODDS_API_KEY for a complete multi-bookmaker snapshot.",
+  "odds": {
+    "France": 450,
+    "Spain": 450,
+    "England": 650,
+    "Brazil": 800,
+    "Argentina": 800,
+    "Portugal": 900,
+    "Germany": 1400,
+    "Netherlands": 2000,
+    "Norway": 2500
+  }
+}
