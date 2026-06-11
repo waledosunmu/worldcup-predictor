@@ -35,10 +35,17 @@ def load_format(path):
 
 
 class Simulator:
-    def __init__(self, fmt: dict, ratings: dict[str, float], params: dict, seed: int = 26):
+    """`played_group`: {frozenset({a,b}): (a, goals_a, goals_b)} fixes group
+    scores; `ko_winners`: {frozenset({a,b}): winner} fixes knockout outcomes
+    (shootout winners included). Everything not fixed is simulated."""
+
+    def __init__(self, fmt: dict, ratings: dict[str, float], params: dict, seed: int = 26,
+                 played_group: dict | None = None, ko_winners: dict | None = None):
         self.fmt = fmt
         self.params = params
         self.ratings = ratings
+        self.played_group = played_group or {}
+        self.ko_winners = ko_winners or {}
         self.rng = np.random.default_rng(seed)
         self.group_letters = sorted(fmt["groups"])
         self.groups = {g: list(fmt["groups"][g]) for g in self.group_letters}
@@ -60,6 +67,9 @@ class Simulator:
     # ---------- match simulation ----------
 
     def _ko_winner(self, a: str, b: str) -> str:
+        fixed = self.ko_winners.get(frozenset((a, b)))
+        if fixed is not None:
+            return fixed
         dr = self.ratings[a] - self.ratings[b]
         lh, la = expected_goals(dr, self.params)
         ga, gb = self.rng.poisson(lh), self.rng.poisson(la)
@@ -201,6 +211,13 @@ class Simulator:
     def run(self, n_sims: int = 100_000) -> dict:
         lam = np.array([[f[3], f[4]] for f in self.group_fixtures])  # (72, 2)
         all_goals = self.rng.poisson(lam, size=(n_sims, len(self.group_fixtures), 2))
+        # overwrite played fixtures with their actual scores in every simulation
+        for idx, (g, home, away, _, _) in enumerate(self.group_fixtures):
+            rec = self.played_group.get(frozenset((home, away)))
+            if rec is not None:
+                first, gf, ga = rec
+                score = (gf, ga) if first == home else (ga, gf)
+                all_goals[:, idx, :] = score
 
         stages = ["win_group", "reach_r32", "reach_r16", "reach_qf",
                   "reach_sf", "reach_final", "champion"]

@@ -12,8 +12,8 @@ curl -sL -o data/raw/elo_world.tsv "https://eloratings.net/World.tsv"
 echo "== snapshot odds =="
 .venv/bin/python scripts/snapshot_odds.py || echo "(odds snapshot failed; continuing)"
 
-echo "== forecast =="
-.venv/bin/python scripts/run_opening_forecast.py --sims 100000
+echo "== forecast (conditional on played results) =="
+.venv/bin/python scripts/run_forecast.py --sims 100000
 
 echo "== consensus =="
 .venv/bin/python scripts/run_consensus.py

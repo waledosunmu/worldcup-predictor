@@ -30,8 +30,10 @@ World Cups, published with per-prediction reasoning.
       (Elo gap, xG, market divergence, head-to-head, recent form)
 - [x] Static site → [docs/](docs/) (GitHub Pages-ready): forecast, all 72
       fixtures with reasoning, methodology + backtest
-- [ ] Conditional re-forecasting during the tournament (fix played results,
-      re-simulate the rest; currently re-runs assume opening day)
+- [x] Conditional re-forecasting (`scripts/run_forecast.py --as-of`): played
+      group scores and knockout winners (incl. shootouts) locked into every
+      simulation, Elo updated through the latest result; verified vs synthetic
+      results and reproduces the opening forecast when nothing has been played
 - [ ] Hybrid model with covariates (Groll et al. style) + Dixon-Coles
 - [ ] Tournament-level backtest (champion distributions for 2006–2022)
 
@@ -40,7 +42,7 @@ World Cups, published with per-prediction reasoning.
 ```bash
 python3 -m venv .venv && .venv/bin/pip install pandas numpy scipy
 cp .env.example .env                                  # add your ODDS_API_KEY
-.venv/bin/python scripts/run_opening_forecast.py --sims 100000
+.venv/bin/python scripts/run_forecast.py              # conditional on played results
 .venv/bin/python scripts/run_backtest.py              # 2006-2022 validation
 .venv/bin/python scripts/snapshot_odds.py             # capture odds (daily!)
 .venv/bin/python scripts/run_consensus.py             # bookmaker consensus

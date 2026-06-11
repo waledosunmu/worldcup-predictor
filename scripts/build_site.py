@@ -88,7 +88,10 @@ def probrow(ph, pd_, pa, h, a) -> str:
 
 
 def main():
-    forecast = json.load(open(ROOT / "output/forecast_opening.json"))
+    opening = json.load(open(ROOT / "output/forecast_opening.json"))
+    latest_path = ROOT / "output/forecast_latest.json"
+    forecast = json.load(open(latest_path)) if latest_path.exists() else opening
+    as_of = forecast.get("as_of", AS_OF)
     consensus = json.load(open(ROOT / "output/consensus.json"))
     backtest = json.load(open(ROOT / "output/backtest_2006_2022.json"))
     fmt = json.load(open(ROOT / "data/format_2026.json"))
@@ -105,6 +108,8 @@ def main():
                     max(market_champ.values()))
 
     # ---------- index ----------
+    opening_champ = {t: opening["advancement"][t]["champion"]
+                     for t in opening["advancement"]}
     rows = sorted(adv.items(), key=lambda kv: -kv[1]["champion"])[:16]
     champ_rows = ""
     for t, p in rows:
@@ -114,17 +119,19 @@ def main():
             f"<tr><td><b>{t}</b><br><span class='muted'>{blurb}</span></td>"
             f"<td class='num'>{p['champion']:.1%}{bar(p['champion'], 'model', max_champ)}</td>"
             f"<td class='num'>{mk:.1%}{bar(mk, 'market', max_champ)}</td>"
+            f"<td class='num'>{opening_champ.get(t, 0):.1%}</td>"
             f"<td class='num'>{p['reach_final']:.0%}</td>"
             f"<td class='num'>{p['reach_sf']:.0%}</td></tr>")
 
-    upcoming = sorted(consensus["matches"], key=lambda m: m["commence"])[:9]
-    up_html = ""
+    upcoming = sorted(consensus["matches"], key=lambda m: m["commence"])
+    up_html, shown = "", 0
     for m in upcoming:
         fx = next((f for f in forecast["group_fixtures"]
                    if f["home"] == m["home"] and f["away"] == m["away"]), None)
-        if not fx:
+        if not fx or fx.get("played") or shown >= 9:
             continue
-        expl = fixture_explanation(fx, ratings, ranks, results, AS_OF, m)
+        shown += 1
+        expl = fixture_explanation(fx, ratings, ranks, results, as_of, m)
         up_html += (
             f'<div class="fixture"><span class="date">{m["commence"][:10]} · '
             f'Group {fx["group"]}</span>'
@@ -140,8 +147,8 @@ Model (Elo–Poisson, 100k sims)</span><span><i class="dot"
 style="background:var(--market)"></i>Bookmaker consensus
 ({consensus['n_outright_books']} books)</span></p>
 <table><tr><th>Team</th><th class="num">Champion (model)</th>
-<th class="num">Champion (market)</th><th class="num">Final</th>
-<th class="num">Semis</th></tr>{champ_rows}</table>
+<th class="num">Champion (market)</th><th class="num">Pre-tournament</th>
+<th class="num">Final</th><th class="num">Semis</th></tr>{champ_rows}</table>
 <h2>Next matches</h2>{up_html}
 <p><a href="groups.html">All 72 group fixtures with predictions →</a></p>"""
 
@@ -162,8 +169,14 @@ style="background:var(--market)"></i>Bookmaker consensus
         fxs = ""
         for fx in fixtures_by_group[g]:
             m = market_by_fixture.get((fx["home"], fx["away"]))
-            expl = fixture_explanation(fx, ratings, ranks, results, AS_OF, m)
             date = m["commence"][:10] if m else ""
+            if fx.get("played"):
+                fxs += (f'<div class="fixture"><span class="date">{date} · '
+                        f'final</span><span class="teams">{fx["home"]} '
+                        f'{fx["score_home"]}–{fx["score_away"]} {fx["away"]}'
+                        f'</span></div>')
+                continue
+            expl = fixture_explanation(fx, ratings, ranks, results, as_of, m)
             fxs += (f'<div class="fixture"><span class="date">{date}</span>'
                     f'<span class="teams">{fx["home"]} vs {fx["away"]}</span>'
                     + probrow(fx["p_home"], fx["p_draw"], fx["p_away"],
@@ -188,7 +201,7 @@ data:</p>
 <li><b>Ratings.</b> We replay all {len(results):,} international matches since
 1872 through a replication of the World Football Elo system (match-importance
 K-factors, margin-of-victory multipliers, +100 home advantage). Our ratings
-correlate {forecast['elo_correlation_official']:.3f} with the official
+correlate {opening['elo_correlation_official']:.3f} with the official
 eloratings.net figures across the 48 finalists.</li>
 <li><b>Goals model.</b> Elo difference maps to expected goals via a Poisson
 model fit by maximum likelihood on {forecast['params']['n']:,} competitive
@@ -229,9 +242,9 @@ academic recipes from Groll et al. (JQAS 2019) and Leitner/Zeileis/Hornik
 
     DOCS.mkdir(exist_ok=True)
     (DOCS / "style.css").write_text(CSS)
-    (DOCS / "index.html").write_text(page("Forecast", index_body, AS_OF))
-    (DOCS / "groups.html").write_text(page("Groups", groups_body, AS_OF))
-    (DOCS / "methodology.html").write_text(page("Methodology", meth_body, AS_OF))
+    (DOCS / "index.html").write_text(page("Forecast", index_body, as_of))
+    (DOCS / "groups.html").write_text(page("Groups", groups_body, as_of))
+    (DOCS / "methodology.html").write_text(page("Methodology", meth_body, as_of))
     print(f"Wrote docs/: index.html, groups.html, methodology.html, style.css")
 
 
