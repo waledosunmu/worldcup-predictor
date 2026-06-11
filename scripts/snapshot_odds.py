@@ -20,6 +20,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://api.the-odds-api.com/v4"
 
+_env = ROOT / ".env"
+if "ODDS_API_KEY" not in os.environ and _env.exists():
+    for _line in _env.read_text().splitlines():
+        if _line.strip() and not _line.startswith("#") and "=" in _line:
+            k, v = _line.split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip())
+
 
 def get(path: str, **params) -> tuple[object, dict]:
     params["apiKey"] = os.environ["ODDS_API_KEY"]

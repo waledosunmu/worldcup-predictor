@@ -1,0 +1,182 @@
+{
+ "editions": [
+  2006,
+  2010,
+  2014,
+  2018,
+  2022
+ ],
+ "fit_window_years": 28,
+ "per_edition": [
+  {
+   "edition": 2006,
+   "model": "elo_poisson",
+   "logloss": 0.8917712135168158,
+   "brier": 0.516484383332507,
+   "rps": 0.168701232640303
+  },
+  {
+   "edition": 2006,
+   "model": "elo_expectancy",
+   "logloss": 0.8949079796158412,
+   "brier": 0.5137130238288056,
+   "rps": 0.16705775130349482
+  },
+  {
+   "edition": 2006,
+   "model": "climatology",
+   "logloss": 1.0380969966341533,
+   "brier": 0.6234236960379615,
+   "rps": 0.22189386742409625
+  },
+  {
+   "edition": 2010,
+   "model": "elo_poisson",
+   "logloss": 0.9545408213355729,
+   "brier": 0.5628602410916077,
+   "rps": 0.19024810484979515
+  },
+  {
+   "edition": 2010,
+   "model": "elo_expectancy",
+   "logloss": 1.064257678078143,
+   "brier": 0.5726243985805075,
+   "rps": 0.19216897789836984
+  },
+  {
+   "edition": 2010,
+   "model": "climatology",
+   "logloss": 1.101143560068068,
+   "brier": 0.670638625554598,
+   "rps": 0.2411703214274315
+  },
+  {
+   "edition": 2014,
+   "model": "elo_poisson",
+   "logloss": 0.9213465026490311,
+   "brier": 0.5368945272316104,
+   "rps": 0.18369628726477472
+  },
+  {
+   "edition": 2014,
+   "model": "elo_expectancy",
+   "logloss": 0.8804420379748386,
+   "brier": 0.5230117766000832,
+   "rps": 0.18042951967113546
+  },
+  {
+   "edition": 2014,
+   "model": "climatology",
+   "logloss": 1.0520508254071548,
+   "brier": 0.6366970422024752,
+   "rps": 0.23719606986093586
+  },
+  {
+   "edition": 2018,
+   "model": "elo_poisson",
+   "logloss": 0.9840834810293612,
+   "brier": 0.5811839587420584,
+   "rps": 0.20652138587296998
+  },
+  {
+   "edition": 2018,
+   "model": "elo_expectancy",
+   "logloss": 0.9747640003968707,
+   "brier": 0.5733282010596826,
+   "rps": 0.20554401971667313
+  },
+  {
+   "edition": 2018,
+   "model": "climatology",
+   "logloss": 1.075420524386317,
+   "brier": 0.6547261681280192,
+   "rps": 0.24624300325084134
+  },
+  {
+   "edition": 2022,
+   "model": "elo_poisson",
+   "logloss": 1.1087641357410498,
+   "brier": 0.6382424908697281,
+   "rps": 0.2286146257408287
+  },
+  {
+   "edition": 2022,
+   "model": "elo_expectancy",
+   "logloss": 1.2879332736971583,
+   "brier": 0.6367342822019566,
+   "rps": 0.22863692143771236
+  },
+  {
+   "edition": 2022,
+   "model": "climatology",
+   "logloss": 1.0682122358344222,
+   "brier": 0.6465742283950617,
+   "rps": 0.23347746913580247
+  }
+ ],
+ "pooled": [
+  {
+   "edition": "ALL",
+   "model": "elo_poisson",
+   "logloss": 0.972101230854366,
+   "brier": 0.5671331202535023,
+   "rps": 0.19555632727373432
+  },
+  {
+   "edition": "ALL",
+   "model": "elo_expectancy",
+   "logloss": 1.0204609939525704,
+   "brier": 0.5638823364542072,
+   "rps": 0.19476743800547713
+  },
+  {
+   "edition": "ALL",
+   "model": "climatology",
+   "logloss": 1.066984828466023,
+   "brier": 0.6464119520636231,
+   "rps": 0.2359961462198215
+  }
+ ],
+ "group_qualification": [
+  {
+   "edition": 2006,
+   "mean_p_actual_qualifiers": 0.6724375,
+   "qual_brier": 0.14310711625,
+   "fit_n": 12002,
+   "fit_a": 0.20768092500686128,
+   "fit_b": 0.8677693763867872
+  },
+  {
+   "edition": 2010,
+   "mean_p_actual_qualifiers": 0.6535625,
+   "qual_brier": 0.16058093437499998,
+   "fit_n": 13257,
+   "fit_a": 0.20130660254575516,
+   "fit_b": 0.8474107523488332
+  },
+  {
+   "edition": 2014,
+   "mean_p_actual_qualifiers": 0.60335,
+   "qual_brier": 0.19594377000000002,
+   "fit_n": 14497,
+   "fit_a": 0.20965483145779168,
+   "fit_b": 0.8334054278795976
+  },
+  {
+   "edition": 2018,
+   "mean_p_actual_qualifiers": 0.6797500000000001,
+   "qual_brier": 0.13660533875,
+   "fit_n": 15718,
+   "fit_a": 0.2198212387556119,
+   "fit_b": 0.8154558917141916
+  },
+  {
+   "edition": 2022,
+   "mean_p_actual_qualifiers": 0.60444375,
+   "qual_brier": 0.21070366125,
+   "fit_n": 17129,
+   "fit_a": 0.21302860413677943,
+   "fit_b": 0.8011623730650176
+  }
+ ]
+}

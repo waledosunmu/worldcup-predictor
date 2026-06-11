@@ -19,7 +19,10 @@ World Cups, published with per-prediction reasoning.
 - [x] Monte Carlo simulator with 2026 rules (100k sims ≈ 10 s)
 - [x] Opening-day forecast: [output/forecast_opening.md](output/forecast_opening.md)
 - [x] Odds snapshot (partial manual capture + The Odds API script)
-- [ ] Backtest harness 2006–2022 (Brier / log loss / RPS vs Elo-only baseline)
+- [x] Backtest harness 2006–2022, point-in-time refit per edition
+      ([output/backtest_2006_2022.md](output/backtest_2006_2022.md)):
+      elo_poisson beats both baselines on log loss (0.972 vs 1.021/1.067)
+      and ties the Elo-expectancy baseline on RPS (0.196)
 - [ ] Bookmaker-consensus model (Leitner/Zeileis/Hornik overround recipe)
 - [ ] Hybrid model with covariates (Groll et al. style)
 - [ ] Explanation generator (per-match factors → narrative)
