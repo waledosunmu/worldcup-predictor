@@ -7,8 +7,11 @@ World Cups, published with per-prediction reasoning.
 ## Status (opening day, 2026-06-11)
 
 - [x] Data layer: martj42 results (49,477 matches, snapshot committed for
-      point-in-time discipline), eloratings.net TSVs, football-data.org planned
-      for live results
+      point-in-time discipline), eloratings.net TSVs, and a football-data.org
+      live-results overlay ([scripts/fetch_results.py](scripts/fetch_results.py),
+      `FOOTBALL_DATA_API_KEY`) that fills finished-match scores onto the snapshot
+      before re-forecasting; martj42 is the automatic fallback when the key is
+      unset or the feed lags
 - [x] 2026 format encoded ([data/format_2026.json](data/format_2026.json)):
       12 groups verified two ways (Wikipedia per-group pages + fixture cliques),
       R32 bracket M73–M104, new tiebreaker order
