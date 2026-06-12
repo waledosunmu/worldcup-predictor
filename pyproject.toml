@@ -5,5 +5,12 @@ description = "2026 FIFA World Cup prediction: Elo + Poisson + Monte Carlo, back
 requires-python = ">=3.11"
 dependencies = ["pandas", "numpy", "scipy"]
 
+[project.optional-dependencies]
+dev = ["pytest"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
