@@ -24,7 +24,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from wcpred import history
 from wcpred.names import canon
-from wcpred.odds import event_h2h_consensus, outright_consensus
+from wcpred.odds import snapshot_to_consensus
 
 HIST_PATH = ROOT / "output/probability_history.jsonl"
 PRED_PATH = ROOT / "output/match_predictions.jsonl"
@@ -36,21 +36,9 @@ def _now() -> str:
 
 def reconstruct_consensus(winner_file: Path, match_file: Path, teams48: set) -> dict:
     """Build a consensus-shaped dict from raw odds snapshots (for backfill)."""
-    winner_snap = json.load(open(winner_file))
-    match_snap = json.load(open(match_file))
-    outright, n_books = outright_consensus(winner_snap["data"][0], canon=canon,
-                                           universe=teams48)
-    matches = []
-    for ev in match_snap["data"]:
-        c = event_h2h_consensus(ev)
-        if c is None:
-            continue
-        c["home"], c["away"] = canon(c["home"]), canon(c["away"])
-        c["commence"] = ev["commence_time"]
-        if c["home"] in teams48 and c["away"] in teams48:
-            matches.append(c)
-    return {"captured": winner_snap["captured"], "n_outright_books": n_books,
-            "outright_consensus": outright, "matches": matches}
+    return snapshot_to_consensus(json.load(open(winner_file)),
+                                 json.load(open(match_file)),
+                                 canon=canon, universe=teams48)
 
 
 def backfill_opening(hist_records: list[dict], pred_records: list[dict]):

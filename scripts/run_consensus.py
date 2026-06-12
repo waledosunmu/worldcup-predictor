@@ -18,19 +18,10 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from wcpred import history
+from wcpred.names import canon
 from wcpred.odds import event_h2h_consensus, outright_consensus
-
-# The Odds API name -> martj42 name (only where they differ)
-NAME_MAP = {"USA": "United States", "Korea Republic": "South Korea",
-            "Czechia": "Czech Republic", "Türkiye": "Turkey",
-            "Bosnia-Herzegovina": "Bosnia and Herzegovina",
-            "Bosnia & Herzegovina": "Bosnia and Herzegovina",
-            "Democratic Republic of the Congo": "DR Congo",
-            "Republic of Ireland": "Ireland", "Côte d'Ivoire": "Ivory Coast"}
-
-
-def canon(name: str) -> str:
-    return NAME_MAP.get(name, name)
+from wcpred.odds_movement import build_record
 
 
 def latest(pattern: str) -> dict:
@@ -95,6 +86,15 @@ def main():
     print("largest model-market divergences:",
           ", ".join(f"{r['team']} {r['diff']:+.1%}" for r in big))
     print("Wrote output/consensus.json")
+
+    # compact odds-movement time-series (one row per capture; idempotent)
+    ts_path = ROOT / "output/odds_timeseries.jsonl"
+    series = history.load_jsonl(ts_path)
+    if not any(r["captured"] == winner_snap["captured"] for r in series):
+        series.append(build_record(winner_snap["captured"], n_books, outright, matches))
+        history.write_jsonl(ts_path, sorted(series, key=lambda r: r["captured"]))
+        print(f"odds_timeseries: appended capture {winner_snap['captured']} "
+              f"({len(series)} total)")
 
 
 if __name__ == "__main__":

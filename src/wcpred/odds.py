@@ -76,3 +76,27 @@ def outright_consensus(event: dict, canon=lambda n: n,
             for prices in books if set(teams) <= set(prices)]
     p = consensus(rows)
     return dict(zip(teams, map(float, p))), len(rows)
+
+
+def snapshot_to_consensus(winner_snap: dict, match_snap: dict,
+                          canon=lambda n: n, universe: set | None = None) -> dict:
+    """Derive market consensus from a raw odds snapshot pair (winner + match h2h).
+
+    Shared by run_consensus.py, the history backfill, and the odds-movement tracker.
+    Returns {captured, n_outright_books, outright_consensus, matches} with each match
+    `{home, away, commence, p_home, p_draw, p_away, n_books}` (canonical team names,
+    restricted to `universe` when given).
+    """
+    outright, n_books = outright_consensus(winner_snap["data"][0], canon=canon,
+                                           universe=universe)
+    matches = []
+    for ev in match_snap["data"]:
+        c = event_h2h_consensus(ev)
+        if c is None:
+            continue
+        c["home"], c["away"] = canon(c["home"]), canon(c["away"])
+        c["commence"] = ev["commence_time"]
+        if universe is None or (c["home"] in universe and c["away"] in universe):
+            matches.append(c)
+    return {"captured": winner_snap.get("captured"), "n_outright_books": n_books,
+            "outright_consensus": outright, "matches": matches}

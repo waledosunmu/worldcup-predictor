@@ -26,6 +26,9 @@ echo "== consensus =="
 echo "== append probability history + match predictions =="
 "$PY" scripts/append_history.py
 
+echo "== odds-movement tracker =="
+"$PY" scripts/analyze_odds_movement.py
+
 echo "== site =="
 "$PY" scripts/build_site.py
 echo "Done. Commit and push to publish."
