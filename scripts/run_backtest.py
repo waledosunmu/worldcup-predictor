@@ -27,13 +27,13 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from wcpred import elo, goals, metrics
+from wcpred import dixoncoles, elo, goals, metrics
 
 EDITIONS = [2006, 2010, 2014, 2018, 2022]
 FIT_WINDOW_YEARS = 28
 ET_FACTOR = 0.33
 N_GROUP_SIMS = 10_000
-MODELS = ["elo_poisson", "elo_expectancy", "climatology"]
+MODELS = ["elo_poisson", "elo_poisson_dc", "elo_expectancy", "climatology"]
 
 
 def outcome_index(hs: int, as_: int) -> int:
@@ -49,6 +49,24 @@ def elo_poisson_probs(dr: float, params: dict, knockout: bool) -> np.ndarray:
     pd_et = float(skellam.pmf(0, lh * ET_FACTOR, la * ET_FACTOR))
     pl_et = float(skellam.cdf(-1, lh * ET_FACTOR, la * ET_FACTOR))
     pw_et = 1.0 - pd_et - pl_et
+    return np.array([pw + pd_ * pw_et, pd_ * pd_et, pl + pd_ * pl_et])
+
+
+def elo_poisson_dc_probs(dr: float, params: dict, knockout: bool) -> np.ndarray:
+    """Dixon-Coles-corrected W/D/L from the truncated joint scoreline grid.
+    Knockout 'draw' is split into ET-resolved win/draw/loss like the Poisson
+    path, using the DC grid at ET-scaled means for the still-level branch."""
+    pw, pd_, pl = dixoncoles.outcome_probs(dr, params)
+    if not knockout:
+        return np.array([pw, pd_, pl])
+    lh, la = goals.expected_goals(dr, params)
+    et = dixoncoles.scoreline_grid(lh * ET_FACTOR, la * ET_FACTOR, params["rho"])
+    n = et.shape[0]
+    i = np.arange(n)
+    hh, aa = np.meshgrid(i, i, indexing="ij")
+    pw_et = float(et[hh > aa].sum())
+    pd_et = float(np.trace(et))
+    pl_et = float(et[hh < aa].sum())
     return np.array([pw + pd_ * pw_et, pd_ * pd_et, pl + pd_ * pl_et])
 
 
@@ -118,6 +136,10 @@ def main():
                    & (hist.tournament != "Friendly")]
         params = goals.fit(fit.dr.to_numpy(),
                            fit.home_score.to_numpy(), fit.away_score.to_numpy())
+        # Dixon-Coles: add rho by MLE on the same pre-opening window (no decay
+        # here; decay is selected out-of-sample in the separate sweep below).
+        params_dc = dixoncoles.fit(fit.dr.to_numpy(), fit.home_score.to_numpy(),
+                                   fit.away_score.to_numpy(), x0=params)
 
         prior_wc = hist[(hist.tournament == "FIFA World Cup") & (hist.date < opening)]
         prior_out = np.array([outcome_index(h, a) for h, a in
@@ -131,6 +153,7 @@ def main():
             o = outcome_index(r.home_score, r.away_score)
             preds = {
                 "elo_poisson": elo_poisson_probs(r.dr, params, knockout),
+                "elo_poisson_dc": elo_poisson_dc_probs(r.dr, params_dc, knockout),
                 "elo_expectancy": elo_expectancy_probs(r.dr, draw_share),
                 "climatology": clim.copy(),
             }
@@ -173,7 +196,8 @@ def main():
         qual_rows.append({"edition": year,
                           "mean_p_actual_qualifiers": float(np.mean(p_qual)),
                           "qual_brier": float(np.mean(briers)),
-                          "fit_n": params["n"], "fit_a": params["a"], "fit_b": params["b"]})
+                          "fit_n": params["n"], "fit_a": params["a"], "fit_b": params["b"],
+                          "fit_rho": params_dc["rho"]})
         print(f"{year}: elo_poisson RPS {np.mean(ed_metrics['elo_poisson']['rps']):.4f} | "
               f"P(actual qualifiers) {np.mean(p_qual):.2f} | fit n={params['n']}")
 

@@ -22,6 +22,7 @@ import json
 
 import numpy as np
 
+from . import dixoncoles
 from .goals import expected_goals
 
 HOSTS = {"Mexico", "Canada", "United States"}
@@ -40,10 +41,15 @@ class Simulator:
     (shootout winners included). Everything not fixed is simulated."""
 
     def __init__(self, fmt: dict, ratings: dict[str, float], params: dict, seed: int = 26,
-                 played_group: dict | None = None, ko_winners: dict | None = None):
+                 played_group: dict | None = None, ko_winners: dict | None = None,
+                 dixon_coles: bool = False):
         self.fmt = fmt
         self.params = params
         self.ratings = ratings
+        # When dixon_coles=True, scorelines are drawn from the DC-corrected joint
+        # grid (params must carry 'rho'); otherwise the v0 independent-Poisson
+        # path is used unchanged (default keeps the live pipeline behaviour).
+        self.dixon_coles = dixon_coles
         self.played_group = played_group or {}
         self.ko_winners = ko_winners or {}
         self.rng = np.random.default_rng(seed)
@@ -72,13 +78,20 @@ class Simulator:
             return fixed
         dr = self.ratings[a] - self.ratings[b]
         lh, la = expected_goals(dr, self.params)
-        ga, gb = self.rng.poisson(lh), self.rng.poisson(la)
+        ga, gb = self._draw_score(lh, la)
         if ga != gb:
             return a if ga > gb else b
-        ga, gb = self.rng.poisson(lh * ET_FACTOR), self.rng.poisson(la * ET_FACTOR)
+        ga, gb = self._draw_score(lh * ET_FACTOR, la * ET_FACTOR)
         if ga != gb:
             return a if ga > gb else b
         return a if self.rng.random() < 0.5 else b
+
+    def _draw_score(self, lh: float, la: float) -> tuple[int, int]:
+        """One (home, away) scoreline — DC grid draw if enabled, else Poisson."""
+        if self.dixon_coles:
+            s = dixoncoles.sample_scores(lh, la, self.params["rho"], self.rng, 1)[0]
+            return int(s[0]), int(s[1])
+        return int(self.rng.poisson(lh)), int(self.rng.poisson(la))
 
     # ---------- group stage ----------
 
@@ -209,8 +222,15 @@ class Simulator:
     # ---------- aggregation ----------
 
     def run(self, n_sims: int = 100_000) -> dict:
-        lam = np.array([[f[3], f[4]] for f in self.group_fixtures])  # (72, 2)
-        all_goals = self.rng.poisson(lam, size=(n_sims, len(self.group_fixtures), 2))
+        nf = len(self.group_fixtures)
+        if self.dixon_coles:
+            all_goals = np.empty((n_sims, nf, 2), dtype=int)
+            for idx, f in enumerate(self.group_fixtures):
+                all_goals[:, idx, :] = dixoncoles.sample_scores(
+                    f[3], f[4], self.params["rho"], self.rng, n_sims)
+        else:
+            lam = np.array([[f[3], f[4]] for f in self.group_fixtures])  # (nf, 2)
+            all_goals = self.rng.poisson(lam, size=(n_sims, nf, 2))
         # overwrite played fixtures with their actual scores in every simulation
         for idx, (g, home, away, _, _) in enumerate(self.group_fixtures):
             rec = self.played_group.get(frozenset((home, away)))
