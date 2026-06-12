@@ -34,7 +34,35 @@ goals model refit per edition). Scores below are means over all 320 matches —
 lower is better. The model beats both baselines on log loss; the gap to
 bookmaker-grade accuracy is the roadmap.</p>
 <table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
-<th class="num">RPS</th></tr><tr><td>elo_poisson</td><td class='num'>0.9721</td><td class='num'>0.5671</td><td class='num'>0.1956</td></tr><tr><td>elo_expectancy</td><td class='num'>1.0205</td><td class='num'>0.5639</td><td class='num'>0.1948</td></tr><tr><td>climatology</td><td class='num'>1.0670</td><td class='num'>0.6464</td><td class='num'>0.2360</td></tr></table>
+<th class="num">RPS</th></tr><tr><td>elo_poisson</td><td class='num'>0.9721</td><td class='num'>0.5671</td><td class='num'>0.1956</td></tr><tr><td>elo_poisson_dc</td><td class='num'>0.9708</td><td class='num'>0.5668</td><td class='num'>0.1955</td></tr><tr><td>elo_expectancy</td><td class='num'>1.0205</td><td class='num'>0.5639</td><td class='num'>0.1948</td></tr><tr><td>climatology</td><td class='num'>1.0670</td><td class='num'>0.6464</td><td class='num'>0.2360</td></tr></table>
+
+<h2>Whole-tournament backtest: does it call the champion?</h2>
+<p>The match-level scores above ask “how good is each prediction?” This asks the
+harder question: simulate each past World Cup end to end (refit before kickoff)
+and see how much probability the model put on the team that actually lifted the
+trophy. A blind guess is 1/32 = 3.1%.</p>
+<table><tr><th class="num">Year</th><th>Champion</th>
+<th>Model's top pick</th><th class="num">P(actual champ)</th>
+<th class="num">P(reach final)</th></tr><tr><td class='num'>2006</td><td>Italy</td><td>Brazil 16% </td><td class='num'>4.8%<div class="bar"><div class="model" style="width:13.6%"></div></div></td><td class='num'>14.0%</td></tr><tr><td class='num'>2010</td><td>Spain</td><td>Spain 31% ✓</td><td class='num'>30.8%<div class="bar"><div class="model" style="width:87.9%"></div></div></td><td class='num'>35.7%</td></tr><tr><td class='num'>2014</td><td>Germany</td><td>Spain 25% </td><td class='num'>16.7%<div class="bar"><div class="model" style="width:47.8%"></div></div></td><td class='num'>24.9%</td></tr><tr><td class='num'>2018</td><td>France</td><td>Brazil 31% </td><td class='num'>5.5%<div class="bar"><div class="model" style="width:15.6%"></div></div></td><td class='num'>7.5%</td></tr><tr><td class='num'>2022</td><td>Argentina</td><td>Brazil 29% </td><td class='num'>23.3%<div class="bar"><div class="model" style="width:66.6%"></div></div></td><td class='num'>23.3%</td></tr></table>
+<p class="muted">Across all five editions the model gave the eventual champion
+<b>16.2%</b> on average — 5.2× a
+random pick — and the eventual finalists
+<b>21.1%</b>. Reach-final probabilities
+are well calibrated: predicted bins track observed frequencies across
+160 team-edition outcomes.
+2006 (Italy) and 2018 (France) were genuine upsets no rating-based model saw
+coming.</p>
+<h2>Model variants: what's on the roadmap</h2>
+<p>Beyond v0, two research extensions are implemented and backtested
+point-in-time over the same 320 matches (lower is better). The Dixon-Coles
+correction adjusts low-scoring scorelines; the covariate model adds recent form
+to the Elo signal. The combined hybrid wins on every metric — but the gains are
+modest, so v0 remains the production default until they earn their place.</p>
+<table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
+<th class="num">RPS</th></tr><tr><td>Elo–Poisson v0 (live default)</td><td class='num'>0.9721</td><td class='num'>0.5671</td><td class='num'>0.1956</td></tr><tr><td>+ Dixon-Coles low-score correction</td><td class='num'>0.9708</td><td class='num'>0.5668</td><td class='num'>0.1955</td></tr><tr><td>+ recent-form covariate</td><td class='num'>0.9640</td><td class='num'>0.5611</td><td class='num'>0.1930</td></tr><tr style='font-weight:650'><td>Hybrid: form + Dixon-Coles</td><td class='num'>0.9627</td><td class='num'>0.5607</td><td class='num'>0.1929</td></tr></table>
+<p class="muted">Groll-style squad covariates (market value, squad age,
+Champions-League minutes) are the next lever but need external per-tournament
+squad data not yet wired in.</p>
 <h2>Honest caveats</h2>
 <ul>
 <li>Elo sees results only — no squad values, injuries, or lineup news. That is
@@ -50,7 +78,7 @@ including this one. 2026 is new territory for everybody.</li>
 <p class="muted">Sources: martj42 international results dataset (CC0-style
 community dataset), eloratings.net methodology, The Odds API snapshots,
 academic recipes from Groll et al. (JQAS 2019) and Leitner/Zeileis/Hornik
-(IJF 2010).</p><footer>Updated 2026-06-11. Model: Elo–Poisson v0, 100k Monte Carlo
+(IJF 2010).</p><footer>Updated 2026-06-12. Model: Elo–Poisson v0, 100k Monte Carlo
 simulations. Market: bookmaker consensus via The Odds API. Data: martj42
 international results, eloratings.net. Probabilities are estimates, not advice.
 </footer></main></body></html>

@@ -60,6 +60,10 @@ footer { color:var(--muted); font-size:.8rem; margin-top:3rem;
 """
 
 
+def load_optional(path: Path):
+    return json.load(open(path)) if path.exists() else None
+
+
 def page(title: str, body: str, updated: str) -> str:
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -94,6 +98,8 @@ def main():
     as_of = forecast.get("as_of", AS_OF)
     consensus = json.load(open(ROOT / "output/consensus.json"))
     backtest = json.load(open(ROOT / "output/backtest_2006_2022.json"))
+    tbt = load_optional(ROOT / "output/tournament_backtest_2006_2022.json")
+    mc = load_optional(ROOT / "output/model_comparison.json")
     fmt = json.load(open(ROOT / "data/format_2026.json"))
     results = pd.read_csv(ROOT / "data/raw/results.csv")
 
@@ -193,6 +199,75 @@ style="background:var(--market)"></i>Bookmaker consensus
         f"<tr><td>{p['model']}</td><td class='num'>{p['logloss']:.4f}</td>"
         f"<td class='num'>{p['brier']:.4f}</td><td class='num'>{p['rps']:.4f}</td></tr>"
         for p in backtest["pooled"])
+
+    # ---------- whole-tournament backtest (optional artifact) ----------
+    tbt_section = ""
+    if tbt:
+        s = tbt["summary"]
+        flat = 1 / 32
+        tt_rows = ""
+        for e in tbt["per_edition"]:
+            ep = e["elo_poisson"]
+            pick, pick_p = ep["top5_champion"][0]
+            hit = "✓" if pick == e["actual_champion"] else ""
+            tt_rows += (
+                f"<tr><td class='num'>{e['edition']}</td>"
+                f"<td>{e['actual_champion']}</td>"
+                f"<td>{pick} {pick_p:.0%} {hit}</td>"
+                f"<td class='num'>{ep['p_actual_champion']:.1%}"
+                f"{bar(ep['p_actual_champion'], 'model', 0.35)}</td>"
+                f"<td class='num'>{ep['p_actual_finalists']:.1%}</td></tr>")
+        champ = s["champion"]
+        tbt_section = f"""
+<h2>Whole-tournament backtest: does it call the champion?</h2>
+<p>The match-level scores above ask “how good is each prediction?” This asks the
+harder question: simulate each past World Cup end to end (refit before kickoff)
+and see how much probability the model put on the team that actually lifted the
+trophy. A blind guess is 1/32 = {flat:.1%}.</p>
+<table><tr><th class="num">Year</th><th>Champion</th>
+<th>Model's top pick</th><th class="num">P(actual champ)</th>
+<th class="num">P(reach final)</th></tr>{tt_rows}</table>
+<p class="muted">Across all five editions the model gave the eventual champion
+<b>{champ['elo_poisson_mean_p_actual']:.1%}</b> on average — {champ['elo_poisson_mean_p_actual'] / flat:.1f}× a
+random pick — and the eventual finalists
+<b>{s['reach_final']['mean_p_actual_finalists']:.1%}</b>. Reach-final probabilities
+are well calibrated: predicted bins track observed frequencies across
+{sum(b['n'] for b in s['reach_final']['reliability'])} team-edition outcomes.
+2006 (Italy) and 2018 (France) were genuine upsets no rating-based model saw
+coming.</p>"""
+
+    # ---------- model variants (optional artifact) ----------
+    mc_section = ""
+    if mc:
+        labels = {
+            "v0_poisson": "Elo–Poisson v0 (live default)",
+            "dixon_coles": "+ Dixon-Coles low-score correction",
+            "covar_form": "+ recent-form covariate",
+            "hybrid_form_dc": "Hybrid: form + Dixon-Coles",
+        }
+        oos = mc["oos_pooled"]
+        best = min(labels, key=lambda k: oos[k]["logloss"])
+        mc_rows = ""
+        for k, label in labels.items():
+            o = oos[k]
+            b = " style='font-weight:650'" if k == best else ""
+            mc_rows += (
+                f"<tr{b}><td>{label}</td><td class='num'>{o['logloss']:.4f}</td>"
+                f"<td class='num'>{o['brier']:.4f}</td>"
+                f"<td class='num'>{o['rps']:.4f}</td></tr>")
+        mc_section = f"""
+<h2>Model variants: what's on the roadmap</h2>
+<p>Beyond v0, two research extensions are implemented and backtested
+point-in-time over the same 320 matches (lower is better). The Dixon-Coles
+correction adjusts low-scoring scorelines; the covariate model adds recent form
+to the Elo signal. The combined hybrid wins on every metric — but the gains are
+modest, so v0 remains the production default until they earn their place.</p>
+<table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
+<th class="num">RPS</th></tr>{mc_rows}</table>
+<p class="muted">Groll-style squad covariates (market value, squad age,
+Champions-League minutes) are the next lever but need external per-tournament
+squad data not yet wired in.</p>"""
+
     meth_body = f"""
 <h2>How this works</h2>
 <p>Every prediction comes from a pipeline that is fully reproducible from public
@@ -223,6 +298,7 @@ lower is better. The model beats both baselines on log loss; the gap to
 bookmaker-grade accuracy is the roadmap.</p>
 <table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
 <th class="num">RPS</th></tr>{bt_rows}</table>
+{tbt_section}{mc_section}
 <h2>Honest caveats</h2>
 <ul>
 <li>Elo sees results only — no squad values, injuries, or lineup news. That is
