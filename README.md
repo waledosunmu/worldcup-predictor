@@ -37,8 +37,14 @@ World Cups, published with per-prediction reasoning.
       group scores and knockout winners (incl. shootouts) locked into every
       simulation, Elo updated through the latest result; verified vs synthetic
       results and reproduces the opening forecast when nothing has been played
+- [x] Tournament-level backtest 2006–2022, point-in-time refit per edition
+      ([output/tournament_backtest_2006_2022.md](output/tournament_backtest_2006_2022.md)):
+      each past World Cup simulated as a whole tournament under its real 32-team
+      format (groups + bracket reconstructed leak-free from the fixtures), scoring
+      champion / finalist / deep-run distributions. Mean P assigned to the actual
+      champion 0.16 (vs flat 1/32 = 0.03); reach-final calibration well-behaved
+      (predicted bins track observed frequencies across 160 team-edition outcomes)
 - [ ] Hybrid model with covariates (Groll et al. style) + Dixon-Coles
-- [ ] Tournament-level backtest (champion distributions for 2006–2022)
 
 ## Quick start
 
@@ -46,7 +52,8 @@ World Cups, published with per-prediction reasoning.
 python3 -m venv .venv && .venv/bin/pip install pandas numpy scipy
 cp .env.example .env                                  # add your ODDS_API_KEY
 .venv/bin/python scripts/run_forecast.py              # conditional on played results
-.venv/bin/python scripts/run_backtest.py              # 2006-2022 validation
+.venv/bin/python scripts/run_backtest.py              # 2006-2022 match-level validation
+.venv/bin/python scripts/run_tournament_backtest.py   # 2006-2022 whole-tournament validation
 .venv/bin/python scripts/snapshot_odds.py             # capture odds (daily!)
 .venv/bin/python scripts/run_consensus.py             # bookmaker consensus
 .venv/bin/python scripts/build_site.py                # render docs/

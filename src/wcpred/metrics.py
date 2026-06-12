@@ -21,3 +21,14 @@ def rps(probs: np.ndarray, outcome: int) -> float:
     o[outcome] = 1.0
     cp, co = np.cumsum(probs), np.cumsum(o)
     return float(np.sum((cp[:2] - co[:2]) ** 2) / 2.0)
+
+
+def binary_log_loss(p: float, outcome: int) -> float:
+    """Log loss for a single binary event (outcome in {0, 1})."""
+    q = min(max(p, EPS), 1.0 - EPS)
+    return -float(np.log(q if outcome else 1.0 - q))
+
+
+def binary_brier(p: float, outcome: int) -> float:
+    """Brier score for a single binary event (outcome in {0, 1})."""
+    return float((p - outcome) ** 2)
