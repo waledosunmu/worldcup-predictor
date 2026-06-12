@@ -53,10 +53,21 @@ def build_history_record(latest: dict, consensus: dict, timestamp: str) -> dict:
     }
 
 
+def _eq_ignoring(a: dict, b: dict, ignore=("timestamp",)) -> bool:
+    drop = lambda d: {k: v for k, v in d.items() if k not in ignore}
+    return drop(a) == drop(b)
+
+
 def upsert_history(records: list[dict], new: dict, key: str = "as_of") -> list[dict]:
-    """Insert `new`, overwriting any existing record with the same key, sorted by key."""
+    """Insert `new`, overwriting any existing record with the same key, sorted by key.
+
+    If an existing same-key record is identical apart from its `timestamp`, it is kept
+    unchanged so no-op reruns don't churn the file (and produce empty commits).
+    """
     by_key = {r[key]: r for r in records}
-    by_key[new[key]] = new
+    cur = by_key.get(new[key])
+    if cur is None or not _eq_ignoring(cur, new):
+        by_key[new[key]] = new
     return [by_key[k] for k in sorted(by_key)]
 
 
@@ -117,6 +128,9 @@ def merge_match_predictions(existing: list[dict], new_preds: list[dict],
         cur = by_key.get(p["key"])
         if cur is not None and cur.get("played"):
             continue  # frozen — keep the locked pre-kickoff prediction
+        if cur is not None and cur.get("model") == p["model"] \
+                and cur.get("market") == p["market"]:
+            continue  # unchanged probs — keep existing (no predicted_at churn)
         by_key[p["key"]] = {**p,
                             "played": bool(cur and cur.get("played")),
                             "result": cur.get("result") if cur else None}

@@ -42,10 +42,12 @@ def test_build_history_record_pulls_model_and_market():
 def test_upsert_history_dedups_same_as_of_and_sorts():
     a = history.build_history_record(_latest("2026-06-11"), _consensus(), "t1")
     b = history.build_history_record(_latest("2026-06-12"), _consensus(), "t2")
-    b2 = history.build_history_record(_latest("2026-06-12"), _consensus(), "t3")
+    changed = _latest("2026-06-12")
+    changed["advancement"]["Mexico"]["champion"] = 0.09  # genuinely new data
+    b2 = history.build_history_record(changed, _consensus(), "t3")
     recs = history.upsert_history(history.upsert_history([a], b), b2)
     assert [r["as_of"] for r in recs] == ["2026-06-11", "2026-06-12"]  # deduped, sorted
-    assert recs[-1]["timestamp"] == "t3"  # later same-day write wins
+    assert recs[-1]["timestamp"] == "t3"  # changed same-day data -> later write wins
 
 
 def test_build_match_predictions_joins_market_skips_played():
@@ -85,6 +87,21 @@ def test_played_without_prediction_records_null_model():
     recs = history.merge_match_predictions([], [], [_latest(played=True)["group_fixtures"][0]
                                                      | {"home": "Mexico", "away": "South Africa"}])
     assert recs[0]["played"] and recs[0]["model"] is None  # excluded from scoring
+
+
+def test_upsert_history_idempotent_ignoring_timestamp():
+    a = history.build_history_record(_latest("2026-06-12"), _consensus(), "t1")
+    again = history.build_history_record(_latest("2026-06-12"), _consensus(), "t2")
+    recs = history.upsert_history([a], again)
+    assert len(recs) == 1 and recs[0]["timestamp"] == "t1"  # unchanged data kept
+
+
+def test_predictions_idempotent_when_probs_unchanged():
+    p1 = history.build_match_predictions(_latest(played=False), _consensus(), "t1")
+    recs = history.merge_match_predictions([], p1, [])
+    p2 = history.build_match_predictions(_latest(played=False), _consensus(), "t2")
+    recs2 = history.merge_match_predictions(recs, p2, [])
+    assert recs2[0]["predicted_at"] == "t1"  # same probs -> no predicted_at churn
 
 
 def test_jsonl_roundtrip(tmp_path):
