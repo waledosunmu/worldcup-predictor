@@ -1,8 +1,13 @@
-name: Daily forecast update
+name: Forecast update (3-hourly, kickoff-aware odds)
 
 on:
   schedule:
-    - cron: "0 12 * * *"  # 12:00 UTC daily — after overnight matches land upstream
+    # Every 3h. snapshot_odds is kickoff-aware (ODDS_SNAPSHOT_WINDOW_H) so it only
+    # spends API credits when a match is near or for the daily baseline; the cheap
+    # local steps (forecast/consensus/history/site) just keep the site fresh.
+    # Scale-down knobs if quota tightens: widen this cron, raise ODDS_SNAPSHOT_WINDOW_H,
+    # raise ODDS_SNAPSHOT_BASELINE_H. Review output/odds_movement.md to decide.
+    - cron: "0 */3 * * *"
   workflow_dispatch: {}    # manual trigger from the Actions tab
 
 permissions:
@@ -29,6 +34,7 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+          ODDS_SNAPSHOT_WINDOW_H: "3"   # snapshot odds only within 3h of a kickoff
           PYTHON: python
         run: bash scripts/update_all.sh
 

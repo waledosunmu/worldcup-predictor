@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 .DS_Store
 .env
+
+# Raw match-odds snapshots are ~1.4 MB each and pile up with the kickoff-aware
+# cadence. They are an ephemeral API cache: the compact derived artifacts
+# (consensus.json, odds_timeseries.jsonl, the *_winner_* outright snapshots) carry
+# everything we keep. See ROADMAP.md (odds storage policy).
+data/odds/soccer_fifa_world_cup_2026*.json

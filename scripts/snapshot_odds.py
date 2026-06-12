@@ -9,7 +9,9 @@ Run daily during the tournament: pre-match odds disappear once games kick off.
 Usage: ODDS_API_KEY=... python scripts/snapshot_odds.py
 """
 
+import argparse
 import datetime as dt
+import glob
 import json
 import os
 import sys
@@ -42,11 +44,83 @@ def get(path: str, **params) -> tuple[object, dict]:
         return json.load(r), {"requests_remaining": remaining}
 
 
+def _parse_iso(s: str) -> dt.datetime:
+    return dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
+def match_within(window_h: float, now: dt.datetime) -> bool | None:
+    """Whether a fixture kicks off within the next `window_h` hours.
+
+    Reads kickoff times from the cached output/consensus.json (no API call).
+    Returns None when no schedule is cached yet (caller treats as bootstrap).
+    """
+    cpath = ROOT / "output/consensus.json"
+    if not cpath.exists():
+        return None
+    try:
+        matches = json.load(open(cpath)).get("matches", [])
+    except Exception:
+        return None
+    horizon = now + dt.timedelta(hours=window_h)
+    kicks = [_parse_iso(m["commence"]) for m in matches if m.get("commence")]
+    if not kicks:
+        return None
+    return any(now <= k <= horizon for k in kicks)
+
+
+def newest_snapshot_age_h(now: dt.datetime) -> float | None:
+    """Hours since the most recent committed outright snapshot, or None if none."""
+    stamps = []
+    for f in glob.glob(str(ROOT / "data/odds/soccer_fifa_world_cup_winner_*.json")):
+        try:
+            ts = Path(f).stem.split("_")[-1]
+            stamps.append(dt.datetime.strptime(ts, "%Y-%m-%dT%H%M%SZ")
+                          .replace(tzinfo=dt.timezone.utc))
+        except ValueError:
+            continue
+    return (now - max(stamps)).total_seconds() / 3600 if stamps else None
+
+
+def should_snapshot(window_h: float, now: dt.datetime) -> tuple[bool, str]:
+    """Kickoff-aware gate: snapshot only near kickoffs, plus a daily baseline."""
+    baseline_h = float(os.environ.get("ODDS_SNAPSHOT_BASELINE_H", 24))
+    within = match_within(window_h, now)
+    if within is None:
+        return True, "bootstrap (no cached schedule)"
+    if within:
+        return True, f"match kicks off within {window_h:g}h"
+    age = newest_snapshot_age_h(now)
+    if age is None or age >= baseline_h:
+        return True, f"daily baseline (last snapshot {('n/a' if age is None else f'{age:.1f}h')} ago)"
+    return False, (f"no match within {window_h:g}h and last snapshot {age:.1f}h ago "
+                   f"(< {baseline_h:g}h baseline)")
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--if-match-within", type=float, default=None, metavar="HOURS",
+                    help="only spend API credits if a match kicks off within HOURS "
+                         "(or daily baseline); else exit 0. Env: ODDS_SNAPSHOT_WINDOW_H")
+    ap.add_argument("--force", action="store_true",
+                    help="always snapshot, ignoring the kickoff-aware gate")
+    args = ap.parse_args()
+
     if "ODDS_API_KEY" not in os.environ:
         sys.exit("Set ODDS_API_KEY (free key: https://the-odds-api.com)")
 
-    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H%M%SZ")
+    window = args.if_match_within
+    if window is None and os.environ.get("ODDS_SNAPSHOT_WINDOW_H"):
+        window = float(os.environ["ODDS_SNAPSHOT_WINDOW_H"])
+
+    now = dt.datetime.now(dt.timezone.utc)
+    if window is not None and not args.force:
+        go, reason = should_snapshot(window, now)
+        if not go:
+            print(f"skipping snapshot — {reason} (0 credits spent)")
+            return
+        print(f"snapshotting — {reason}")
+
+    stamp = now.strftime("%Y-%m-%dT%H%M%SZ")
     outdir = ROOT / "data/odds"
     outdir.mkdir(parents=True, exist_ok=True)
 
