@@ -23,6 +23,9 @@ echo "== forecast (conditional on played results) =="
 echo "== consensus =="
 "$PY" scripts/run_consensus.py
 
+echo "== append probability history + match predictions =="
+"$PY" scripts/append_history.py
+
 echo "== site =="
 "$PY" scripts/build_site.py
 echo "Done. Commit and push to publish."
