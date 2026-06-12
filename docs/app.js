@@ -27,17 +27,23 @@
     });
   }
 
+  // Run each enhancer in isolation: a runtime error in one must not blank the
+  // rest of the page's interactivity.
+  function guard(name, fn) {
+    try { fn(); } catch (e) { console.error(name + " failed", e); }
+  }
+
   fetch("data.json").then(function (r) { return r.json(); }).then(function (DATA) {
     var teamsByName = {};
     DATA.teams.forEach(function (t) { teamsByName[t.name] = t; });
 
-    enhanceTable();
-    enhanceDivergence(DATA);
-    enhanceMovers(DATA);
-    enhanceTrackRecord(DATA);
-    enhanceTrends(DATA);
-    enhanceBracket(DATA, teamsByName);
-    setupModal(DATA, teamsByName);
+    guard("table", function () { enhanceTable(); });
+    guard("divergence", function () { enhanceDivergence(DATA); });
+    guard("movers", function () { enhanceMovers(DATA); });
+    guard("trackRecord", function () { enhanceTrackRecord(DATA); });
+    guard("trends", function () { enhanceTrends(DATA); });
+    guard("bracket", function () { enhanceBracket(DATA, teamsByName); });
+    guard("modal", function () { setupModal(DATA, teamsByName); });
   }).catch(function (e) { console.error("data.json load failed", e); });
 
   /* ---------- B1: sortable/filterable team table ---------- */
@@ -213,6 +219,12 @@
     box.appendChild(tbl);
     box.appendChild(el("p", "muted", "Over " + tr.n + " completed match" +
       (tr.n === 1 ? "" : "es") + " (lower is better)."));
+    if (tr.n < 10) {
+      box.appendChild(el("p", "muted caveat",
+        "&#9888; Far too small a sample (" + tr.n + " match" + (tr.n === 1 ? "" : "es") +
+        ") to mean anything yet — shown for transparency, not as evidence the model " +
+        "beats the market. Check back as the tournament progresses."));
+    }
     var ml = el("div");
     tr.matches.forEach(function (m) {
       ml.appendChild(el("div", "advrow",
