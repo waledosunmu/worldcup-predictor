@@ -34,7 +34,16 @@ World Cups, published with per-prediction reasoning.
       group scores and knockout winners (incl. shootouts) locked into every
       simulation, Elo updated through the latest result; verified vs synthetic
       results and reproduces the opening forecast when nothing has been played
-- [ ] Hybrid model with covariates (Groll et al. style) + Dixon-Coles
+- [x] Hybrid model with covariates (Groll et al. style) + Dixon-Coles:
+      `src/wcpred/dixoncoles.py` (low-score tau correction + optional time-decay),
+      `src/wcpred/covariates.py` (Elo-diff + recent-form-differential Poisson
+      regression; market-value/squad covariates scaffolded behind COVARIATE_SPEC,
+      not fabricated). Selectable/comparable vs v0 (Poisson stays the default in
+      `simulate.Simulator`). Point-in-time backtest in
+      `scripts/run_model_comparison.py` → `output/model_comparison.{md,json}`:
+      the combined hybrid beats v0 OOS (pooled log loss 0.972→0.963 over 320
+      WC matches 2006–2022). Remaining for a full Groll hybrid: external
+      squad-level data (market value, CL players, squad age).
 - [ ] Tournament-level backtest (champion distributions for 2006–2022)
 
 ## Quick start
