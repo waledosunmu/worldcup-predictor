@@ -20,6 +20,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://api.the-odds-api.com/v4"
 
+# Strictly the men's 2026 FIFA World Cup finals: match h2h + outright winner.
+# The-odds-api reuses these keys each cycle, so they resolve to 2026 right now.
+# A broad "world cup" match would also pull qualifiers, the Club World Cup, the
+# Women's World Cup and non-soccer World Cups — each an extra paid /odds call.
+TARGET_SPORT_KEYS = {"soccer_fifa_world_cup", "soccer_fifa_world_cup_winner"}
+
 _env = ROOT / ".env"
 if "ODDS_API_KEY" not in os.environ and _env.exists():
     for _line in _env.read_text().splitlines():
@@ -44,11 +50,18 @@ def main():
     outdir = ROOT / "data/odds"
     outdir.mkdir(parents=True, exist_ok=True)
 
-    sports, meta = get("/sports", all="true")
-    wc_keys = [s["key"] for s in sports
-               if "world cup" in s.get("title", "").lower()
-               or "world_cup" in s["key"]]
-    print(f"world-cup sport keys: {wc_keys} ({meta})")
+    sports, meta = get("/sports", all="true")  # free endpoint, no quota cost
+    listed = {s["key"]: s for s in sports}
+    wc_keys = [k for k in TARGET_SPORT_KEYS
+               if k in listed and listed[k].get("active")]
+    missing = TARGET_SPORT_KEYS - listed.keys()
+    if missing:
+        print(f"warning: target sport key(s) not listed by the API: {sorted(missing)}")
+    inactive = [k for k in TARGET_SPORT_KEYS
+                if k in listed and not listed[k].get("active")]
+    if inactive:
+        print(f"note: skipping inactive market(s) (no live odds): {sorted(inactive)}")
+    print(f"target sport keys: {sorted(wc_keys)} ({meta})")
 
     for key in wc_keys:
         markets = "outrights" if key.endswith("winner") else "h2h"
