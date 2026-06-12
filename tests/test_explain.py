@@ -109,7 +109,6 @@ def test_fixture_explanation_never_met_branch():
 def test_team_blurb_renders_simulation_fields():
     adv = {"reach_r32": 0.85, "win_group": 0.45, "reach_sf": 0.18, "champion": 0.06}
     out = explain.team_blurb("Aland", adv, rating=1820.0, rank=8, group="A")
-    assert "Aland" not in out.split(".")[0] or True  # name not required in line 1
     assert "Group A" in out
     assert "85%" in out  # reach_r32 formatted as percent
     assert "6.0%" in out  # champion formatted to 1 decimal

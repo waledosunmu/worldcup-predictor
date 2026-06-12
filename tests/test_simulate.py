@@ -208,6 +208,23 @@ def test_simulate_once_shapes(fmt, real_ratings):
     assert res["champion"] in sim.teams
 
 
+def test_allocate_thirds_respects_eligibility(fmt, real_ratings):
+    """Each assigned third-place slot must receive a team whose group letter is
+    in that slot's eligibility set -- the core of the backtracking allocator."""
+    sim = Simulator(fmt, real_ratings, PARAMS, seed=1)
+    # Pick 8 group letters that the backtracker can satisfy: feed the first 8
+    # groups, each contributing its (letter, team).
+    letters = sorted(fmt["groups"])[:8]
+    qualified = [(g, fmt["groups"][g][2]) for g in letters]
+    assignment = sim._allocate_thirds(qualified)
+    assert len(assignment) == len(qualified)
+    letter_of = {t: g for g, t in qualified}
+    for slot, team in assignment.items():
+        assert letter_of[team] in sim.third_eligible[slot], (slot, team)
+    # Every qualified team is placed exactly once.
+    assert sorted(assignment.values()) == sorted(t for _, t in qualified)
+
+
 def test_hosts_get_home_advantage_in_group(fmt, real_ratings):
     """Host group fixtures should embed +100 dr for the host as home team."""
     sim = Simulator(fmt, real_ratings, PARAMS, seed=1)
