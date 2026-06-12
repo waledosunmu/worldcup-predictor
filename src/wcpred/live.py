@@ -207,3 +207,22 @@ def merge_results(results: pd.DataFrame, shootouts: pd.DataFrame,
                 summary["shootouts_added"] += 1
 
     return results, shootouts, summary
+
+
+def write_results_csv(results: pd.DataFrame, path) -> None:
+    """Write results.csv in the martj42 snapshot's canonical format.
+
+    The 72 unplayed WC2026 rows carry NA scores, which forces the score columns
+    to float and `neutral` to bool on read; a naive ``to_csv`` then rewrites all
+    ~49k rows (every ``0`` becomes ``0.0``, every ``FALSE`` becomes ``False``),
+    producing a multi-MB diff each run. Casting scores back to nullable ints
+    (NA -> empty cell) and re-uppercasing the booleans keeps the on-disk format
+    byte-identical to the curl'd martj42 source, so only the rows whose scores
+    actually changed show up in the diff.
+    """
+    out = results.copy()
+    for col in ("home_score", "away_score"):
+        out[col] = out[col].astype("Int64")
+    if out["neutral"].dtype == bool:
+        out["neutral"] = out["neutral"].map({True: "TRUE", False: "FALSE"})
+    out.to_csv(path, index=False, na_rep="NA")

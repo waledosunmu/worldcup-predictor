@@ -74,12 +74,15 @@ def main():
     if args.dry_run:
         print("  (dry run — CSVs not written)")
         return
-    if summary["filled"] or summary["shootouts_added"]:
-        results.to_csv(ROOT / "data/raw/results.csv", index=False)
+    wrote = []
+    if summary["filled"]:
+        live.write_results_csv(results, ROOT / "data/raw/results.csv")
+        wrote.append("results.csv")
+    if summary["shootouts_added"]:
         shootouts.to_csv(ROOT / "data/raw/shootouts.csv", index=False)
-        print("  wrote data/raw/results.csv and data/raw/shootouts.csv")
-    else:
-        print("  nothing new to write")
+        wrote.append("shootouts.csv")
+    print(f"  wrote {', '.join('data/raw/' + w for w in wrote)}"
+          if wrote else "  nothing new to write")
 
 
 if __name__ == "__main__":
