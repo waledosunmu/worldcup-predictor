@@ -409,7 +409,9 @@
         "</span><span class='bar'><div class='model' style='width:" + w +
         "%'></div></span><span class='pct'>" + pct(a[1]) + "</span></div>";
     });
-    html += "<h4>Champion-probability history</h4><canvas id='modal-spark' height='90'></canvas>";
+    html += "<h4>Champion-probability history</h4>" +
+      "<div class='chartwrap' style='position:relative;height:150px'>" +
+      "<canvas id='modal-spark'></canvas></div>";
 
     var sched = MODAL_DATA.matches.filter(function (m) {
       return m.home === name || m.away === name;
