@@ -63,16 +63,29 @@ cp .env.example .env                                  # add your ODDS_API_KEY
 .venv/bin/python scripts/run_forecast.py              # conditional on played results
 .venv/bin/python scripts/run_backtest.py              # 2006-2022 match-level validation
 .venv/bin/python scripts/run_tournament_backtest.py   # 2006-2022 whole-tournament validation
-.venv/bin/python scripts/snapshot_odds.py             # capture odds (daily!)
-.venv/bin/python scripts/run_consensus.py             # bookmaker consensus
-.venv/bin/python scripts/build_site.py                # render docs/
+.venv/bin/python scripts/snapshot_odds.py             # capture odds (kickoff-aware)
+.venv/bin/python scripts/run_consensus.py             # bookmaker consensus (+ odds timeseries)
+.venv/bin/python scripts/append_history.py            # probability + match-prediction history
+.venv/bin/python scripts/analyze_odds_movement.py     # pre-kickoff odds-drift report
+.venv/bin/python scripts/build_site.py                # render interactive docs/
 bash scripts/update_all.sh                            # ...or all of the above
 open docs/index.html
 ```
 
+The site (`docs/`) is interactive (Chart.js vendored, no build step): a sortable
+team table, a **Trends** page (championship probability over matchdays), a
+**Bracket** page (R32→final), model-vs-market divergence, per-team detail, and a
+live model-vs-market track record. Pages still work with JavaScript disabled.
+
+Odds cadence is kickoff-aware: `snapshot_odds.py --if-match-within H` (or
+`ODDS_SNAPSHOT_WINDOW_H`) spends API credits only near a kickoff, plus a daily
+baseline (`ODDS_SNAPSHOT_BASELINE_H`). `output/odds_movement.md` measures how much
+the market drifts before kickoff so the cadence can be tuned. See [ROADMAP.md](ROADMAP.md).
+
 Hosting: push to GitHub and enable Pages (Settings → Pages → deploy from
 branch, `/docs` folder). Netlify/Cloudflare Pages also work — point them at
-`docs/`.
+`docs/`. The 3-hourly GitHub Action keeps it current; add `FOOTBALL_DATA_API_KEY`
+and `ODDS_API_KEY` as repo secrets.
 
 ## Architecture
 
