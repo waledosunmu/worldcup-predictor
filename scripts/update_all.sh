@@ -11,6 +11,9 @@ for f in results.csv shootouts.csv; do
 done
 curl -sL -o data/raw/elo_world.tsv "https://eloratings.net/World.tsv"
 
+echo "== overlay live results (football-data.org; martj42 is the fallback) =="
+"$PY" scripts/fetch_results.py || echo "(live results overlay failed; continuing)"
+
 echo "== snapshot odds =="
 "$PY" scripts/snapshot_odds.py || echo "(odds snapshot failed; continuing)"
 
