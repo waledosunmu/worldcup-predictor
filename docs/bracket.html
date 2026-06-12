@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bracket — WC26 Predictor</title><link rel="stylesheet" href="style.css"></head>
+<body><header><div class="inner"><h1>⚽ World Cup 2026 Predictor</h1>
+<p>Probabilistic forecasts with the reasoning behind every prediction.</p>
+<nav><a href="index.html">Forecast</a><a href="groups.html">Groups &amp; matches</a>
+<a href="trends.html">Trends</a><a href="bracket.html">Bracket</a>
+<a href="methodology.html">Methodology</a></nav></div></header>
+<main>
+<h2>Interactive knockout bracket</h2>
+<p class="muted">Each round lists every team shaded by its simulated probability
+of reaching that stage. Hover a round header for its likeliest occupants.
+Scroll horizontally on mobile.</p>
+<div id="bracket"></div><footer>Updated 2026-06-12. Model: Elo–Poisson v0, 100k Monte Carlo
+simulations. Market: bookmaker consensus via The Odds API. Data: martj42
+international results, eloratings.net. Probabilities are estimates, not advice.
+</footer></main>
+<div id="team-modal" aria-hidden="true"><div class="box"><button class="close"
+aria-label="Close">&times;</button><div id="team-modal-content"></div></div></div>
+<script src="vendor/chart.min.js"></script>
+<script src="app.js" defer></script>
+</body></html>

@@ -4,6 +4,7 @@
 <body><header><div class="inner"><h1>⚽ World Cup 2026 Predictor</h1>
 <p>Probabilistic forecasts with the reasoning behind every prediction.</p>
 <nav><a href="index.html">Forecast</a><a href="groups.html">Groups &amp; matches</a>
+<a href="trends.html">Trends</a><a href="bracket.html">Bracket</a>
 <a href="methodology.html">Methodology</a></nav></div></header>
 <main>
 <h2>How this works</h2>
@@ -35,6 +36,11 @@ lower is better. The model beats both baselines on log loss; the gap to
 bookmaker-grade accuracy is the roadmap.</p>
 <table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
 <th class="num">RPS</th></tr><tr><td>elo_poisson</td><td class='num'>0.9721</td><td class='num'>0.5671</td><td class='num'>0.1956</td></tr><tr><td>elo_poisson_dc</td><td class='num'>0.9708</td><td class='num'>0.5668</td><td class='num'>0.1955</td></tr><tr><td>elo_expectancy</td><td class='num'>1.0205</td><td class='num'>0.5639</td><td class='num'>0.1948</td></tr><tr><td>climatology</td><td class='num'>1.0670</td><td class='num'>0.6464</td><td class='num'>0.2360</td></tr></table>
+<h2>Live 2026 track record</h2>
+<p>As 2026 matches are played we lock the last pre-kickoff model and market
+prediction for each fixture and score them out-of-sample. This panel fills in
+match by match — it is the same numbers shown on the forecast page.</p>
+<div id="track-record"></div>
 
 <h2>Whole-tournament backtest: does it call the champion?</h2>
 <p>The match-level scores above ask “how good is each prediction?” This asks the
@@ -81,4 +87,9 @@ academic recipes from Groll et al. (JQAS 2019) and Leitner/Zeileis/Hornik
 (IJF 2010).</p><footer>Updated 2026-06-12. Model: Elo–Poisson v0, 100k Monte Carlo
 simulations. Market: bookmaker consensus via The Odds API. Data: martj42
 international results, eloratings.net. Probabilities are estimates, not advice.
-</footer></main></body></html>
+</footer></main>
+<div id="team-modal" aria-hidden="true"><div class="box"><button class="close"
+aria-label="Close">&times;</button><div id="team-modal-content"></div></div></div>
+<script src="vendor/chart.min.js"></script>
+<script src="app.js" defer></script>
+</body></html>
