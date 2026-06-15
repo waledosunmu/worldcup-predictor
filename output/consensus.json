@@ -2,7 +2,7 @@
  "captured": "2026-06-15T011237Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-15T011237Z.json",
-  "soccer_fifa_world_cup_2026-06-14T124821Z.json"
+  "(reused 64 markets from previous consensus.json)"
  ],
  "n_outright_books": 5,
  "outright_consensus": {
@@ -309,16 +309,16 @@
    "diff": -0.0006390496076755861
   },
   {
-   "team": "New Zealand",
-   "market": 0.0006722959759598305,
-   "model": 6e-05,
-   "diff": -0.0006122959759598304
-  },
-  {
    "team": "South Africa",
    "market": 0.0006722959759598305,
    "model": 0.0,
    "diff": -0.0006722959759598305
+  },
+  {
+   "team": "New Zealand",
+   "market": 0.0006722959759598305,
+   "model": 6e-05,
+   "diff": -0.0006122959759598304
   },
   {
    "team": "Uzbekistan",
@@ -333,16 +333,16 @@
    "diff": -0.0005410741390831909
   },
   {
-   "team": "Haiti",
-   "market": 0.0005174658785671912,
-   "model": 5e-05,
-   "diff": -0.00046746587856719114
-  },
-  {
    "team": "Jordan",
    "market": 0.0005174658785671912,
    "model": 0.0002,
    "diff": -0.0003174658785671912
+  },
+  {
+   "team": "Haiti",
+   "market": 0.0005174658785671912,
+   "model": 5e-05,
+   "diff": -0.00046746587856719114
   }
  ],
  "matches": [
