@@ -4,12 +4,12 @@
  "model": "elo-poisson-v0-conditional",
  "n_sims": 100000,
  "params": {
-  "a": 0.20800835623987912,
-  "b": 0.7756835219421192,
-  "nll": 24799.105668357035,
-  "n": 17861
+  "a": 0.20811390692431772,
+  "b": 0.7756811657367965,
+  "nll": 24797.679203005464,
+  "n": 17863
  },
- "n_played_group": 8,
+ "n_played_group": 10,
  "n_played_ko": 0,
  "ratings": {
   "Mexico": 1987.4,
@@ -28,12 +28,12 @@
   "Paraguay": 1866.7,
   "Australia": 1955.9,
   "Turkey": 1914.9,
-  "Germany": 2003.2,
-  "Cura\u00e7ao": 1605.8,
+  "Germany": 2014.9,
+  "Cura\u00e7ao": 1594.0,
   "Ivory Coast": 1815.3,
   "Ecuador": 2027.5,
-  "Netherlands": 2009.5,
-  "Japan": 1993.3,
+  "Netherlands": 2008.1,
+  "Japan": 1994.7,
   "Sweden": 1769.7,
   "Tunisia": 1738.3,
   "Belgium": 1955.8,
@@ -63,436 +63,436 @@
  },
  "advancement": {
   "Mexico": {
-   "win_group": 0.72096,
-   "reach_r32": 0.99635,
-   "reach_r16": 0.63154,
-   "reach_qf": 0.30474,
-   "reach_sf": 0.14072,
-   "reach_final": 0.05458,
-   "champion": 0.02115
+   "win_group": 0.72111,
+   "reach_r32": 0.99624,
+   "reach_r16": 0.62157,
+   "reach_qf": 0.29965,
+   "reach_sf": 0.13723,
+   "reach_final": 0.05316,
+   "champion": 0.02057
   },
   "South Africa": {
-   "win_group": 0.00401,
-   "reach_r32": 0.21657,
-   "reach_r16": 0.04748,
-   "reach_qf": 0.00786,
-   "reach_sf": 0.00091,
-   "reach_final": 8e-05,
-   "champion": 0.0
-  },
-  "South Korea": {
-   "win_group": 0.25433,
-   "reach_r32": 0.96174,
-   "reach_r16": 0.53997,
-   "reach_qf": 0.21161,
-   "reach_sf": 0.07448,
-   "reach_final": 0.02148,
-   "champion": 0.00636
-  },
-  "Czech Republic": {
-   "win_group": 0.0207,
-   "reach_r32": 0.45333,
-   "reach_r16": 0.14745,
-   "reach_qf": 0.04312,
-   "reach_sf": 0.00838,
-   "reach_final": 0.00169,
-   "champion": 0.0003
-  },
-  "Canada": {
-   "win_group": 0.50995,
-   "reach_r32": 0.91956,
-   "reach_r16": 0.45255,
-   "reach_qf": 0.16238,
-   "reach_sf": 0.04644,
-   "reach_final": 0.01355,
-   "champion": 0.0033
-  },
-  "Bosnia and Herzegovina": {
-   "win_group": 0.09108,
-   "reach_r32": 0.58167,
-   "reach_r16": 0.12957,
-   "reach_qf": 0.02383,
-   "reach_sf": 0.00243,
-   "reach_final": 0.00034,
+   "win_group": 0.00367,
+   "reach_r32": 0.21399,
+   "reach_r16": 0.04826,
+   "reach_qf": 0.00889,
+   "reach_sf": 0.00088,
+   "reach_final": 0.00011,
    "champion": 2e-05
   },
+  "South Korea": {
+   "win_group": 0.25448,
+   "reach_r32": 0.96261,
+   "reach_r16": 0.54112,
+   "reach_qf": 0.2133,
+   "reach_sf": 0.07427,
+   "reach_final": 0.02155,
+   "champion": 0.00603
+  },
+  "Czech Republic": {
+   "win_group": 0.02074,
+   "reach_r32": 0.45263,
+   "reach_r16": 0.15053,
+   "reach_qf": 0.04619,
+   "reach_sf": 0.00777,
+   "reach_final": 0.00159,
+   "champion": 0.00022
+  },
+  "Canada": {
+   "win_group": 0.51148,
+   "reach_r32": 0.92013,
+   "reach_r16": 0.45433,
+   "reach_qf": 0.16161,
+   "reach_sf": 0.04635,
+   "reach_final": 0.01352,
+   "champion": 0.00351
+  },
+  "Bosnia and Herzegovina": {
+   "win_group": 0.09074,
+   "reach_r32": 0.58444,
+   "reach_r16": 0.12616,
+   "reach_qf": 0.02199,
+   "reach_sf": 0.00235,
+   "reach_final": 0.0002,
+   "champion": 3e-05
+  },
   "Qatar": {
-   "win_group": 0.03635,
-   "reach_r32": 0.34698,
-   "reach_r16": 0.05076,
-   "reach_qf": 0.00596,
-   "reach_sf": 0.00035,
-   "reach_final": 2e-05,
+   "win_group": 0.03685,
+   "reach_r32": 0.34632,
+   "reach_r16": 0.04954,
+   "reach_qf": 0.00567,
+   "reach_sf": 0.00047,
+   "reach_final": 0.0,
    "champion": 0.0
   },
   "Switzerland": {
-   "win_group": 0.36262,
-   "reach_r32": 0.83083,
-   "reach_r16": 0.46152,
-   "reach_qf": 0.19539,
-   "reach_sf": 0.06845,
-   "reach_final": 0.02369,
-   "champion": 0.00737
+   "win_group": 0.36093,
+   "reach_r32": 0.82703,
+   "reach_r16": 0.45957,
+   "reach_qf": 0.19353,
+   "reach_sf": 0.06911,
+   "reach_final": 0.02396,
+   "champion": 0.00767
   },
   "Brazil": {
-   "win_group": 0.47539,
-   "reach_r32": 0.94855,
-   "reach_r16": 0.59954,
-   "reach_qf": 0.37409,
-   "reach_sf": 0.21062,
-   "reach_final": 0.1001,
-   "champion": 0.04797
+   "win_group": 0.47727,
+   "reach_r32": 0.94842,
+   "reach_r16": 0.59952,
+   "reach_qf": 0.36921,
+   "reach_sf": 0.21133,
+   "reach_final": 0.09992,
+   "champion": 0.04725
   },
   "Morocco": {
-   "win_group": 0.32863,
-   "reach_r32": 0.91288,
-   "reach_r16": 0.49063,
-   "reach_qf": 0.26796,
-   "reach_sf": 0.12768,
-   "reach_final": 0.04996,
-   "champion": 0.01879
+   "win_group": 0.32634,
+   "reach_r32": 0.91114,
+   "reach_r16": 0.49314,
+   "reach_qf": 0.26784,
+   "reach_sf": 0.12786,
+   "reach_final": 0.04831,
+   "champion": 0.0181
   },
   "Haiti": {
-   "win_group": 0.00536,
-   "reach_r32": 0.07107,
-   "reach_r16": 0.01322,
-   "reach_qf": 0.0026,
-   "reach_sf": 0.00053,
-   "reach_final": 0.0001,
+   "win_group": 0.00518,
+   "reach_r32": 0.07163,
+   "reach_r16": 0.01266,
+   "reach_qf": 0.00222,
+   "reach_sf": 0.00036,
+   "reach_final": 5e-05,
    "champion": 0.0
   },
   "Scotland": {
-   "win_group": 0.19062,
-   "reach_r32": 0.8609,
-   "reach_r16": 0.31823,
-   "reach_qf": 0.11847,
-   "reach_sf": 0.03715,
-   "reach_final": 0.00949,
-   "champion": 0.00228
+   "win_group": 0.19121,
+   "reach_r32": 0.86296,
+   "reach_r16": 0.31609,
+   "reach_qf": 0.11687,
+   "reach_sf": 0.03614,
+   "reach_final": 0.00903,
+   "champion": 0.00226
   },
   "United States": {
-   "win_group": 0.50577,
-   "reach_r32": 0.97287,
-   "reach_r16": 0.51454,
-   "reach_qf": 0.19905,
-   "reach_sf": 0.05295,
-   "reach_final": 0.01699,
-   "champion": 0.00451
+   "win_group": 0.50751,
+   "reach_r32": 0.97235,
+   "reach_r16": 0.50142,
+   "reach_qf": 0.1949,
+   "reach_sf": 0.05134,
+   "reach_final": 0.01643,
+   "champion": 0.00437
   },
   "Paraguay": {
-   "win_group": 0.02887,
-   "reach_r32": 0.3323,
-   "reach_r16": 0.12564,
-   "reach_qf": 0.04228,
-   "reach_sf": 0.01307,
-   "reach_final": 0.00388,
-   "champion": 0.001
+   "win_group": 0.02938,
+   "reach_r32": 0.33341,
+   "reach_r16": 0.12757,
+   "reach_qf": 0.04036,
+   "reach_sf": 0.01299,
+   "reach_final": 0.00352,
+   "champion": 0.00094
   },
   "Australia": {
-   "win_group": 0.4192,
-   "reach_r32": 0.95626,
-   "reach_r16": 0.58807,
-   "reach_qf": 0.26603,
-   "reach_sf": 0.09538,
-   "reach_final": 0.03983,
-   "champion": 0.01398
+   "win_group": 0.41799,
+   "reach_r32": 0.95538,
+   "reach_r16": 0.57932,
+   "reach_qf": 0.26213,
+   "reach_sf": 0.09565,
+   "reach_final": 0.03993,
+   "champion": 0.01379
   },
   "Turkey": {
-   "win_group": 0.04616,
-   "reach_r32": 0.45715,
-   "reach_r16": 0.20346,
-   "reach_qf": 0.07963,
-   "reach_sf": 0.03025,
-   "reach_final": 0.00971,
-   "champion": 0.00283
+   "win_group": 0.04512,
+   "reach_r32": 0.45767,
+   "reach_r16": 0.19977,
+   "reach_qf": 0.07524,
+   "reach_sf": 0.02938,
+   "reach_final": 0.00987,
+   "champion": 0.00301
   },
   "Germany": {
-   "win_group": 0.40892,
-   "reach_r32": 0.94092,
-   "reach_r16": 0.58547,
-   "reach_qf": 0.2951,
-   "reach_sf": 0.14968,
-   "reach_final": 0.0612,
-   "champion": 0.02413
+   "win_group": 0.51648,
+   "reach_r32": 0.9969,
+   "reach_r16": 0.64288,
+   "reach_qf": 0.32924,
+   "reach_sf": 0.17241,
+   "reach_final": 0.07153,
+   "champion": 0.02899
   },
   "Cura\u00e7ao": {
-   "win_group": 0.00941,
-   "reach_r32": 0.14103,
-   "reach_r16": 0.02346,
-   "reach_qf": 0.00302,
-   "reach_sf": 0.00019,
-   "reach_final": 2e-05,
-   "champion": 1e-05
+   "win_group": 0.00177,
+   "reach_r32": 0.05532,
+   "reach_r16": 0.00824,
+   "reach_qf": 0.00114,
+   "reach_sf": 4e-05,
+   "reach_final": 0.0,
+   "champion": 0.0
   },
   "Ivory Coast": {
-   "win_group": 0.09333,
-   "reach_r32": 0.65089,
-   "reach_r16": 0.24827,
-   "reach_qf": 0.0756,
-   "reach_sf": 0.01714,
-   "reach_final": 0.00385,
-   "champion": 0.00076
+   "win_group": 0.07797,
+   "reach_r32": 0.66063,
+   "reach_r16": 0.24227,
+   "reach_qf": 0.07853,
+   "reach_sf": 0.01823,
+   "reach_final": 0.00421,
+   "champion": 0.00077
   },
   "Ecuador": {
-   "win_group": 0.48834,
-   "reach_r32": 0.95558,
-   "reach_r16": 0.6338,
-   "reach_qf": 0.33714,
-   "reach_sf": 0.18122,
-   "reach_final": 0.0787,
-   "champion": 0.03336
+   "win_group": 0.40378,
+   "reach_r32": 0.95854,
+   "reach_r16": 0.62041,
+   "reach_qf": 0.33273,
+   "reach_sf": 0.1787,
+   "reach_final": 0.07995,
+   "champion": 0.03388
   },
   "Netherlands": {
-   "win_group": 0.46884,
-   "reach_r32": 0.92256,
-   "reach_r16": 0.49125,
-   "reach_qf": 0.28737,
-   "reach_sf": 0.13952,
-   "reach_final": 0.05887,
-   "champion": 0.02393
+   "win_group": 0.45335,
+   "reach_r32": 0.93041,
+   "reach_r16": 0.49383,
+   "reach_qf": 0.28822,
+   "reach_sf": 0.13826,
+   "reach_final": 0.05771,
+   "champion": 0.02287
   },
   "Japan": {
-   "win_group": 0.4157,
-   "reach_r32": 0.90682,
-   "reach_r16": 0.46425,
-   "reach_qf": 0.25935,
-   "reach_sf": 0.12271,
-   "reach_final": 0.04825,
-   "champion": 0.01846
+   "win_group": 0.40883,
+   "reach_r32": 0.92272,
+   "reach_r16": 0.47168,
+   "reach_qf": 0.26314,
+   "reach_sf": 0.12183,
+   "reach_final": 0.04868,
+   "champion": 0.01909
   },
   "Sweden": {
-   "win_group": 0.0668,
-   "reach_r32": 0.46046,
-   "reach_r16": 0.11973,
-   "reach_qf": 0.03268,
-   "reach_sf": 0.00669,
+   "win_group": 0.07903,
+   "reach_r32": 0.45583,
+   "reach_r16": 0.11526,
+   "reach_qf": 0.03096,
+   "reach_sf": 0.00652,
    "reach_final": 0.00116,
    "champion": 0.00021
   },
   "Tunisia": {
-   "win_group": 0.04866,
-   "reach_r32": 0.37466,
-   "reach_r16": 0.08422,
-   "reach_qf": 0.02039,
-   "reach_sf": 0.00371,
-   "reach_final": 0.00065,
-   "champion": 6e-05
+   "win_group": 0.05879,
+   "reach_r32": 0.36941,
+   "reach_r16": 0.08222,
+   "reach_qf": 0.01962,
+   "reach_sf": 0.0038,
+   "reach_final": 0.00059,
+   "champion": 0.00016
   },
   "Belgium": {
-   "win_group": 0.46156,
-   "reach_r32": 0.88496,
-   "reach_r16": 0.5259,
-   "reach_qf": 0.25175,
-   "reach_sf": 0.08719,
-   "reach_final": 0.03594,
-   "champion": 0.01202
+   "win_group": 0.46316,
+   "reach_r32": 0.88498,
+   "reach_r16": 0.54177,
+   "reach_qf": 0.25545,
+   "reach_sf": 0.08817,
+   "reach_final": 0.0371,
+   "champion": 0.01301
   },
   "Egypt": {
-   "win_group": 0.15568,
-   "reach_r32": 0.62097,
-   "reach_r16": 0.23783,
-   "reach_qf": 0.06587,
-   "reach_sf": 0.01473,
-   "reach_final": 0.00357,
-   "champion": 0.00078
+   "win_group": 0.15379,
+   "reach_r32": 0.61681,
+   "reach_r16": 0.25258,
+   "reach_qf": 0.06886,
+   "reach_sf": 0.0139,
+   "reach_final": 0.00362,
+   "champion": 0.00072
   },
   "Iran": {
-   "win_group": 0.30599,
-   "reach_r32": 0.80066,
-   "reach_r16": 0.40508,
-   "reach_qf": 0.15341,
-   "reach_sf": 0.04557,
-   "reach_final": 0.01595,
-   "champion": 0.00461
+   "win_group": 0.3059,
+   "reach_r32": 0.80138,
+   "reach_r16": 0.42205,
+   "reach_qf": 0.15928,
+   "reach_sf": 0.04594,
+   "reach_final": 0.01563,
+   "champion": 0.00419
   },
   "New Zealand": {
-   "win_group": 0.07677,
-   "reach_r32": 0.41445,
-   "reach_r16": 0.12106,
-   "reach_qf": 0.02407,
-   "reach_sf": 0.00365,
+   "win_group": 0.07715,
+   "reach_r32": 0.41538,
+   "reach_r16": 0.13147,
+   "reach_qf": 0.02605,
+   "reach_sf": 0.00395,
    "reach_final": 0.00059,
-   "champion": 6e-05
+   "champion": 8e-05
   },
   "Spain": {
-   "win_group": 0.8221,
-   "reach_r32": 0.99734,
-   "reach_r16": 0.78538,
-   "reach_qf": 0.60027,
-   "reach_sf": 0.49331,
-   "reach_final": 0.36569,
-   "champion": 0.24774
+   "win_group": 0.82243,
+   "reach_r32": 0.99725,
+   "reach_r16": 0.78472,
+   "reach_qf": 0.59996,
+   "reach_sf": 0.49432,
+   "reach_final": 0.36511,
+   "champion": 0.24878
   },
   "Cape Verde": {
-   "win_group": 0.00552,
-   "reach_r32": 0.2236,
-   "reach_r16": 0.02628,
-   "reach_qf": 0.00501,
-   "reach_sf": 0.00063,
-   "reach_final": 5e-05,
-   "champion": 1e-05
+   "win_group": 0.00537,
+   "reach_r32": 0.22331,
+   "reach_r16": 0.02824,
+   "reach_qf": 0.00525,
+   "reach_sf": 0.00058,
+   "reach_final": 7e-05,
+   "champion": 0.0
   },
   "Saudi Arabia": {
-   "win_group": 0.00875,
-   "reach_r32": 0.3108,
-   "reach_r16": 0.04506,
-   "reach_qf": 0.0097,
-   "reach_sf": 0.00149,
-   "reach_final": 0.00019,
-   "champion": 3e-05
+   "win_group": 0.00919,
+   "reach_r32": 0.31292,
+   "reach_r16": 0.04852,
+   "reach_qf": 0.01084,
+   "reach_sf": 0.00169,
+   "reach_final": 0.00026,
+   "champion": 2e-05
   },
   "Uruguay": {
-   "win_group": 0.16363,
-   "reach_r32": 0.91593,
-   "reach_r16": 0.35131,
-   "reach_qf": 0.19127,
-   "reach_sf": 0.09587,
-   "reach_final": 0.0411,
-   "champion": 0.01392
+   "win_group": 0.16301,
+   "reach_r32": 0.91718,
+   "reach_r16": 0.35249,
+   "reach_qf": 0.1948,
+   "reach_sf": 0.09755,
+   "reach_final": 0.04277,
+   "champion": 0.01487
   },
   "France": {
-   "win_group": 0.62598,
-   "reach_r32": 0.96257,
-   "reach_r16": 0.73568,
-   "reach_qf": 0.50227,
-   "reach_sf": 0.33634,
-   "reach_final": 0.18463,
-   "champion": 0.10455
+   "win_group": 0.6234,
+   "reach_r32": 0.9607,
+   "reach_r16": 0.72072,
+   "reach_qf": 0.49093,
+   "reach_sf": 0.32991,
+   "reach_final": 0.18064,
+   "champion": 0.10179
   },
   "Senegal": {
-   "win_group": 0.13561,
-   "reach_r32": 0.68738,
-   "reach_r16": 0.33024,
-   "reach_qf": 0.14371,
-   "reach_sf": 0.0523,
-   "reach_final": 0.01676,
-   "champion": 0.00469
+   "win_group": 0.13606,
+   "reach_r32": 0.68947,
+   "reach_r16": 0.31396,
+   "reach_qf": 0.1352,
+   "reach_sf": 0.04935,
+   "reach_final": 0.01504,
+   "champion": 0.00434
   },
   "Iraq": {
-   "win_group": 0.02367,
-   "reach_r32": 0.23938,
-   "reach_r16": 0.06295,
-   "reach_qf": 0.01505,
-   "reach_sf": 0.00285,
-   "reach_final": 0.0005,
-   "champion": 7e-05
+   "win_group": 0.02403,
+   "reach_r32": 0.23891,
+   "reach_r16": 0.05955,
+   "reach_qf": 0.01465,
+   "reach_sf": 0.00261,
+   "reach_final": 0.00041,
+   "champion": 5e-05
   },
   "Norway": {
-   "win_group": 0.21474,
-   "reach_r32": 0.80356,
-   "reach_r16": 0.44514,
-   "reach_qf": 0.22268,
-   "reach_sf": 0.10053,
-   "reach_final": 0.03771,
-   "champion": 0.01351
+   "win_group": 0.21651,
+   "reach_r32": 0.80437,
+   "reach_r16": 0.43298,
+   "reach_qf": 0.21545,
+   "reach_sf": 0.0967,
+   "reach_final": 0.03672,
+   "champion": 0.01276
   },
   "Argentina": {
-   "win_group": 0.79024,
-   "reach_r32": 0.98447,
-   "reach_r16": 0.70258,
-   "reach_qf": 0.56828,
-   "reach_sf": 0.42489,
-   "reach_final": 0.30026,
-   "champion": 0.18797
+   "win_group": 0.79131,
+   "reach_r32": 0.98538,
+   "reach_r16": 0.70527,
+   "reach_qf": 0.57302,
+   "reach_sf": 0.42855,
+   "reach_final": 0.30052,
+   "champion": 0.18785
   },
   "Algeria": {
-   "win_group": 0.08745,
-   "reach_r32": 0.63443,
-   "reach_r16": 0.19466,
-   "reach_qf": 0.08133,
-   "reach_sf": 0.02749,
-   "reach_final": 0.00904,
-   "champion": 0.00246
+   "win_group": 0.08747,
+   "reach_r32": 0.63669,
+   "reach_r16": 0.19446,
+   "reach_qf": 0.08182,
+   "reach_sf": 0.02803,
+   "reach_final": 0.00907,
+   "champion": 0.00245
   },
   "Austria": {
-   "win_group": 0.0929,
-   "reach_r32": 0.64783,
-   "reach_r16": 0.20019,
-   "reach_qf": 0.08556,
-   "reach_sf": 0.02942,
-   "reach_final": 0.00972,
-   "champion": 0.00248
+   "win_group": 0.09241,
+   "reach_r32": 0.64679,
+   "reach_r16": 0.19656,
+   "reach_qf": 0.08379,
+   "reach_sf": 0.02862,
+   "reach_final": 0.0094,
+   "champion": 0.00257
   },
   "Jordan": {
-   "win_group": 0.02941,
-   "reach_r32": 0.34582,
-   "reach_r16": 0.07536,
-   "reach_qf": 0.02202,
-   "reach_sf": 0.0047,
-   "reach_final": 0.00088,
-   "champion": 0.0002
+   "win_group": 0.02881,
+   "reach_r32": 0.34726,
+   "reach_r16": 0.07489,
+   "reach_qf": 0.02231,
+   "reach_sf": 0.00422,
+   "reach_final": 0.00076,
+   "champion": 0.00018
   },
   "Portugal": {
-   "win_group": 0.42031,
-   "reach_r32": 0.91435,
-   "reach_r16": 0.57597,
-   "reach_qf": 0.32375,
-   "reach_sf": 0.16981,
-   "reach_final": 0.08854,
-   "champion": 0.0392
+   "win_group": 0.4188,
+   "reach_r32": 0.91415,
+   "reach_r16": 0.57456,
+   "reach_qf": 0.32338,
+   "reach_sf": 0.16647,
+   "reach_final": 0.08759,
+   "champion": 0.03905
   },
   "DR Congo": {
-   "win_group": 0.03704,
-   "reach_r32": 0.32586,
-   "reach_r16": 0.07832,
-   "reach_qf": 0.01842,
-   "reach_sf": 0.0045,
-   "reach_final": 0.00068,
-   "champion": 0.00011
+   "win_group": 0.03799,
+   "reach_r32": 0.32654,
+   "reach_r16": 0.07892,
+   "reach_qf": 0.01857,
+   "reach_sf": 0.00401,
+   "reach_final": 0.00075,
+   "champion": 0.0001
   },
   "Uzbekistan": {
-   "win_group": 0.06776,
-   "reach_r32": 0.48568,
-   "reach_r16": 0.14823,
-   "reach_qf": 0.04319,
-   "reach_sf": 0.01172,
+   "win_group": 0.06802,
+   "reach_r32": 0.48532,
+   "reach_r16": 0.14944,
+   "reach_qf": 0.04358,
+   "reach_sf": 0.01233,
    "reach_final": 0.0029,
-   "champion": 0.00059
+   "champion": 0.00057
   },
   "Colombia": {
-   "win_group": 0.47489,
-   "reach_r32": 0.93096,
-   "reach_r16": 0.60819,
-   "reach_qf": 0.36151,
-   "reach_sf": 0.19309,
-   "reach_final": 0.10546,
-   "champion": 0.04908
+   "win_group": 0.47519,
+   "reach_r32": 0.93135,
+   "reach_r16": 0.611,
+   "reach_qf": 0.36564,
+   "reach_sf": 0.19656,
+   "reach_final": 0.10783,
+   "champion": 0.05013
   },
   "England": {
-   "win_group": 0.61622,
-   "reach_r32": 0.97539,
-   "reach_r16": 0.67761,
-   "reach_qf": 0.41615,
-   "reach_sf": 0.25403,
-   "reach_final": 0.13703,
-   "champion": 0.06992
+   "win_group": 0.61644,
+   "reach_r32": 0.97502,
+   "reach_r16": 0.67203,
+   "reach_qf": 0.41232,
+   "reach_sf": 0.2511,
+   "reach_final": 0.13488,
+   "champion": 0.06813
   },
   "Croatia": {
-   "win_group": 0.26762,
-   "reach_r32": 0.88991,
-   "reach_r16": 0.45095,
-   "reach_qf": 0.19649,
-   "reach_sf": 0.0903,
-   "reach_final": 0.03769,
-   "champion": 0.01341
+   "win_group": 0.26922,
+   "reach_r32": 0.89071,
+   "reach_r16": 0.44669,
+   "reach_qf": 0.19333,
+   "reach_sf": 0.08782,
+   "reach_final": 0.03651,
+   "champion": 0.01306
   },
   "Ghana": {
-   "win_group": 0.00905,
-   "reach_r32": 0.13866,
-   "reach_r16": 0.01614,
-   "reach_qf": 0.00248,
-   "reach_sf": 0.00024,
-   "reach_final": 2e-05,
+   "win_group": 0.00892,
+   "reach_r32": 0.13848,
+   "reach_r16": 0.01657,
+   "reach_qf": 0.00236,
+   "reach_sf": 0.0002,
+   "reach_final": 5e-05,
    "champion": 0.0
   },
   "Panama": {
-   "win_group": 0.10711,
-   "reach_r32": 0.69311,
-   "reach_r16": 0.23527,
-   "reach_qf": 0.08011,
-   "reach_sf": 0.0247,
-   "reach_final": 0.00691,
-   "champion": 0.00181
+   "win_group": 0.10542,
+   "reach_r32": 0.69354,
+   "reach_r16": 0.2332,
+   "reach_qf": 0.07998,
+   "reach_sf": 0.02415,
+   "reach_final": 0.0068,
+   "champion": 0.00156
   }
  },
  "group_fixtures": [
@@ -543,7 +543,7 @@
    "xg_away": 1.99,
    "p_home": 0.1335,
    "p_draw": 0.2036,
-   "p_away": 0.6628
+   "p_away": 0.6629
   },
   {
    "group": "A",
@@ -600,7 +600,7 @@
    "played": false,
    "xg_home": 1.34,
    "xg_away": 1.13,
-   "p_home": 0.4161,
+   "p_home": 0.4162,
    "p_draw": 0.2699,
    "p_away": 0.3139
   },
@@ -659,7 +659,7 @@
    "played": false,
    "xg_home": 2.54,
    "xg_away": 0.6,
-   "p_home": 0.7942,
+   "p_home": 0.7943,
    "p_draw": 0.1392,
    "p_away": 0.0665
   },
@@ -672,7 +672,7 @@
    "played": false,
    "xg_home": 1.81,
    "xg_away": 0.84,
-   "p_home": 0.6044,
+   "p_home": 0.6045,
    "p_draw": 0.2263,
    "p_away": 0.1693
   },
@@ -732,7 +732,7 @@
    "xg_home": 1.28,
    "xg_away": 1.18,
    "p_home": 0.389,
-   "p_draw": 0.2719,
+   "p_draw": 0.2718,
    "p_away": 0.3391
   },
   {
@@ -788,66 +788,63 @@
    "group": "E",
    "home": "Germany",
    "away": "Cura\u00e7ao",
-   "elo_home": 2003,
-   "elo_away": 1606,
-   "played": false,
-   "xg_home": 2.66,
-   "xg_away": 0.57,
-   "p_home": 0.8168,
-   "p_draw": 0.1264,
-   "p_away": 0.0568
+   "elo_home": 2015,
+   "elo_away": 1594,
+   "played": true,
+   "score_home": 7,
+   "score_away": 1
   },
   {
    "group": "E",
    "home": "Germany",
    "away": "Ivory Coast",
-   "elo_home": 2003,
+   "elo_home": 2015,
    "elo_away": 1815,
    "played": false,
-   "xg_home": 1.77,
-   "xg_away": 0.86,
-   "p_home": 0.591,
-   "p_draw": 0.231,
-   "p_away": 0.1781
+   "xg_home": 1.81,
+   "xg_away": 0.84,
+   "p_home": 0.6052,
+   "p_draw": 0.226,
+   "p_away": 0.1688
   },
   {
    "group": "E",
    "home": "Germany",
    "away": "Ecuador",
-   "elo_home": 2003,
+   "elo_home": 2015,
    "elo_away": 2027,
    "played": false,
-   "xg_home": 1.17,
-   "xg_away": 1.29,
-   "p_home": 0.3364,
-   "p_draw": 0.2717,
-   "p_away": 0.3919
+   "xg_home": 1.2,
+   "xg_away": 1.26,
+   "p_home": 0.3496,
+   "p_draw": 0.2722,
+   "p_away": 0.3782
   },
   {
    "group": "E",
    "home": "Cura\u00e7ao",
    "away": "Ivory Coast",
-   "elo_home": 1606,
+   "elo_home": 1594,
    "elo_away": 1815,
    "played": false,
-   "xg_home": 0.82,
-   "xg_away": 1.85,
-   "p_home": 0.1612,
-   "p_draw": 0.2217,
-   "p_away": 0.6171
+   "xg_home": 0.8,
+   "xg_away": 1.89,
+   "p_home": 0.1525,
+   "p_draw": 0.2164,
+   "p_away": 0.6311
   },
   {
    "group": "E",
    "home": "Cura\u00e7ao",
    "away": "Ecuador",
-   "elo_home": 1606,
+   "elo_home": 1594,
    "elo_away": 2027,
    "played": false,
-   "xg_home": 0.54,
-   "xg_away": 2.79,
-   "p_home": 0.0484,
-   "p_draw": 0.1141,
-   "p_away": 0.8375
+   "xg_home": 0.53,
+   "xg_away": 2.85,
+   "p_home": 0.0447,
+   "p_draw": 0.1083,
+   "p_away": 0.847
   },
   {
    "group": "E",
@@ -859,73 +856,70 @@
    "xg_home": 0.82,
    "xg_away": 1.86,
    "p_home": 0.1592,
-   "p_draw": 0.2206,
+   "p_draw": 0.2205,
    "p_away": 0.6202
   },
   {
    "group": "F",
    "home": "Netherlands",
    "away": "Japan",
-   "elo_home": 2010,
-   "elo_away": 1993,
-   "played": false,
-   "xg_home": 1.27,
-   "xg_away": 1.19,
-   "p_home": 0.3825,
-   "p_draw": 0.2721,
-   "p_away": 0.3454
+   "elo_home": 2008,
+   "elo_away": 1995,
+   "played": true,
+   "score_home": 2,
+   "score_away": 2
   },
   {
    "group": "F",
    "home": "Netherlands",
    "away": "Sweden",
-   "elo_home": 2010,
+   "elo_home": 2008,
    "elo_away": 1770,
    "played": false,
    "xg_home": 1.96,
-   "xg_away": 0.77,
-   "p_home": 0.6529,
-   "p_draw": 0.2078,
-   "p_away": 0.1393
+   "xg_away": 0.78,
+   "p_home": 0.6513,
+   "p_draw": 0.2084,
+   "p_away": 0.1403
   },
   {
    "group": "F",
    "home": "Netherlands",
    "away": "Tunisia",
-   "elo_home": 2010,
+   "elo_home": 2008,
    "elo_away": 1738,
    "played": false,
    "xg_home": 2.08,
    "xg_away": 0.73,
-   "p_home": 0.6889,
-   "p_draw": 0.1923,
-   "p_away": 0.1188
+   "p_home": 0.6874,
+   "p_draw": 0.193,
+   "p_away": 0.1197
   },
   {
    "group": "F",
    "home": "Japan",
    "away": "Sweden",
-   "elo_home": 1993,
+   "elo_home": 1995,
    "elo_away": 1770,
    "played": false,
    "xg_home": 1.9,
    "xg_away": 0.8,
-   "p_home": 0.6338,
-   "p_draw": 0.2154,
-   "p_away": 0.1508
+   "p_home": 0.6355,
+   "p_draw": 0.2147,
+   "p_away": 0.1498
   },
   {
    "group": "F",
    "home": "Japan",
    "away": "Tunisia",
-   "elo_home": 1993,
+   "elo_home": 1995,
    "elo_away": 1738,
    "played": false,
    "xg_home": 2.02,
    "xg_away": 0.75,
-   "p_home": 0.6705,
-   "p_draw": 0.2004,
-   "p_away": 0.1291
+   "p_home": 0.6721,
+   "p_draw": 0.1997,
+   "p_away": 0.1282
   },
   {
    "group": "F",
@@ -990,7 +984,7 @@
    "xg_away": 1.46,
    "p_home": 0.2703,
    "p_draw": 0.2632,
-   "p_away": 0.4665
+   "p_away": 0.4666
   },
   {
    "group": "G",
@@ -1014,7 +1008,7 @@
    "played": false,
    "xg_home": 1.69,
    "xg_away": 0.9,
-   "p_home": 0.5591,
+   "p_home": 0.5592,
    "p_draw": 0.2411,
    "p_away": 0.1997
   },
@@ -1025,10 +1019,10 @@
    "elo_home": 2218,
    "elo_away": 1654,
    "played": false,
-   "xg_home": 3.67,
+   "xg_home": 3.68,
    "xg_away": 0.41,
-   "p_home": 0.93,
-   "p_draw": 0.0537,
+   "p_home": 0.9301,
+   "p_draw": 0.0536,
    "p_away": 0.0163
   },
   {
@@ -1038,7 +1032,7 @@
    "elo_home": 2218,
    "elo_away": 1693,
    "played": false,
-   "xg_home": 3.4,
+   "xg_home": 3.41,
    "xg_away": 0.45,
    "p_home": 0.9094,
    "p_draw": 0.068,
@@ -1053,8 +1047,8 @@
    "played": false,
    "xg_home": 1.97,
    "xg_away": 0.77,
-   "p_home": 0.6565,
-   "p_draw": 0.2063,
+   "p_home": 0.6566,
+   "p_draw": 0.2062,
    "p_away": 0.1372
   },
   {
@@ -1079,9 +1073,9 @@
    "played": false,
    "xg_home": 0.66,
    "xg_away": 2.29,
-   "p_home": 0.0906,
+   "p_home": 0.0905,
    "p_draw": 0.1665,
-   "p_away": 0.7429
+   "p_away": 0.743
   },
   {
    "group": "H",
@@ -1094,7 +1088,7 @@
    "xg_away": 2.13,
    "p_home": 0.1125,
    "p_draw": 0.187,
-   "p_away": 0.7005
+   "p_away": 0.7006
   },
   {
    "group": "I",
@@ -1132,7 +1126,7 @@
    "xg_home": 1.66,
    "xg_away": 0.92,
    "p_home": 0.5484,
-   "p_draw": 0.2443,
+   "p_draw": 0.2442,
    "p_away": 0.2073
   },
   {
@@ -1145,7 +1139,7 @@
    "xg_home": 1.73,
    "xg_away": 0.88,
    "p_home": 0.5758,
-   "p_draw": 0.236,
+   "p_draw": 0.2359,
    "p_away": 0.1883
   },
   {
@@ -1172,7 +1166,7 @@
    "xg_away": 1.93,
    "p_home": 0.1445,
    "p_draw": 0.2113,
-   "p_away": 0.6442
+   "p_away": 0.6443
   },
   {
    "group": "J",
@@ -1314,7 +1308,7 @@
    "xg_home": 0.69,
    "xg_away": 2.2,
    "p_home": 0.1019,
-   "p_draw": 0.1776,
+   "p_draw": 0.1775,
    "p_away": 0.7206
   },
   {
@@ -1327,7 +1321,7 @@
    "xg_home": 0.77,
    "xg_away": 1.97,
    "p_home": 0.1373,
-   "p_draw": 0.2064,
+   "p_draw": 0.2063,
    "p_away": 0.6563
   },
   {
@@ -1392,7 +1386,7 @@
    "xg_home": 1.54,
    "xg_away": 0.99,
    "p_home": 0.5009,
-   "p_draw": 0.2564,
+   "p_draw": 0.2563,
    "p_away": 0.2427
   },
   {
