@@ -434,7 +434,9 @@
       if (m.played) {
         html += "<div class='fixture'><span class='date'>" + dt +
           " &middot; final</span><span class='teams'>" + esc(m.home) + " <span class='scorebadge'>" +
-          m.score_home + "&ndash;" + m.score_away + "</span> " + esc(m.away) + "</span></div>";
+          m.score_home + "&ndash;" + m.score_away + "</span> " + esc(m.away) + "</span>" +
+          (m.explanation ? "<details><summary>How the call went</summary><p>" +
+            esc(m.explanation) + "</p></details>" : "") + "</div>";
       } else if (m.model) {
         html += "<div class='fixture'><span class='date'>" + dt +
           "</span><span class='teams'>" + esc(m.home) + " vs " + esc(m.away) + "</span>" +

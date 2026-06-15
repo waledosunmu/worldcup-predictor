@@ -16,7 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from wcpred import metrics
-from wcpred.explain import fixture_explanation, team_blurb
+from wcpred.explain import (fixture_explanation, pick_from, result_review,
+                            team_blurb)
 from wcpred.history import load_jsonl
 
 AS_OF = "2026-06-11"
@@ -124,6 +125,12 @@ a.team-link:hover { text-decoration:underline; }
 .advrow .bar { flex:1; }
 .modal-sched .fixture { margin:.5rem 0; }
 .muted.small { font-size:.78rem; margin:.5rem 0 .2rem; }
+/* results-so-far pick badges */
+.fixture.result .picks { margin:.4rem 0 .2rem; font-size:.85rem; color:var(--muted);
+            display:flex; flex-wrap:wrap; gap:.4rem 1rem; align-items:center; }
+.pick { padding:.1rem .45rem; border-radius:4px; font-weight:600; }
+.pick.hit { background:#dcfce7; color:#15803d; }
+.pick.miss { background:#fee2e2; color:#b91c1c; }
 /* live track-record per-match table */
 .tr-matches { font-size:.82rem; }
 .tr-matches th, .tr-matches td { padding:.3rem .4rem; }
@@ -296,7 +303,71 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
         fixtures_by_group.setdefault(fx["group"], []).append(fx)
     for g in fixtures_by_group:
         fixtures_by_group[g].sort(key=fixture_order)
-    groups_body = "<h2>Groups &amp; all fixtures</h2>"
+
+    # ----- results so far: model vs market picks + post-match reviews -----
+    pred_by_pair = {(m["home"], m["away"]): m
+                    for m in load_jsonl(ROOT / "output/match_predictions.jsonl")}
+    reviewed = []  # played fixtures with a locked pre-kickoff model prediction
+    for fx in sorted(forecast["group_fixtures"],
+                     key=lambda f: fixture_order(f), reverse=True):
+        if not fx.get("played"):
+            continue
+        mp = pred_by_pair.get((fx["home"], fx["away"]))
+        if not mp or not mp.get("model") or not mp.get("result"):
+            continue
+        out = mp["result"]["outcome"]
+        mpick, mprob = pick_from(mp["model"])
+        kpick = kprob = None
+        if mp.get("market"):
+            kpick, kprob = pick_from(mp["market"])
+        reviewed.append({
+            "fx": fx, "mp": mp, "outcome": out,
+            "model_pick": mpick, "model_prob": mprob, "model_hit": mpick == out,
+            "market_pick": kpick, "market_prob": kprob,
+            "market_hit": (kpick == out) if kpick else None,
+            "review": result_review(fx["home"], fx["away"], fx["score_home"],
+                                    fx["score_away"], out, mp["model"], mp.get("market")),
+        })
+
+    def pickcell(side, prob, hit, home, away):
+        if side is None:
+            return "<span class='muted'>—</span>"
+        lbl = {"home": home, "away": away, "draw": "Draw"}[side]
+        mark = "✓" if hit else "✗"
+        return (f"<span class='pick {'hit' if hit else 'miss'}'>{mark} {lbl} "
+                f"{prob:.0%}</span>")
+
+    groups_body = ""
+    if reviewed:
+        n = len(reviewed)
+        model_called = sum(r["model_hit"] for r in reviewed)
+        mkt_rev = [r for r in reviewed if r["market_hit"] is not None]
+        market_called = sum(r["market_hit"] for r in mkt_rev)
+        cards = ""
+        for r in reviewed:
+            fx = r["fx"]
+            cards += (
+                f'<div class="fixture result">'
+                f'<span class="date">{fixture_date.get(frozenset((fx["home"], fx["away"])), "")} · final</span>'
+                f'<span class="teams">{fx["home"]} {fx["score_home"]}–'
+                f'{fx["score_away"]} {fx["away"]}</span>'
+                f'<div class="picks">'
+                f'Model {pickcell(r["model_pick"], r["model_prob"], r["model_hit"], fx["home"], fx["away"])} '
+                f'Market {pickcell(r["market_pick"], r["market_prob"], r["market_hit"], fx["home"], fx["away"])}'
+                f'</div>'
+                f'<details><summary>How the call went</summary>'
+                f'<p>{r["review"]}</p></details></div>')
+        mkt_line = (f" the market in <b>{market_called} of {len(mkt_rev)}</b>."
+                    if mkt_rev else ".")
+        groups_body += (
+            f'<h2>Results so far — model vs market</h2>'
+            f'<p class="legend">Who picked the winner? Through {n} completed '
+            f'match{"es" if n != 1 else ""}, the model called <b>{model_called} of '
+            f'{n}</b>;{mkt_line} (Draws count against a pick only when neither '
+            f'side was favoured.) Probabilistic scoring is on the '
+            f'<a href="methodology.html">methodology</a> page.</p>{cards}')
+
+    groups_body += "<h2>Groups &amp; all fixtures</h2>"
     for g in sorted(fmt["groups"]):
         trows = ""
         for t in sorted(fmt["groups"][g], key=lambda t: -adv[t]["reach_r32"]):
@@ -497,21 +568,23 @@ Scroll horizontally on mobile.</p>
             "blurb": team_blurb(t, p, ratings[t], ranks[t], team_group[t], mk),
         })
 
-    mp_by_pair = {(m["home"], m["away"]): m
-                  for m in load_jsonl(ROOT / "output/match_predictions.jsonl")}
     matches_payload = []
     for fx in forecast["group_fixtures"]:
         pair = (fx["home"], fx["away"])
-        mp = mp_by_pair.get(pair)
+        mp = pred_by_pair.get(pair)
         mkt = market_by_fixture.get(pair)
         rec = {"home": fx["home"], "away": fx["away"], "group": fx["group"],
                "commence": mp["commence"] if mp else None,
                "date": (mp["commence"][:10] if mp and mp.get("commence") else None),
                "played": bool(fx.get("played"))}
         if fx.get("played"):
+            review = (result_review(fx["home"], fx["away"], fx["score_home"],
+                                    fx["score_away"], mp["result"]["outcome"],
+                                    mp["model"], mp.get("market"))
+                      if mp and mp.get("model") and mp.get("result") else None)
             rec.update({"score_home": fx.get("score_home"),
                         "score_away": fx.get("score_away"),
-                        "model": None, "market": None, "explanation": None})
+                        "model": None, "market": None, "explanation": review})
         else:
             market_mk = ({"p_home": mkt["p_home"], "p_draw": mkt["p_draw"],
                           "p_away": mkt["p_away"], "n_books": mkt["n_books"]}
@@ -557,7 +630,7 @@ Scroll horizontally on mobile.</p>
 
     # ---------- live track record ----------
     OUT_IDX = {"home": 0, "draw": 1, "away": 2}
-    scored = [m for m in mp_by_pair.values()
+    scored = [m for m in pred_by_pair.values()
               if m.get("played") and m.get("model") and m.get("market")
               and m.get("result")]
     track_record = None

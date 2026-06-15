@@ -92,3 +92,47 @@ def team_blurb(team: str, adv: dict, rating: float, rank: int, group: str,
             s.append(f"The model is {view} {team} than the betting market "
                      f"({adv['champion']:.1%} vs {market_champ:.1%}).")
     return " ".join(s)
+
+
+_SIDES = ("home", "draw", "away")
+
+
+def pick_from(probs: dict) -> tuple[str, float]:
+    """Modal W/D/L pick (side, probability) from a {p_home,p_draw,p_away} dict."""
+    vals = [probs["p_home"], probs["p_draw"], probs["p_away"]]
+    i = max(range(3), key=lambda k: vals[k])
+    return _SIDES[i], vals[i]
+
+
+def result_review(home: str, away: str, sh: int, sa: int, outcome: str,
+                  model: dict, market: dict | None = None) -> str:
+    """Post-match narrative: how the pre-kickoff model (and market) call fared.
+
+    `model`/`market` are {p_home,p_draw,p_away} locked before kickoff; `outcome`
+    is the actual "home"/"draw"/"away".
+    """
+    def label(side):
+        return {"home": home, "away": away, "draw": "a draw"}[side]
+
+    winner = home if sh > sa else away if sa > sh else None
+    s = [f"{home} {sh}–{sa} {away} — "
+         + (f"{winner} won." if winner else "a draw.")]
+
+    pick, prob = pick_from(model)
+    if pick == outcome:
+        s.append(f"The model called it: it leaned {label(pick)} ({prob:.0%}).")
+    else:
+        actual_p = [model["p_home"], model["p_draw"], model["p_away"]][_SIDES.index(outcome)]
+        s.append(f"The model missed — it favoured {label(pick)} ({prob:.0%}) and "
+                 f"gave the actual result only {actual_p:.0%}.")
+
+    if market:
+        mpick, mprob = pick_from(market)
+        mhit = mpick == outcome
+        if mpick == pick:
+            s.append(f"The market agreed ({label(mpick)} {mprob:.0%}) and "
+                     f"{'also called it' if mhit else 'also missed'}.")
+        else:
+            s.append(f"The market instead leaned {label(mpick)} ({mprob:.0%}) — "
+                     f"{'which landed' if mhit else 'also wrong'}.")
+    return " ".join(s)

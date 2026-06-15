@@ -100,6 +100,12 @@ a.team-link:hover { text-decoration:underline; }
 .advrow .bar { flex:1; }
 .modal-sched .fixture { margin:.5rem 0; }
 .muted.small { font-size:.78rem; margin:.5rem 0 .2rem; }
+/* results-so-far pick badges */
+.fixture.result .picks { margin:.4rem 0 .2rem; font-size:.85rem; color:var(--muted);
+            display:flex; flex-wrap:wrap; gap:.4rem 1rem; align-items:center; }
+.pick { padding:.1rem .45rem; border-radius:4px; font-weight:600; }
+.pick.hit { background:#dcfce7; color:#15803d; }
+.pick.miss { background:#fee2e2; color:#b91c1c; }
 /* live track-record per-match table */
 .tr-matches { font-size:.82rem; }
 .tr-matches th, .tr-matches td { padding:.3rem .4rem; }
