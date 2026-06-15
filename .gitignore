@@ -9,3 +9,5 @@ __pycache__/
 # (consensus.json, odds_timeseries.jsonl, the *_winner_* outright snapshots) carry
 # everything we keep. See ROADMAP.md (odds storage policy).
 data/odds/soccer_fifa_world_cup_2026*.json
+
+.claude/
