@@ -280,12 +280,12 @@
       var sourceKey = useMarket ? "market_champion" : key;
       var picks = Object.keys(selected).filter(function (t) { return selected[t]; });
       var ds = picks.map(function (team, i) {
-        var color = useMarket ? MARKET : PALETTE[i % PALETTE.length];
+        var color = PALETTE[i % PALETTE.length];  // distinct per team in both modes
         return {
           label: team, data: seriesFor(team, sourceKey),
           borderColor: color, backgroundColor: color,
-          borderWidth: useMarket ? 2 : 2, tension: 0.2,
-          borderDash: useMarket ? [5, 4] : [],
+          borderWidth: 2, tension: 0.2,
+          borderDash: useMarket ? [6, 4] : [],  // dashed = market, solid = model
         };
       });
       if (chart) chart.destroy();
@@ -330,12 +330,12 @@
     var host = document.getElementById("bracket");
     if (!host) return;
     var rounds = [
-      { key: "reach_r32", title: "Round of 32" },
-      { key: "reach_r16", title: "Round of 16" },
-      { key: "reach_qf", title: "Quarter-finals" },
-      { key: "reach_sf", title: "Semi-finals" },
-      { key: "reach_final", title: "Final" },
-      { key: "model_champion", title: "Champion" },
+      { key: "reach_r32", title: "Round of 32", n: 32 },
+      { key: "reach_r16", title: "Round of 16", n: 24 },
+      { key: "reach_qf", title: "Quarter-finals", n: 16 },
+      { key: "reach_sf", title: "Semi-finals", n: 12 },
+      { key: "reach_final", title: "Final", n: 10 },
+      { key: "model_champion", title: "Champion", n: 8 },
     ];
     var cols = el("div", "bracket-cols");
     rounds.forEach(function (rd) {
@@ -349,13 +349,15 @@
         return t.name + " " + pct(t[rd.key]);
       }).join(", ");
       col.appendChild(h);
-      sorted.slice(0, 16).forEach(function (t) {
+      sorted.slice(0, rd.n).forEach(function (t) {
         var p = t[rd.key];
         var cell = el("div", "bteam");
         cell.setAttribute("data-team", t.name);
-        var shade = 0.12 + 0.78 * Math.min(1, p);
+        var shade = 0.10 + 0.80 * Math.min(1, p);
         cell.style.background = "rgba(37,99,235," + shade.toFixed(2) + ")";
-        cell.style.color = shade > 0.55 ? "#fff" : "var(--ink)";
+        // dark text on light fills, white on saturated fills — keeps the % legible
+        cell.style.color = p >= 0.5 ? "#fff" : "var(--ink)";
+        cell.style.borderColor = "transparent";
         cell.innerHTML = "<b>" + esc(t.name) + "</b><span class='p'>" + pct(p) + "</span>";
         col.appendChild(cell);
       });

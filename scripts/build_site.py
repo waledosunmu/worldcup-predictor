@@ -105,7 +105,8 @@ a.team-link:hover { text-decoration:underline; }
 .bteam { font-size:.82rem; padding:.3rem .5rem; margin:.25rem 0; border-radius:5px;
             border:1px solid var(--line); cursor:pointer; display:flex;
             justify-content:space-between; gap:.4rem; }
-.bteam b { font-weight:600; } .bteam span.p { color:var(--muted); font-variant-numeric:tabular-nums; }
+.bteam b { font-weight:600; }
+.bteam span.p { color:inherit; opacity:.72; font-variant-numeric:tabular-nums; }
 /* modal */
 #team-modal { position:fixed; inset:0; background:rgba(15,23,42,.55);
             display:none; align-items:flex-start; justify-content:center;
@@ -253,9 +254,23 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
 <p><a href="groups.html">All 72 group fixtures with predictions →</a></p>"""
 
     # ---------- groups ----------
+    # Kickoff date per fixture (covers played + scheduled) from the results
+    # snapshot, so fixtures list in the order they're played, not alphabetically.
+    wc_rows = results[(results.tournament == "FIFA World Cup")
+                      & (results.date >= "2026-06-01")]
+    fixture_date = {frozenset((r.home_team, r.away_team)): r.date
+                    for _, r in wc_rows.iterrows()}
+
+    def fixture_order(fx):
+        d = fixture_date.get(frozenset((fx["home"], fx["away"])), "9999-99-99")
+        m = market_by_fixture.get((fx["home"], fx["away"]))
+        return (d, m["commence"] if m else "")
+
     fixtures_by_group = {}
     for fx in forecast["group_fixtures"]:
         fixtures_by_group.setdefault(fx["group"], []).append(fx)
+    for g in fixtures_by_group:
+        fixtures_by_group[g].sort(key=fixture_order)
     groups_body = "<h2>Groups &amp; all fixtures</h2>"
     for g in sorted(fmt["groups"]):
         trows = ""
@@ -269,7 +284,8 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
         fxs = ""
         for fx in fixtures_by_group[g]:
             m = market_by_fixture.get((fx["home"], fx["away"]))
-            date = m["commence"][:10] if m else ""
+            date = (m["commence"][:10] if m
+                    else fixture_date.get(frozenset((fx["home"], fx["away"])), ""))
             if fx.get("played"):
                 fxs += (f'<div class="fixture"><span class="date">{date} · '
                         f'final</span><span class="teams">{fx["home"]} '
