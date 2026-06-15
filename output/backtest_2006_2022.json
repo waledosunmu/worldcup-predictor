@@ -37,6 +37,13 @@
    "rps": 0.22189386742409625
   },
   {
+   "edition": 2006,
+   "model": "elo_poisson_cal",
+   "logloss": 0.8917712135168158,
+   "brier": 0.516484383332507,
+   "rps": 0.168701232640303
+  },
+  {
    "edition": 2010,
    "model": "elo_poisson",
    "logloss": 0.9545408213355729,
@@ -63,6 +70,13 @@
    "logloss": 1.101143560068068,
    "brier": 0.670638625554598,
    "rps": 0.2411703214274315
+  },
+  {
+   "edition": 2010,
+   "model": "elo_poisson_cal",
+   "logloss": 0.9654073992801282,
+   "brier": 0.5669015907455637,
+   "rps": 0.19106721580553845
   },
   {
    "edition": 2014,
@@ -93,6 +107,13 @@
    "rps": 0.23719606986093586
   },
   {
+   "edition": 2014,
+   "model": "elo_poisson_cal",
+   "logloss": 0.9207338055266904,
+   "brier": 0.5357782093709016,
+   "rps": 0.1830625324626204
+  },
+  {
    "edition": 2018,
    "model": "elo_poisson",
    "logloss": 0.9840834810293612,
@@ -121,6 +142,13 @@
    "rps": 0.24624300325084134
   },
   {
+   "edition": 2018,
+   "model": "elo_poisson_cal",
+   "logloss": 0.9862633940234095,
+   "brier": 0.581893310032925,
+   "rps": 0.20673917261508634
+  },
+  {
    "edition": 2022,
    "model": "elo_poisson",
    "logloss": 1.1087641357410498,
@@ -147,6 +175,13 @@
    "logloss": 1.0682122358344222,
    "brier": 0.6465742283950617,
    "rps": 0.23347746913580247
+  },
+  {
+   "edition": 2022,
+   "model": "elo_poisson_cal",
+   "logloss": 1.1097166059580554,
+   "brier": 0.6384961760181282,
+   "rps": 0.2287212393098213
   }
  ],
  "pooled": [
@@ -177,6 +212,13 @@
    "logloss": 1.066984828466023,
    "brier": 0.6464119520636231,
    "rps": 0.2359961462198215
+  },
+  {
+   "edition": "ALL",
+   "model": "elo_poisson_cal",
+   "logloss": 0.9747784836610197,
+   "brier": 0.5679107339000051,
+   "rps": 0.1956582785666739
   }
  ],
  "group_qualification": [
@@ -225,5 +267,160 @@
    "fit_b": 0.8011623730650176,
    "fit_rho": -0.032300595599480286
   }
- ]
+ ],
+ "reliability": {
+  "n_bins": 10,
+  "note": "Leak-free recalibration (temperature, fit on prior editions only) does not beat the uncalibrated model; the production forecast is left uncalibrated. in_sample_best is an optimistic isotonic ceiling.",
+  "uncalibrated": {
+   "ece": 0.03603248376333254,
+   "curve": [
+    {
+     "bin_lo": 0.0,
+     "bin_hi": 0.1,
+     "mean_pred": 0.06730225313320996,
+     "obs_freq": 0.20454545454545456,
+     "count": 44
+    },
+    {
+     "bin_lo": 0.1,
+     "bin_hi": 0.2,
+     "mean_pred": 0.14678295260582422,
+     "obs_freq": 0.14832535885167464,
+     "count": 209
+    },
+    {
+     "bin_lo": 0.2,
+     "bin_hi": 0.30000000000000004,
+     "mean_pred": 0.2495279944563,
+     "obs_freq": 0.23202614379084968,
+     "count": 306
+    },
+    {
+     "bin_lo": 0.30000000000000004,
+     "bin_hi": 0.4,
+     "mean_pred": 0.35541591214295915,
+     "obs_freq": 0.32653061224489793,
+     "count": 98
+    },
+    {
+     "bin_lo": 0.4,
+     "bin_hi": 0.5,
+     "mean_pred": 0.4526772107741653,
+     "obs_freq": 0.4897959183673469,
+     "count": 98
+    },
+    {
+     "bin_lo": 0.5,
+     "bin_hi": 0.6000000000000001,
+     "mean_pred": 0.5412660156087885,
+     "obs_freq": 0.4875,
+     "count": 80
+    },
+    {
+     "bin_lo": 0.6000000000000001,
+     "bin_hi": 0.7000000000000001,
+     "mean_pred": 0.6446365527736985,
+     "obs_freq": 0.7432432432432432,
+     "count": 74
+    },
+    {
+     "bin_lo": 0.7000000000000001,
+     "bin_hi": 0.8,
+     "mean_pred": 0.741458529727887,
+     "obs_freq": 0.6666666666666666,
+     "count": 33
+    },
+    {
+     "bin_lo": 0.8,
+     "bin_hi": 0.9,
+     "mean_pred": 0.8372666389891086,
+     "obs_freq": 0.7333333333333333,
+     "count": 15
+    },
+    {
+     "bin_lo": 0.9,
+     "bin_hi": 1.0,
+     "mean_pred": 0.9269513994006142,
+     "obs_freq": 0.6666666666666666,
+     "count": 3
+    }
+   ]
+  },
+  "calibrated": {
+   "ece": 0.03979650853226087,
+   "curve": [
+    {
+     "bin_lo": 0.0,
+     "bin_hi": 0.1,
+     "mean_pred": 0.06704695433902234,
+     "obs_freq": 0.2,
+     "count": 60
+    },
+    {
+     "bin_lo": 0.1,
+     "bin_hi": 0.2,
+     "mean_pred": 0.1454530835130385,
+     "obs_freq": 0.15121951219512195,
+     "count": 205
+    },
+    {
+     "bin_lo": 0.2,
+     "bin_hi": 0.30000000000000004,
+     "mean_pred": 0.24667761718000467,
+     "obs_freq": 0.23129251700680273,
+     "count": 294
+    },
+    {
+     "bin_lo": 0.30000000000000004,
+     "bin_hi": 0.4,
+     "mean_pred": 0.3559228405717821,
+     "obs_freq": 0.32653061224489793,
+     "count": 98
+    },
+    {
+     "bin_lo": 0.4,
+     "bin_hi": 0.5,
+     "mean_pred": 0.4548367770388399,
+     "obs_freq": 0.4943820224719101,
+     "count": 89
+    },
+    {
+     "bin_lo": 0.5,
+     "bin_hi": 0.6000000000000001,
+     "mean_pred": 0.5426227590749206,
+     "obs_freq": 0.46987951807228917,
+     "count": 83
+    },
+    {
+     "bin_lo": 0.6000000000000001,
+     "bin_hi": 0.7000000000000001,
+     "mean_pred": 0.6460362806890404,
+     "obs_freq": 0.7391304347826086,
+     "count": 69
+    },
+    {
+     "bin_lo": 0.7000000000000001,
+     "bin_hi": 0.8,
+     "mean_pred": 0.7415161458701958,
+     "obs_freq": 0.6666666666666666,
+     "count": 39
+    },
+    {
+     "bin_lo": 0.8,
+     "bin_hi": 0.9,
+     "mean_pred": 0.841140844307993,
+     "obs_freq": 0.7368421052631579,
+     "count": 19
+    },
+    {
+     "bin_lo": 0.9,
+     "bin_hi": 1.0,
+     "mean_pred": 0.9400428836303202,
+     "obs_freq": 0.75,
+     "count": 4
+    }
+   ]
+  },
+  "in_sample_best_ece": 0.020440712205088935
+ }
 }

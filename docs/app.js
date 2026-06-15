@@ -43,6 +43,7 @@
     guard("trackRecord", function () { enhanceTrackRecord(DATA); });
     guard("trends", function () { enhanceTrends(DATA); });
     guard("bracket", function () { enhanceBracket(DATA, teamsByName); });
+    guard("reliability", function () { enhanceReliability(DATA); });
     guard("modal", function () { setupModal(DATA, teamsByName); });
   }).catch(function (e) { console.error("data.json load failed", e); });
 
@@ -374,6 +375,46 @@
       cols.appendChild(col);
     });
     host.appendChild(cols);
+  }
+
+  /* ---------- calibration reliability diagram ---------- */
+  function enhanceReliability(DATA) {
+    var canvas = document.getElementById("reliability-chart");
+    if (!canvas || typeof Chart === "undefined" || !DATA.reliability) return;
+    var pts = DATA.reliability.curve.map(function (b) {
+      return { x: b.pred * 100, y: b.obs * 100, n: b.n };
+    });
+    new Chart(canvas, {
+      data: {
+        datasets: [
+          { type: "line", label: "perfect calibration",
+            data: [{ x: 0, y: 0 }, { x: 100, y: 100 }],
+            borderColor: MUTED, borderDash: [5, 4], borderWidth: 1,
+            pointRadius: 0, fill: false },
+          { type: "scatter", label: "model (bin size ∝ matches)", data: pts,
+            backgroundColor: MODEL, borderColor: MODEL,
+            pointRadius: pts.map(function (p) {
+              return Math.max(3, Math.min(12, Math.sqrt(p.n))); }) },
+        ],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: "bottom" },
+          tooltip: { callbacks: { label: function (ctx) {
+            var p = ctx.raw;
+            return p.n == null ? "" : "predicted " + p.x.toFixed(0) +
+              "% → happened " + p.y.toFixed(0) + "% (n=" + p.n + ")";
+          } } },
+        },
+        scales: {
+          x: { type: "linear", title: { display: true, text: "predicted probability (%)" },
+               min: 0, max: 100 },
+          y: { type: "linear", title: { display: true, text: "observed frequency (%)" },
+               min: 0, max: 100 },
+        },
+      },
+    });
   }
 
   /* ---------- B5: per-team modal ---------- */

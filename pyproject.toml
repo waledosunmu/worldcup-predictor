@@ -3,7 +3,7 @@ name = "wcpred"
 version = "0.1.0"
 description = "2026 FIFA World Cup prediction: Elo + Poisson + Monte Carlo, backtested vs 2006-2022"
 requires-python = ">=3.11"
-dependencies = ["pandas", "numpy", "scipy"]
+dependencies = ["pandas", "numpy", "scipy", "scikit-learn"]
 
 [project.optional-dependencies]
 dev = ["pytest"]

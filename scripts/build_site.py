@@ -474,6 +474,34 @@ modest, so v0 remains the production default until they earn their place.</p>
 Champions-League minutes) are the next lever but need external per-tournament
 squad data not yet wired in.</p>"""
 
+    rel = backtest.get("reliability") or {}
+    reliability_payload = None
+    reliability_section = ""
+    if rel:
+        u_ece = rel["uncalibrated"]["ece"]
+        c_ece = rel["calibrated"]["ece"]
+        ib_ece = rel.get("in_sample_best_ece")
+        reliability_payload = {
+            "uncalibrated_ece": u_ece, "calibrated_ece": c_ece,
+            "in_sample_best_ece": ib_ece,
+            "curve": [{"pred": b["mean_pred"], "obs": b["obs_freq"], "n": b["count"]}
+                      for b in rel["uncalibrated"]["curve"]],
+        }
+        reliability_section = f"""
+<h2>Are the probabilities honest? Calibration</h2>
+<p>A forecast is <i>calibrated</i> if the things it calls 70%-likely happen about 70%
+of the time. Across the 320 backtest matches the model's expected calibration error is
+<b>{u_ece:.3f}</b> (0 = perfect) — it is already well-calibrated. Each dot below bins the
+model's predictions by confidence and plots them against how often the outcome actually
+happened; the closer to the diagonal, the better.</p>
+<div class="chartwrap"><canvas id="reliability-chart" height="300"></canvas></div>
+<p class="muted">We tested recalibrating the model (temperature scaling, learned only from
+<i>earlier</i> tournaments): out-of-sample it does not help ({c_ece:.3f} vs {u_ece:.3f}), so
+the published forecast is left <b>uncalibrated</b> — this panel is a measurement, not an
+adjustment. An optimistic in-sample ceiling reaches {ib_ece:.3f}, so the small residual is
+real but can't be learned reliably from five tournaments; its main part — under-pricing
+draws — is better fixed inside the model (Dixon-Coles) than bolted on afterwards.</p>"""
+
     meth_body = f"""
 <h2>How this works</h2>
 <p>Every prediction comes from a pipeline that is fully reproducible from public
@@ -504,6 +532,7 @@ lower is better. The model beats both baselines on log loss; the gap to
 bookmaker-grade accuracy is the roadmap.</p>
 <table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
 <th class="num">RPS</th></tr>{bt_rows}</table>
+{reliability_section}
 <h2>Live 2026 track record</h2>
 <p>As 2026 matches are played we lock the last pre-kickoff model and market
 prediction for each fixture and score them out-of-sample. This panel fills in
@@ -678,6 +707,7 @@ Scroll horizontally on mobile.</p>
         "divergence": divergence_payload,
         "movers": movers_payload,
         "trackRecord": track_record,
+        "reliability": reliability_payload,
     }
 
     DOCS.mkdir(exist_ok=True)

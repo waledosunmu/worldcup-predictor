@@ -58,7 +58,7 @@ World Cups, published with per-prediction reasoning.
 ## Quick start
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install pandas numpy scipy
+python3 -m venv .venv && .venv/bin/pip install pandas numpy scipy scikit-learn
 cp .env.example .env                                  # add your ODDS_API_KEY
 .venv/bin/python scripts/run_forecast.py              # conditional on played results
 .venv/bin/python scripts/run_backtest.py              # 2006-2022 match-level validation

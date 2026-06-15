@@ -27,13 +27,16 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from wcpred import dixoncoles, elo, goals, metrics
+from wcpred import calibration, dixoncoles, elo, goals, metrics
 
 EDITIONS = [2006, 2010, 2014, 2018, 2022]
 FIT_WINDOW_YEARS = 28
 ET_FACTOR = 0.33
 N_GROUP_SIMS = 10_000
 MODELS = ["elo_poisson", "elo_poisson_dc", "elo_expectancy", "climatology"]
+# elo_poisson with isotonic recalibration learned from PRIOR editions only.
+CAL_MODEL = "elo_poisson_cal"
+ALL_MODELS = MODELS + [CAL_MODEL]
 
 
 def outcome_index(hs: int, as_: int) -> int:
@@ -124,7 +127,11 @@ def main():
     wc["year"] = wc.date.str[:4].astype(int)
 
     rows, qual_rows = [], []
-    per_match = {m: {"logloss": [], "brier": [], "rps": []} for m in MODELS}
+    per_match = {m: {"logloss": [], "brier": [], "rps": []} for m in ALL_MODELS}
+    # accumulated uncalibrated elo_poisson (probs, outcome) from already-scored
+    # editions — the only data the isotonic calibrator may learn from (point-in-time).
+    cal_hist_probs, cal_hist_out = [], []
+    pooled_rel = {"unc_probs": [], "cal_probs": [], "out": []}
 
     for year in EDITIONS:
         ed = wc[wc.year == year].sort_values("date").reset_index(drop=True)
@@ -147,7 +154,8 @@ def main():
         clim = np.array([(prior_out == k).mean() for k in range(3)])
         draw_share = clim[1]
 
-        ed_metrics = {m: {"logloss": [], "brier": [], "rps": []} for m in MODELS}
+        ed_metrics = {m: {"logloss": [], "brier": [], "rps": []} for m in ALL_MODELS}
+        ed_ep, ed_out = [], []  # uncalibrated elo_poisson probs + outcome for this edition
         for i, r in ed.iterrows():
             knockout = i >= 48
             o = outcome_index(r.home_score, r.away_score)
@@ -161,8 +169,29 @@ def main():
                 ed_metrics[m]["logloss"].append(metrics.log_loss(p, o))
                 ed_metrics[m]["brier"].append(metrics.brier(p, o))
                 ed_metrics[m]["rps"].append(metrics.rps(p, o))
+            ed_ep.append(preds["elo_poisson"])
+            ed_out.append(o)
 
-        for m in MODELS:
+        # calibrated candidate: isotonic fit on prior editions only (none for 2006).
+        ed_ep = np.array(ed_ep)
+        ed_out = np.array(ed_out)
+        if cal_hist_probs:
+            temp = calibration.fit_temperature(np.vstack(cal_hist_probs),
+                                               np.concatenate(cal_hist_out))
+            ed_cal = calibration.apply_temperature(temp, ed_ep)
+        else:
+            ed_cal = ed_ep  # no prior tournament to learn from — pass through
+        for j, o in enumerate(ed_out):
+            ed_metrics[CAL_MODEL]["logloss"].append(metrics.log_loss(ed_cal[j], o))
+            ed_metrics[CAL_MODEL]["brier"].append(metrics.brier(ed_cal[j], o))
+            ed_metrics[CAL_MODEL]["rps"].append(metrics.rps(ed_cal[j], o))
+        pooled_rel["unc_probs"].append(ed_ep)
+        pooled_rel["cal_probs"].append(ed_cal)
+        pooled_rel["out"].append(ed_out)
+        cal_hist_probs.append(ed_ep)
+        cal_hist_out.append(ed_out)
+
+        for m in ALL_MODELS:
             for k in per_match[m]:
                 per_match[m][k].extend(ed_metrics[m][k])
             rows.append({"edition": year, "model": m,
@@ -203,10 +232,39 @@ def main():
 
     pooled = [{"edition": "ALL", "model": m,
                **{k: float(np.mean(v)) for k, v in per_match[m].items()}}
-              for m in MODELS]
+              for m in ALL_MODELS]
+
+    # reliability of the model's probabilities, pooled over all 320 matches (one-vs-rest
+    # over home/draw/away). We report three ECE numbers that, together, settle whether
+    # the model needs recalibration:
+    #   - uncalibrated: what users actually get (the production forecast).
+    #   - calibrated:   leak-free temperature scaling fit on PRIOR editions only — the
+    #                   honest out-of-sample test of whether recalibration helps.
+    #   - in_sample_best: isotonic fit AND applied on all 320 — an optimistic ceiling
+    #                   that exposes how much *real* miscalibration exists at all.
+    unc = np.vstack(pooled_rel["unc_probs"])
+    cal_p = np.vstack(pooled_rel["cal_probs"])
+    rel_out = np.concatenate(pooled_rel["out"])
+    iso_full = calibration.fit_isotonic(unc, rel_out)
+    in_sample_best = calibration.expected_calibration_error(
+        calibration.apply_isotonic(iso_full, unc), rel_out)
+    reliability = {
+        "n_bins": calibration.N_BINS,
+        "note": ("Leak-free recalibration (temperature, fit on prior editions only) does "
+                 "not beat the uncalibrated model; the production forecast is left "
+                 "uncalibrated. in_sample_best is an optimistic isotonic ceiling."),
+        "uncalibrated": {
+            "ece": calibration.expected_calibration_error(unc, rel_out),
+            "curve": calibration.reliability_curve(unc, rel_out)},
+        "calibrated": {
+            "ece": calibration.expected_calibration_error(cal_p, rel_out),
+            "curve": calibration.reliability_curve(cal_p, rel_out)},
+        "in_sample_best_ece": in_sample_best,
+    }
 
     out = {"editions": EDITIONS, "fit_window_years": FIT_WINDOW_YEARS,
-           "per_edition": rows, "pooled": pooled, "group_qualification": qual_rows}
+           "per_edition": rows, "pooled": pooled, "group_qualification": qual_rows,
+           "reliability": reliability}
     (ROOT / "output").mkdir(exist_ok=True)
     with open(ROOT / "output/backtest_2006_2022.json", "w") as f:
         json.dump(out, f, indent=1)
@@ -217,12 +275,23 @@ def main():
              "| Model | Log loss | Brier | RPS |", "|---|---:|---:|---:|"]
     for p in pooled:
         lines.append(f"| {p['model']} | {p['logloss']:.4f} | {p['brier']:.4f} | {p['rps']:.4f} |")
-    lines += ["", "## Per edition (RPS)", "",
-              "| Edition | " + " | ".join(MODELS) + " |",
-              "|---|" + "---:|" * len(MODELS)]
+    lines += ["",
+              "**Calibration.** Expected calibration error (lower = better): the "
+              f"uncalibrated model scores **{reliability['uncalibrated']['ece']:.3f}** — "
+              "already well-calibrated. Leak-free recalibration (`elo_poisson_cal`, "
+              "temperature scaling fit on prior editions only) does not help "
+              f"({reliability['calibrated']['ece']:.3f}); it is *evaluated, not applied* — "
+              "the production forecast stays uncalibrated. An optimistic in-sample isotonic "
+              f"ceiling reaches {reliability['in_sample_best_ece']:.3f}, so the residual "
+              "miscalibration is real but too small to learn reliably from five tournaments. "
+              "Its main component — under-pricing low-probability outcomes (draws) — is "
+              "better fixed structurally by Dixon-Coles than bolted on afterwards.",
+              "", "## Per edition (RPS)", "",
+              "| Edition | " + " | ".join(ALL_MODELS) + " |",
+              "|---|" + "---:|" * len(ALL_MODELS)]
     for year in EDITIONS:
         vals = [next(r for r in rows if r["edition"] == year and r["model"] == m)["rps"]
-                for m in MODELS]
+                for m in ALL_MODELS]
         lines.append(f"| {year} | " + " | ".join(f"{v:.4f}" for v in vals) + " |")
     lines += ["", "## Group-stage qualification (elo_poisson, legacy tiebreakers)", "",
               "| Edition | mean P assigned to actual R16 qualifiers | Brier (qualify) |",

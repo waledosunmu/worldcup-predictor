@@ -28,7 +28,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install pandas numpy scipy
+        run: pip install pandas numpy scipy scikit-learn
 
       - name: Run update pipeline
         env:

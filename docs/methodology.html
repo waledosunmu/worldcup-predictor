@@ -35,7 +35,21 @@ goals model refit per edition). Scores below are means over all 320 matches —
 lower is better. The model beats both baselines on log loss; the gap to
 bookmaker-grade accuracy is the roadmap.</p>
 <table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
-<th class="num">RPS</th></tr><tr><td>elo_poisson</td><td class='num'>0.9721</td><td class='num'>0.5671</td><td class='num'>0.1956</td></tr><tr><td>elo_poisson_dc</td><td class='num'>0.9708</td><td class='num'>0.5668</td><td class='num'>0.1955</td></tr><tr><td>elo_expectancy</td><td class='num'>1.0205</td><td class='num'>0.5639</td><td class='num'>0.1948</td></tr><tr><td>climatology</td><td class='num'>1.0670</td><td class='num'>0.6464</td><td class='num'>0.2360</td></tr></table>
+<th class="num">RPS</th></tr><tr><td>elo_poisson</td><td class='num'>0.9721</td><td class='num'>0.5671</td><td class='num'>0.1956</td></tr><tr><td>elo_poisson_dc</td><td class='num'>0.9708</td><td class='num'>0.5668</td><td class='num'>0.1955</td></tr><tr><td>elo_expectancy</td><td class='num'>1.0205</td><td class='num'>0.5639</td><td class='num'>0.1948</td></tr><tr><td>climatology</td><td class='num'>1.0670</td><td class='num'>0.6464</td><td class='num'>0.2360</td></tr><tr><td>elo_poisson_cal</td><td class='num'>0.9748</td><td class='num'>0.5679</td><td class='num'>0.1957</td></tr></table>
+
+<h2>Are the probabilities honest? Calibration</h2>
+<p>A forecast is <i>calibrated</i> if the things it calls 70%-likely happen about 70%
+of the time. Across the 320 backtest matches the model's expected calibration error is
+<b>0.036</b> (0 = perfect) — it is already well-calibrated. Each dot below bins the
+model's predictions by confidence and plots them against how often the outcome actually
+happened; the closer to the diagonal, the better.</p>
+<div class="chartwrap"><canvas id="reliability-chart" height="300"></canvas></div>
+<p class="muted">We tested recalibrating the model (temperature scaling, learned only from
+<i>earlier</i> tournaments): out-of-sample it does not help (0.040 vs 0.036), so
+the published forecast is left <b>uncalibrated</b> — this panel is a measurement, not an
+adjustment. An optimistic in-sample ceiling reaches 0.020, so the small residual is
+real but can't be learned reliably from five tournaments; its main part — under-pricing
+draws — is better fixed inside the model (Dixon-Coles) than bolted on afterwards.</p>
 <h2>Live 2026 track record</h2>
 <p>As 2026 matches are played we lock the last pre-kickoff model and market
 prediction for each fixture and score them out-of-sample. This panel fills in
