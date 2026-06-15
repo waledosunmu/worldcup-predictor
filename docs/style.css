@@ -99,3 +99,28 @@ a.team-link:hover { text-decoration:underline; }
 .advrow .pct { width:46px; text-align:right; font-variant-numeric:tabular-nums; }
 .advrow .bar { flex:1; }
 .modal-sched .fixture { margin:.5rem 0; }
+.muted.small { font-size:.78rem; margin:.5rem 0 .2rem; }
+/* live track-record per-match table */
+.tr-matches { font-size:.82rem; }
+.tr-matches th, .tr-matches td { padding:.3rem .4rem; }
+.tr-matches .mtch { white-space:nowrap; }
+.tr-matches .vs { color:var(--muted); }
+.tr-matches .sc { color:var(--muted); font-variant-numeric:tabular-nums; }
+.tr-matches td.win { color:#15803d; font-weight:650; }
+/* ---------- mobile ---------- */
+@media (max-width:640px) {
+  header { padding:1.1rem .9rem; }
+  header h1 { font-size:1.3rem; }
+  header p { font-size:.9rem; }
+  nav a { margin-right:.9rem; }
+  main { padding:1rem .8rem 3rem; }
+  h2 { margin-top:1.6rem; font-size:1.25rem; }
+  /* wide tables scroll horizontally instead of breaking the layout */
+  main > table, .tablewrap, #team-table, .tr-matches,
+  .groups-table, table { display:block; max-width:100%; overflow-x:auto;
+            white-space:nowrap; -webkit-overflow-scrolling:touch; }
+  .bar { min-width:70px; }
+  #team-modal { padding:0; align-items:stretch; }
+  #team-modal .box { max-width:100%; min-height:100%; border-radius:0;
+            padding:1.1rem 1rem; }
+}

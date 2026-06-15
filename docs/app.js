@@ -217,22 +217,32 @@
       fmt(tr.market.logloss) + "</td><td class='num'>" + fmt(tr.market.brier) +
       "</td><td class='num'>" + fmt(tr.market.rps) + "</td></tr>";
     box.appendChild(tbl);
+    var wins = tr.matches.filter(function (m) { return m.model.logloss < m.market.logloss; }).length;
     box.appendChild(el("p", "muted", "Over " + tr.n + " completed match" +
-      (tr.n === 1 ? "" : "es") + " (lower is better)."));
-    if (tr.n < 10) {
+      (tr.n === 1 ? "" : "es") + " (lower is better). Model's per-match log loss beat the " +
+      "market in <b>" + wins + " of " + tr.n + "</b>."));
+    if (tr.n < 20) {
       box.appendChild(el("p", "muted caveat",
-        "&#9888; Far too small a sample (" + tr.n + " match" + (tr.n === 1 ? "" : "es") +
-        ") to mean anything yet — shown for transparency, not as evidence the model " +
-        "beats the market. Check back as the tournament progresses."));
+        "&#9888; Small sample (" + tr.n + ") — directional, not yet conclusive."));
     }
-    var ml = el("div");
+    box.appendChild(el("p", "muted small",
+      "Per-match log loss — winner in bold, the lower (better) call highlighted."));
+    var rows = "<tr><th>Match</th><th class='num'>Score</th><th class='num'>Model</th>" +
+      "<th class='num'>Market</th></tr>";
     tr.matches.forEach(function (m) {
-      ml.appendChild(el("div", "advrow",
-        "<b>" + esc(m.home) + " vs " + esc(m.away) + "</b> &middot; result: " +
-        esc(m.outcome) + " &middot; model LL " + m.model.logloss.toFixed(2) +
-        " / market LL " + m.market.logloss.toFixed(2)));
+      var mWin = m.model.logloss < m.market.logloss;
+      var kWin = m.market.logloss < m.model.logloss;
+      var home = m.outcome === "home" ? "<b>" + esc(m.home) + "</b>" : esc(m.home);
+      var away = m.outcome === "away" ? "<b>" + esc(m.away) + "</b>" : esc(m.away);
+      var sc = m.score ? m.score[0] + "&#8211;" + m.score[1] : "&middot;";
+      rows += "<tr><td class='mtch'>" + home + " <span class='vs'>v</span> " + away +
+        "</td><td class='num sc'>" + sc + "</td><td class='num" + (mWin ? " win" : "") +
+        "'>" + m.model.logloss.toFixed(2) + "</td><td class='num" + (kWin ? " win" : "") +
+        "'>" + m.market.logloss.toFixed(2) + "</td></tr>";
     });
-    box.appendChild(ml);
+    var mt = el("table", "tr-matches");
+    mt.innerHTML = rows;
+    box.appendChild(mt);
     host.appendChild(box);
   }
 
