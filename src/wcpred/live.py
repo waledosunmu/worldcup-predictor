@@ -44,6 +44,7 @@ LIVE_NAME_MAP = {
     "IR Iran": "Iran",
     "Iran": "Iran",
     "Cabo Verde": "Cape Verde",
+    "Cape Verde Islands": "Cape Verde",
     "Curacao": "Curaçao",
     "Türkiye": "Turkey",
     "Turkiye": "Turkey",

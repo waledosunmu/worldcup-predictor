@@ -156,7 +156,11 @@ class Simulator:
             if idx == len(slots):
                 return True
             slot = slots[idx]
-            for g in self.third_eligible[slot] & letters.keys():
+            # sorted(): set iteration order over group-letter strings is
+            # hash-randomized per process, so an unsorted scan would pick a
+            # different (still valid) third-place allocation each run and make
+            # the knockout probabilities non-reproducible (cardinal rule #2).
+            for g in sorted(self.third_eligible[slot] & letters.keys()):
                 if g not in used:
                     used.add(g)
                     assignment[slot] = letters[g]

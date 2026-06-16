@@ -55,3 +55,27 @@ def test_merge_results_fills_na_orientation_robust():
     row = merged[merged.home_team == "Mexico"].iloc[0]
     # score re-oriented onto the snapshot's home/away (Mexico 2-0), not flipped
     assert row.home_score == 2 and row.away_score == 0
+
+
+def test_canonicalize_maps_cape_verde_islands():
+    # football-data.org spells it "Cape Verde Islands"; the squad name is
+    # "Cape Verde". The unmapped gap made fetch_results.py FAIL LOUDLY on every
+    # run, which the daily pipeline swallowed, freezing published results.
+    assert live.canonicalize("Cape Verde Islands", {"Cape Verde"}) == "Cape Verde"
+
+
+def test_merge_results_records_unmapped_without_dropping_mappable_matches():
+    # One unmapped name is recorded in summary["unmapped"] (for the caller to
+    # fail loudly on) but must not discard the other, mappable matches.
+    results = pd.read_csv(pd.io.common.StringIO(SNAPSHOT))
+    shootouts = pd.DataFrame(columns=["date", "home_team", "away_team", "winner", "first_shooter"])
+    valid = {"Mexico", "South Africa"}
+    matches = [
+        {"home": "Mexico", "away": "South Africa", "home_score": 1, "away_score": 0,
+         "pen_home": None, "pen_away": None, "date": "2026-06-11"},
+        {"home": "Atlantis", "away": "South Africa", "home_score": 3, "away_score": 3,
+         "pen_home": None, "pen_away": None, "date": "2026-06-11"},
+    ]
+    _, _, summary = live.merge_results(results, shootouts, matches, valid)
+    assert any("Atlantis" in u for u in summary["unmapped"])
+    assert summary["filled"] == 1  # the mappable match still resolved

@@ -12,7 +12,13 @@ done
 curl -sL -o data/raw/elo_world.tsv "https://eloratings.net/World.tsv"
 
 echo "== overlay live results (football-data.org; martj42 is the fallback) =="
-"$PY" scripts/fetch_results.py || echo "(live results overlay failed; continuing)"
+# fetch_results.py already returns 0 for every tolerable case (missing key,
+# network/auth error) and falls back to the martj42 snapshot. The ONLY way it
+# exits non-zero is the deliberate FAIL-LOUDLY on an unmapped WC team name — a
+# code bug that silently freezes results. Let that halt the run (set -e) instead
+# of swallowing it with `|| echo continuing`, which is how a one-line name gap
+# froze the published results for a day behind a green pipeline.
+"$PY" scripts/fetch_results.py
 
 echo "== snapshot odds =="
 "$PY" scripts/snapshot_odds.py || echo "(odds snapshot failed; continuing)"

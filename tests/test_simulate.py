@@ -7,6 +7,7 @@ Two styles:
 """
 
 import json
+import sys
 from pathlib import Path
 
 import pytest
@@ -150,6 +151,41 @@ def test_run_different_seeds_differ(fmt, real_ratings):
     out1 = Simulator(fmt, real_ratings, PARAMS, seed=1).run(n_sims=30)
     out2 = Simulator(fmt, real_ratings, PARAMS, seed=2).run(n_sims=30)
     assert out1["probs"] != out2["probs"]
+
+
+# Cross-process determinism (cardinal rule #2). The same-seed test above runs
+# both sims in ONE process, so it cannot catch hash-randomization: a set whose
+# iteration order varies per process (e.g. the third-place slot allocation
+# scanning `third_eligible[slot] & letters.keys()`) yields a different — still
+# valid — knockout bracket each run, jittering KO probabilities while the
+# seed-driven group stage stays fixed. That froze the daily forecast into
+# looking "updated" when results were actually stale. Guard it by running the
+# same Simulator under two different PYTHONHASHSEED values and comparing.
+_HASH_PROBE = """
+import json, sys
+from pathlib import Path
+from wcpred.simulate import Simulator
+fmt = json.load(open(sys.argv[1]))
+teams = [t for g in fmt["groups"].values() for t in g]
+ratings = {t: 1500.0 + 5.0 * i for i, t in enumerate(teams)}
+out = Simulator(fmt, ratings, {"a": 0.1, "b": 0.5}, seed=99).run(n_sims=40)
+json.dump(out["probs"], sys.stdout, sort_keys=True)
+"""
+
+
+def _probe(hashseed):
+    import os
+    import subprocess
+    env = {**os.environ, "PYTHONHASHSEED": hashseed,
+           "PYTHONPATH": str(ROOT / "src")}
+    res = subprocess.run([sys.executable, "-c", _HASH_PROBE, str(FORMAT_PATH)],
+                         capture_output=True, text=True, env=env)
+    assert res.returncode == 0, res.stderr
+    return res.stdout
+
+
+def test_run_is_deterministic_across_hash_seeds():
+    assert _probe("0") == _probe("1")
 
 
 def test_locking_group_results_forces_group_win(fmt, real_ratings):
