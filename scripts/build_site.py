@@ -505,17 +505,17 @@ squad data not yet wired in.</p>"""
         reliability_section = f"""
 <h2>Are the probabilities honest? Calibration</h2>
 <p>A forecast is <i>calibrated</i> if the things it calls 70%-likely happen about 70%
-of the time. Across the 320 backtest matches the model's expected calibration error is
-<b>{u_ece:.3f}</b> (0 = perfect) — it is already well-calibrated. Each dot below bins the
-model's predictions by confidence and plots them against how often the outcome actually
-happened; the closer to the diagonal, the better.</p>
+of the time. Across the 320 backtest matches the <b>live form + Dixon-Coles model</b>'s
+expected calibration error is <b>{u_ece:.3f}</b> (0 = perfect) — it is already
+well-calibrated (the Dixon-Coles term, which corrects low-scoring draws, is part of why).
+Each dot below bins the model's predictions by confidence and plots them against how often
+the outcome actually happened; the closer to the diagonal, the better.</p>
 <div class="chartwrap"><canvas id="reliability-chart" height="300"></canvas></div>
 <p class="muted">We tested recalibrating the model (temperature scaling, learned only from
 <i>earlier</i> tournaments): out-of-sample it does not help ({c_ece:.3f} vs {u_ece:.3f}), so
 the published forecast is left <b>uncalibrated</b> — this panel is a measurement, not an
 adjustment. An optimistic in-sample ceiling reaches {ib_ece:.3f}, so the small residual is
-real but can't be learned reliably from five tournaments; its main part — under-pricing
-draws — is better fixed inside the model (Dixon-Coles) than bolted on afterwards.</p>"""
+real but can't be learned reliably from five tournaments.</p>"""
 
     meth_body = f"""
 <h2>How this works</h2>

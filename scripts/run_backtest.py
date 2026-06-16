@@ -27,15 +27,20 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from wcpred import calibration, dixoncoles, elo, goals, metrics
+from wcpred import calibration, covariates, dixoncoles, elo, goals, metrics
 
 EDITIONS = [2006, 2010, 2014, 2018, 2022]
 FIT_WINDOW_YEARS = 28
+FORM_WINDOW = 5
 ET_FACTOR = 0.33
 N_GROUP_SIMS = 10_000
-MODELS = ["elo_poisson", "elo_poisson_dc", "elo_expectancy", "climatology"]
-# elo_poisson with isotonic recalibration learned from PRIOR editions only.
-CAL_MODEL = "elo_poisson_cal"
+# hybrid_form_dc is the live production model (recent-form covariate + Dixon-Coles);
+# reliability/calibration below is computed on it, not on the Elo-only baseline.
+MODELS = ["elo_poisson", "elo_poisson_dc", "elo_expectancy", "climatology",
+          "hybrid_form_dc"]
+# the production model with temperature recalibration learned from PRIOR editions
+# only — a *calibration test*, reported but not applied.
+CAL_MODEL = "hybrid_form_dc_cal"
 ALL_MODELS = MODELS + [CAL_MODEL]
 
 
@@ -67,6 +72,23 @@ def elo_poisson_dc_probs(dr: float, params: dict, knockout: bool) -> np.ndarray:
     n = et.shape[0]
     i = np.arange(n)
     hh, aa = np.meshgrid(i, i, indexing="ij")
+    pw_et = float(et[hh > aa].sum())
+    pd_et = float(np.trace(et))
+    pl_et = float(et[hh < aa].sum())
+    return np.array([pw + pd_ * pw_et, pd_ * pd_et, pl + pd_ * pl_et])
+
+
+def hybrid_probs(dr: float, z: dict, params: dict, knockout: bool) -> np.ndarray:
+    """Production hybrid W/D/L: recent-form-augmented means feeding the DC grid.
+    Knockout 'draw' split into ET-resolved outcomes like the elo_poisson_dc path."""
+    lh, la = covariates.expected_goals(dr, z, params)
+    grid = dixoncoles.scoreline_grid(lh, la, params["rho"])
+    i = np.arange(grid.shape[0])
+    hh, aa = np.meshgrid(i, i, indexing="ij")
+    pw, pd_, pl = float(grid[hh > aa].sum()), float(np.trace(grid)), float(grid[hh < aa].sum())
+    if not knockout:
+        return np.array([pw, pd_, pl])
+    et = dixoncoles.scoreline_grid(lh * ET_FACTOR, la * ET_FACTOR, params["rho"])
     pw_et = float(et[hh > aa].sum())
     pd_et = float(np.trace(et))
     pl_et = float(et[hh < aa].sum())
@@ -123,13 +145,14 @@ def main():
     results = pd.read_csv(ROOT / "data/raw/results.csv")
     print("Replaying Elo history (point-in-time pre-match ratings)...")
     hist = elo.rating_history_frame(results)
+    hist = covariates.build_form_frame(hist, window=FORM_WINDOW)  # adds form_diff
     wc = hist[hist.tournament == "FIFA World Cup"].copy()
     wc["year"] = wc.date.str[:4].astype(int)
 
     rows, qual_rows = [], []
     per_match = {m: {"logloss": [], "brier": [], "rps": []} for m in ALL_MODELS}
-    # accumulated uncalibrated elo_poisson (probs, outcome) from already-scored
-    # editions — the only data the isotonic calibrator may learn from (point-in-time).
+    # accumulated production-model (hybrid) (probs, outcome) from already-scored
+    # editions — the only data the recalibrator may learn from (point-in-time).
     cal_hist_probs, cal_hist_out = [], []
     pooled_rel = {"unc_probs": [], "cal_probs": [], "out": []}
 
@@ -147,6 +170,11 @@ def main():
         # here; decay is selected out-of-sample in the separate sweep below).
         params_dc = dixoncoles.fit(fit.dr.to_numpy(), fit.home_score.to_numpy(),
                                    fit.away_score.to_numpy(), x0=params)
+        # production hybrid: recent-form covariate + Dixon-Coles, fit pre-opening
+        params_hyb = dixoncoles.fit_hybrid(
+            fit.dr.to_numpy(), fit.home_score.to_numpy(), fit.away_score.to_numpy(),
+            Z=covariates._design(fit, ["form_diff"]),
+            covariate_names=["form_diff"], x0=params)
 
         prior_wc = hist[(hist.tournament == "FIFA World Cup") & (hist.date < opening)]
         prior_out = np.array([outcome_index(h, a) for h, a in
@@ -155,40 +183,43 @@ def main():
         draw_share = clim[1]
 
         ed_metrics = {m: {"logloss": [], "brier": [], "rps": []} for m in ALL_MODELS}
-        ed_ep, ed_out = [], []  # uncalibrated elo_poisson probs + outcome for this edition
+        ed_prod, ed_out = [], []  # production (hybrid) probs + outcome for this edition
         for i, r in ed.iterrows():
             knockout = i >= 48
             o = outcome_index(r.home_score, r.away_score)
+            z = {"form_diff": r.form_diff}
             preds = {
                 "elo_poisson": elo_poisson_probs(r.dr, params, knockout),
                 "elo_poisson_dc": elo_poisson_dc_probs(r.dr, params_dc, knockout),
                 "elo_expectancy": elo_expectancy_probs(r.dr, draw_share),
                 "climatology": clim.copy(),
+                "hybrid_form_dc": hybrid_probs(r.dr, z, params_hyb, knockout),
             }
             for m, p in preds.items():
                 ed_metrics[m]["logloss"].append(metrics.log_loss(p, o))
                 ed_metrics[m]["brier"].append(metrics.brier(p, o))
                 ed_metrics[m]["rps"].append(metrics.rps(p, o))
-            ed_ep.append(preds["elo_poisson"])
+            ed_prod.append(preds["hybrid_form_dc"])
             ed_out.append(o)
 
-        # calibrated candidate: isotonic fit on prior editions only (none for 2006).
-        ed_ep = np.array(ed_ep)
+        # recalibration test on the production model: temperature fit on prior
+        # editions only (none for 2006 -> pass through).
+        ed_prod = np.array(ed_prod)
         ed_out = np.array(ed_out)
         if cal_hist_probs:
             temp = calibration.fit_temperature(np.vstack(cal_hist_probs),
                                                np.concatenate(cal_hist_out))
-            ed_cal = calibration.apply_temperature(temp, ed_ep)
+            ed_cal = calibration.apply_temperature(temp, ed_prod)
         else:
-            ed_cal = ed_ep  # no prior tournament to learn from — pass through
+            ed_cal = ed_prod
         for j, o in enumerate(ed_out):
             ed_metrics[CAL_MODEL]["logloss"].append(metrics.log_loss(ed_cal[j], o))
             ed_metrics[CAL_MODEL]["brier"].append(metrics.brier(ed_cal[j], o))
             ed_metrics[CAL_MODEL]["rps"].append(metrics.rps(ed_cal[j], o))
-        pooled_rel["unc_probs"].append(ed_ep)
+        pooled_rel["unc_probs"].append(ed_prod)
         pooled_rel["cal_probs"].append(ed_cal)
         pooled_rel["out"].append(ed_out)
-        cal_hist_probs.append(ed_ep)
+        cal_hist_probs.append(ed_prod)
         cal_hist_out.append(ed_out)
 
         for m in ALL_MODELS:
@@ -276,16 +307,15 @@ def main():
     for p in pooled:
         lines.append(f"| {p['model']} | {p['logloss']:.4f} | {p['brier']:.4f} | {p['rps']:.4f} |")
     lines += ["",
-              "**Calibration.** Expected calibration error (lower = better): the "
-              f"uncalibrated model scores **{reliability['uncalibrated']['ece']:.3f}** — "
-              "already well-calibrated. Leak-free recalibration (`elo_poisson_cal`, "
-              "temperature scaling fit on prior editions only) does not help "
-              f"({reliability['calibrated']['ece']:.3f}); it is *evaluated, not applied* — "
-              "the production forecast stays uncalibrated. An optimistic in-sample isotonic "
-              f"ceiling reaches {reliability['in_sample_best_ece']:.3f}, so the residual "
-              "miscalibration is real but too small to learn reliably from five tournaments. "
-              "Its main component — under-pricing low-probability outcomes (draws) — is "
-              "better fixed structurally by Dixon-Coles than bolted on afterwards.",
+              "**Calibration (production hybrid model).** Expected calibration error "
+              f"(lower = better): the live form + Dixon-Coles model scores "
+              f"**{reliability['uncalibrated']['ece']:.3f}** — already well-calibrated. "
+              "Leak-free recalibration (`hybrid_form_dc_cal`, temperature scaling fit on "
+              f"prior editions only) does not help ({reliability['calibrated']['ece']:.3f}); "
+              "it is *evaluated, not applied* — the production forecast stays uncalibrated. "
+              "An optimistic in-sample isotonic ceiling reaches "
+              f"{reliability['in_sample_best_ece']:.3f}, so the residual miscalibration is "
+              "real but too small to learn reliably from five tournaments.",
               "", "## Per edition (RPS)", "",
               "| Edition | " + " | ".join(ALL_MODELS) + " |",
               "|---|" + "---:|" * len(ALL_MODELS)]
