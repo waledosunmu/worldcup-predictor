@@ -22,7 +22,7 @@ import json
 
 import numpy as np
 
-from . import dixoncoles
+from . import covariates, dixoncoles
 from .goals import expected_goals
 
 HOSTS = {"Mexico", "Canada", "United States"}
@@ -42,7 +42,7 @@ class Simulator:
 
     def __init__(self, fmt: dict, ratings: dict[str, float], params: dict, seed: int = 26,
                  played_group: dict | None = None, ko_winners: dict | None = None,
-                 dixon_coles: bool = False):
+                 dixon_coles: bool = False, team_form: dict[str, float] | None = None):
         self.fmt = fmt
         self.params = params
         self.ratings = ratings
@@ -50,6 +50,10 @@ class Simulator:
         # grid (params must carry 'rho'); otherwise the v0 independent-Poisson
         # path is used unchanged (default keeps the live pipeline behaviour).
         self.dixon_coles = dixon_coles
+        # team_form maps team -> recent-form value; when params carry covariate
+        # betas (the hybrid), expected goals are covariate-augmented with the
+        # fixture's form_diff. Absent/None -> the v0 Elo-only means, unchanged.
+        self.team_form = team_form
         self.played_group = played_group or {}
         self.ko_winners = ko_winners or {}
         self.rng = np.random.default_rng(seed)
@@ -66,9 +70,17 @@ class Simulator:
         for g in self.group_letters:
             for a, b in itertools.combinations(self.groups[g], 2):
                 home, away = (a, b) if (b not in HOSTS) else (b, a)
-                dr = ratings[home] - ratings[away] + (100.0 if home in HOSTS else 0.0)
-                lh, la = expected_goals(dr, params)
+                lh, la = self._means(home, away, 100.0 if home in HOSTS else 0.0)
                 self.group_fixtures.append((g, home, away, lh, la))
+
+    def _means(self, home: str, away: str, host_adv: float) -> tuple[float, float]:
+        """Expected (home, away) goals — covariate-augmented when the hybrid
+        params + team_form are present, else the v0 Elo-only means."""
+        dr = self.ratings[home] - self.ratings[away] + host_adv
+        if self.params.get("beta") and self.team_form is not None:
+            z = {"form_diff": self.team_form.get(home, 0.0) - self.team_form.get(away, 0.0)}
+            return covariates.expected_goals(dr, z, self.params)
+        return expected_goals(dr, self.params)
 
     # ---------- match simulation ----------
 
@@ -76,8 +88,7 @@ class Simulator:
         fixed = self.ko_winners.get(frozenset((a, b)))
         if fixed is not None:
             return fixed
-        dr = self.ratings[a] - self.ratings[b]
-        lh, la = expected_goals(dr, self.params)
+        lh, la = self._means(a, b, 0.0)  # knockouts neutral for everyone
         ga, gb = self._draw_score(lh, la)
         if ga != gb:
             return a if ga > gb else b

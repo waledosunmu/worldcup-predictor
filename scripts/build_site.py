@@ -171,7 +171,7 @@ def page(title: str, body: str, updated: str) -> str:
 <nav><a href="index.html">Forecast</a><a href="groups.html">Groups &amp; matches</a>
 <a href="trends.html">Trends</a><a href="bracket.html">Bracket</a>
 <a href="methodology.html">Methodology</a></nav></div></header>
-<main>{body}<footer>Updated {updated}. Model: Elo–Poisson v0, 100k Monte Carlo
+<main>{body}<footer>Updated {updated}. Model: Elo + recent-form + Dixon-Coles, 100k Monte Carlo
 simulations. Market: bookmaker consensus via The Odds API. Data: martj42
 international results, eloratings.net. Probabilities are estimates, not advice.
 </footer></main>
@@ -446,10 +446,10 @@ coming.</p>"""
     mc_section = ""
     if mc:
         labels = {
-            "v0_poisson": "Elo–Poisson v0 (live default)",
+            "v0_poisson": "Elo–Poisson v0 (baseline)",
             "dixon_coles": "+ Dixon-Coles low-score correction",
             "covar_form": "+ recent-form covariate",
-            "hybrid_form_dc": "Hybrid: form + Dixon-Coles",
+            "hybrid_form_dc": "Hybrid: form + Dixon-Coles (live model)",
         }
         oos = mc["oos_pooled"]
         best = min(labels, key=lambda k: oos[k]["logloss"])
@@ -462,12 +462,13 @@ coming.</p>"""
                 f"<td class='num'>{o['brier']:.4f}</td>"
                 f"<td class='num'>{o['rps']:.4f}</td></tr>")
         mc_section = f"""
-<h2>Model variants: what's on the roadmap</h2>
-<p>Beyond v0, two research extensions are implemented and backtested
-point-in-time over the same 320 matches (lower is better). The Dixon-Coles
-correction adjusts low-scoring scorelines; the covariate model adds recent form
-to the Elo signal. The combined hybrid wins on every metric — but the gains are
-modest, so v0 remains the production default until they earn their place.</p>
+<h2>Model variants</h2>
+<p>Each extension is implemented and backtested point-in-time over the same 320
+matches (lower is better). The Dixon-Coles correction adjusts low-scoring
+scorelines; the covariate model adds recent form to the Elo signal. The combined
+<b>form + Dixon-Coles hybrid wins on every metric</b> — so it is now the
+<b>live production model</b> (log loss {oos['hybrid_form_dc']['logloss']:.3f} vs v0's
+{oos['v0_poisson']['logloss']:.3f}). v0 stays selectable as the baseline.</p>
 <table><tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th>
 <th class="num">RPS</th></tr>{mc_rows}</table>
 <p class="muted">Groll-style squad covariates (market value, squad age,
@@ -512,9 +513,12 @@ data:</p>
 K-factors, margin-of-victory multipliers, +100 home advantage). Our ratings
 correlate {opening['elo_correlation_official']:.3f} with the official
 eloratings.net figures across the 48 finalists.</li>
-<li><b>Goals model.</b> Elo difference maps to expected goals via a Poisson
-model fit by maximum likelihood on {forecast['params']['n']:,} competitive
-internationals since 1998.</li>
+<li><b>Goals model.</b> Elo difference (plus a recent-form differential) maps to
+expected goals, fit by maximum likelihood on {forecast['params']['n']:,} competitive
+internationals since 1998, with a Dixon-Coles correction for low-scoring scorelines.
+This <b>form + Dixon-Coles hybrid</b> is the live model; it beats the Elo-only
+baseline out-of-sample (see Model variants). Pass <code>--model v0</code> for the
+baseline.</li>
 <li><b>Tournament simulation.</b> We simulate the full 2026 format
 {forecast['n_sims']:,} times — 12 groups with FIFA's 2026 tiebreakers
 (head-to-head first, FIFA-ranking last), the eight best third-placed teams into

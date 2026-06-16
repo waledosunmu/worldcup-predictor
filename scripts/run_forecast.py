@@ -22,10 +22,18 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from wcpred import elo, goals
+from wcpred import covariates, dixoncoles, elo, goals
 from wcpred.simulate import HOSTS, Simulator, load_format
 
 FIT_WINDOW_YEARS = 28
+FORM_WINDOW = 5
+
+
+def _grid_wdl(grid):
+    n = grid.shape[0]
+    i = np.arange(n)
+    hh, aa = np.meshgrid(i, i, indexing="ij")
+    return (float(grid[hh > aa].sum()), float(np.trace(grid)), float(grid[hh < aa].sum()))
 
 
 def main():
@@ -33,6 +41,9 @@ def main():
     ap.add_argument("--as-of", default=dt.date.today().isoformat())
     ap.add_argument("--sims", type=int, default=100_000)
     ap.add_argument("--seed", type=int, default=26)
+    ap.add_argument("--model", choices=["hybrid", "v0"], default="hybrid",
+                    help="hybrid (default, production): recent-form covariate + "
+                         "Dixon-Coles; v0: Elo-only independent Poisson")
     args = ap.parse_args()
     as_of = args.as_of
 
@@ -68,16 +79,33 @@ def main():
 
     # ---- point-in-time ratings and goals model ----
     hist = elo.rating_history_frame(results[results.date < as_of])
+    hist = covariates.build_form_frame(hist, window=FORM_WINDOW)
     ratings = elo.compute_ratings(results, as_of=as_of)
     fit_df = hist[(hist.date >= f"{int(as_of[:4]) - FIT_WINDOW_YEARS}-01-01")
                   & (hist.tournament != "Friendly")]
-    params = goals.fit(fit_df.dr.to_numpy(),
-                       fit_df.home_score.to_numpy(), fit_df.away_score.to_numpy())
-    print(f"goals model: a={params['a']:.4f} b={params['b']:.4f} n={params['n']}")
+    dr = fit_df.dr.to_numpy()
+    hg = fit_df.home_score.to_numpy()
+    ag = fit_df.away_score.to_numpy()
+    hybrid = args.model == "hybrid"
+    if hybrid:
+        Z = covariates._design(fit_df, ["form_diff"])
+        params = dixoncoles.fit_hybrid(dr, hg, ag, Z=Z, covariate_names=["form_diff"],
+                                       x0=goals.fit(dr, hg, ag))
+        team_form = covariates.current_form(hist, window=FORM_WINDOW, as_of=as_of)
+        model_name = "elo-poisson-form-dc-conditional"
+        print(f"hybrid goals model: a={params['a']:.4f} b={params['b']:.4f} "
+              f"form_beta={params['beta']['form_diff']:.4f} rho={params['rho']:.4f} "
+              f"n={params['n']}")
+    else:
+        params = goals.fit(dr, hg, ag)
+        team_form = None
+        model_name = "elo-poisson-v0-conditional"
+        print(f"v0 goals model: a={params['a']:.4f} b={params['b']:.4f} n={params['n']}")
 
     # ---- simulate ----
     sim = Simulator(fmt, ratings, params, seed=args.seed,
-                    played_group=played_group, ko_winners=ko_winners)
+                    played_group=played_group, ko_winners=ko_winners,
+                    dixon_coles=hybrid, team_form=team_form)
     out = sim.run(args.sims)
 
     fixtures = []
@@ -90,14 +118,17 @@ def main():
             sh, sa = (gf, ga) if first == home else (ga, gf)
             fx.update(played=True, score_home=sh, score_away=sa)
         else:
-            dr = ratings[home] - ratings[away] + (100.0 if home in HOSTS else 0.0)
-            pw, pd_, pl = goals.outcome_probs(dr, params)
+            if hybrid:  # lh, la already carry the form covariate
+                pw, pd_, pl = _grid_wdl(dixoncoles.scoreline_grid(lh, la, params["rho"]))
+            else:
+                dr = ratings[home] - ratings[away] + (100.0 if home in HOSTS else 0.0)
+                pw, pd_, pl = goals.outcome_probs(dr, params)
             fx.update(played=False, xg_home=round(lh, 2), xg_away=round(la, 2),
                       p_home=round(pw, 4), p_draw=round(pd_, 4), p_away=round(pl, 4))
         fixtures.append(fx)
 
     payload = {
-        "generated": as_of, "as_of": as_of, "model": "elo-poisson-v0-conditional",
+        "generated": as_of, "as_of": as_of, "model": model_name,
         "n_sims": out["n_sims"], "params": params,
         "n_played_group": len(played_group), "n_played_ko": len(ko_winners),
         "ratings": {t: round(ratings[t], 1) for t in teams48},

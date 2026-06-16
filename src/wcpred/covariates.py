@@ -108,6 +108,27 @@ def build_form_frame(hist: pd.DataFrame, window: int = 5) -> pd.DataFrame:
     return out
 
 
+def current_form(hist: pd.DataFrame, window: int = 5,
+                 as_of: str | None = None) -> dict[str, float]:
+    """Each team's form *now*: mean goal difference over its last `window`
+    completed matches strictly before `as_of` (point-in-time). Teams with no
+    prior matches are absent (callers treat missing as 0.0).
+
+    This is the forward-looking counterpart of build_form_frame: that records the
+    pre-match form for historical rows; this exposes the final per-team state so
+    the live forecast can attach a `form_diff` to as-yet-unplayed fixtures.
+    """
+    from collections import defaultdict, deque
+    h = hist if as_of is None else hist[hist.date < as_of]
+    h = h.sort_values("date")
+    recent: dict[str, deque] = defaultdict(lambda: deque(maxlen=window))
+    cols = ["home_team", "away_team", "home_score", "away_score"]
+    for hh, aa, hs, as_ in h[cols].itertuples(index=False):
+        recent[hh].append(hs - as_)
+        recent[aa].append(as_ - hs)
+    return {t: float(np.mean(d)) for t, d in recent.items() if d}
+
+
 def add_host_covariate(frame: pd.DataFrame) -> pd.DataFrame:
     """`host` differential: +1 when the home team is at home (non-neutral)."""
     out = frame.copy()
