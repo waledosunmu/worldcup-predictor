@@ -2,7 +2,7 @@
  "captured": "2026-06-15T215728Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-15T215728Z.json",
-  "soccer_fifa_world_cup_2026-06-14T124821Z.json"
+  "(reused 64 markets from previous consensus.json)"
  ],
  "n_outright_books": 5,
  "outright_consensus": {
@@ -279,16 +279,16 @@
    "diff": -0.0008603969254246972
   },
   {
-   "team": "Saudi Arabia",
-   "market": 0.0008560912398215065,
-   "model": 1e-05,
-   "diff": -0.0008460912398215065
-  },
-  {
    "team": "Qatar",
    "market": 0.0008560912398215065,
    "model": 0.0,
    "diff": -0.0008560912398215065
+  },
+  {
+   "team": "Saudi Arabia",
+   "market": 0.0008560912398215065,
+   "model": 1e-05,
+   "diff": -0.0008460912398215065
   },
   {
    "team": "Panama",
