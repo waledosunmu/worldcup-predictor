@@ -100,6 +100,8 @@ a.team-link:hover { text-decoration:underline; }
 .advrow .bar { flex:1; }
 .modal-sched .fixture { margin:.5rem 0; }
 .muted.small { font-size:.78rem; margin:.5rem 0 .2rem; }
+.scoreline { font-size:.82rem; color:var(--muted); margin:.1rem 0 .2rem; }
+.scoreline b { color:var(--ink); }
 /* results-so-far pick badges */
 .fixture.result .picks { margin:.4rem 0 .2rem; font-size:.85rem; color:var(--muted);
             display:flex; flex-wrap:wrap; gap:.4rem 1rem; align-items:center; }

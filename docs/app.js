@@ -481,7 +481,7 @@
       } else if (m.model) {
         html += "<div class='fixture'><span class='date'>" + dt +
           "</span><span class='teams'>" + esc(m.home) + " vs " + esc(m.away) + "</span>" +
-          probrow(m.model, m.home, m.away) +
+          probrow(m.model, m.home, m.away) + scorelineHtml(m) +
           (m.explanation ? "<details><summary>Why the model thinks this</summary><p>" +
             esc(m.explanation) + "</p></details>" : "") + "</div>";
       }
@@ -514,6 +514,14 @@
         },
       });
     }
+  }
+
+  function scorelineHtml(m) {
+    var ts = m.top_scores;
+    if (!ts || !ts.length) return "";
+    var t = ts[0];
+    return "<div class='scoreline'>Most likely scoreline <b>" + t.h + "&ndash;" +
+      t.a + "</b> (" + pct(t.p) + ")</div>";
   }
 
   function probrow(m, home, away) {

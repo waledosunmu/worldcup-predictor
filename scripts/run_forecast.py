@@ -36,6 +36,15 @@ def _grid_wdl(grid):
     return (float(grid[hh > aa].sum()), float(np.trace(grid)), float(grid[hh < aa].sum()))
 
 
+def _top_scores(grid, k: int = 3):
+    """The k most-likely (home, away) scorelines from a joint grid, descending."""
+    n = grid.shape[0]
+    flat = grid.ravel()
+    idx = np.argpartition(flat, -k)[-k:]
+    idx = idx[np.argsort(flat[idx])[::-1]]
+    return [{"h": int(i // n), "a": int(i % n), "p": round(float(flat[i]), 4)} for i in idx]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--as-of", default=dt.date.today().isoformat())
@@ -119,12 +128,15 @@ def main():
             fx.update(played=True, score_home=sh, score_away=sa)
         else:
             if hybrid:  # lh, la already carry the form covariate
-                pw, pd_, pl = _grid_wdl(dixoncoles.scoreline_grid(lh, la, params["rho"]))
+                grid = dixoncoles.scoreline_grid(lh, la, params["rho"])
+                pw, pd_, pl = _grid_wdl(grid)
             else:
                 dr = ratings[home] - ratings[away] + (100.0 if home in HOSTS else 0.0)
                 pw, pd_, pl = goals.outcome_probs(dr, params)
+                grid = dixoncoles.scoreline_grid(lh, la, 0.0)  # for scoreline only
             fx.update(played=False, xg_home=round(lh, 2), xg_away=round(la, 2),
-                      p_home=round(pw, 4), p_draw=round(pd_, 4), p_away=round(pl, 4))
+                      p_home=round(pw, 4), p_draw=round(pd_, 4), p_away=round(pl, 4),
+                      top_scores=_top_scores(grid, 3))
         fixtures.append(fx)
 
     payload = {

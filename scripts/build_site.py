@@ -125,6 +125,8 @@ a.team-link:hover { text-decoration:underline; }
 .advrow .bar { flex:1; }
 .modal-sched .fixture { margin:.5rem 0; }
 .muted.small { font-size:.78rem; margin:.5rem 0 .2rem; }
+.scoreline { font-size:.82rem; color:var(--muted); margin:.1rem 0 .2rem; }
+.scoreline b { color:var(--ink); }
 /* results-so-far pick badges */
 .fixture.result .picks { margin:.4rem 0 .2rem; font-size:.85rem; color:var(--muted);
             display:flex; flex-wrap:wrap; gap:.4rem 1rem; align-items:center; }
@@ -185,6 +187,16 @@ aria-label="Close">&times;</button><div id="team-modal-content"></div></div></di
 def bar(p: float, cls: str, scale: float = 1.0) -> str:
     return (f'<div class="bar"><div class="{cls}" '
             f'style="width:{min(100, p / scale * 100):.1f}%"></div></div>')
+
+
+def scoreline(fx) -> str:
+    """Most-likely-scoreline line from a fixture's top_scores, or '' if absent."""
+    ts = fx.get("top_scores") or []
+    if not ts:
+        return ""
+    t = ts[0]
+    return (f'<div class="scoreline">Most likely scoreline '
+            f'<b>{t["h"]}–{t["a"]}</b> ({t["p"]:.0%})</div>')
 
 
 def probrow(ph, pd_, pa, h, a) -> str:
@@ -251,6 +263,7 @@ def main():
             f'Group {fx["group"]}</span>'
             f'<span class="teams">{m["home"]} vs {m["away"]}</span>'
             + probrow(fx["p_home"], fx["p_draw"], fx["p_away"], m["home"], m["away"])
+            + scoreline(fx)
             + f'<details><summary>Why the model thinks this</summary><p>{expl}</p>'
               f'</details></div>')
 
@@ -393,6 +406,7 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
                     f'<span class="teams">{fx["home"]} vs {fx["away"]}</span>'
                     + probrow(fx["p_home"], fx["p_draw"], fx["p_away"],
                               fx["home"], fx["away"])
+                    + scoreline(fx)
                     + f'<details><summary>Reasoning</summary><p>{expl}</p>'
                       f'</details></div>')
         groups_body += (f"<h3>Group {g}</h3><table><tr><th>Team</th>"
@@ -627,6 +641,7 @@ Scroll horizontally on mobile.</p>
                 "model": {"p_home": fx["p_home"], "p_draw": fx["p_draw"],
                           "p_away": fx["p_away"]},
                 "market": market_mk,
+                "top_scores": fx.get("top_scores"),
                 "explanation": fixture_explanation(fx, ratings, ranks, results,
                                                    as_of, mkt),
             })
