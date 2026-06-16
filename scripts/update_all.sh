@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 PY="${PYTHON:-.venv/bin/python}"
 
 echo "== refresh results & Elo =="
-for f in results.csv shootouts.csv; do
+for f in results.csv shootouts.csv goalscorers.csv; do
   curl -sL -o "data/raw/$f" "https://raw.githubusercontent.com/martj42/international_results/master/$f"
 done
 curl -sL -o data/raw/elo_world.tsv "https://eloratings.net/World.tsv"
@@ -19,6 +19,9 @@ echo "== snapshot odds =="
 
 echo "== forecast (conditional on played results) =="
 "$PY" scripts/run_forecast.py --sims 100000
+
+echo "== golden boot race =="
+"$PY" scripts/run_golden_boot.py
 
 echo "== consensus =="
 "$PY" scripts/run_consensus.py

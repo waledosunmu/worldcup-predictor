@@ -216,6 +216,7 @@ def main():
     backtest = json.load(open(ROOT / "output/backtest_2006_2022.json"))
     tbt = load_optional(ROOT / "output/tournament_backtest_2006_2022.json")
     mc = load_optional(ROOT / "output/model_comparison.json")
+    gb = load_optional(ROOT / "output/golden_boot.json")
     fmt = json.load(open(ROOT / "data/format_2026.json"))
     results = pd.read_csv(ROOT / "data/raw/results.csv")
 
@@ -267,6 +268,27 @@ def main():
             + f'<details><summary>Why the model thinks this</summary><p>{expl}</p>'
               f'</details></div>')
 
+    golden_boot_section = ""
+    if gb and gb.get("players"):
+        gb_rows = ""
+        for i, p in enumerate(gb["players"][:12], 1):
+            gb_rows += (
+                f"<tr><td class='num'>{i}</td>"
+                f"<td><a class='team-link' data-team=\"{p['team']}\">{p['scorer']}</a>"
+                f"<br><span class='muted'>{p['team']}</span></td>"
+                f"<td class='num'>{p['current']}</td>"
+                f"<td class='num'>{p['exp_goals']:.1f}</td>"
+                f"<td class='num'>{p['p_win']:.0%}{bar(p['p_win'], 'model', gb['players'][0]['p_win'])}</td>"
+                f"</tr>")
+        golden_boot_section = f"""
+<h2>Golden Boot race</h2>
+<p class="muted">Each team's model-expected tournament goals shared among its recent
+scorers, then Poisson-simulated. Goals already scored count; own goals don't,
+penalties do. Contenders are recent scorers for finalists — an approximation of the
+squads, not official rosters.</p>
+<table><tr><th class="num">#</th><th>Player</th><th class="num">Goals</th>
+<th class="num">Exp.</th><th class="num">P(Golden Boot)</th></tr>{gb_rows}</table>"""
+
     index_body = f"""
 <h2>Who wins the 2026 World Cup?</h2>
 <p class="legend"><span><i class="dot" style="background:var(--model)"></i>
@@ -295,6 +317,7 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
 <div class="chartwrap"><div id="divergence"></div></div>
 <h2>Title-odds movers &amp; live track record</h2>
 <div class="cards"><div id="movers"></div><div id="track-record"></div></div>
+{golden_boot_section}
 <h2>Next matches</h2>{up_html}
 <p><a href="groups.html">All 72 group fixtures with predictions →</a></p>"""
 

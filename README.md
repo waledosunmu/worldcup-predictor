@@ -59,7 +59,8 @@ World Cups, published with per-prediction reasoning.
 ```bash
 python3 -m venv .venv && .venv/bin/pip install pandas numpy scipy scikit-learn
 cp .env.example .env                                  # add your ODDS_API_KEY
-.venv/bin/python scripts/run_forecast.py              # conditional on played results
+.venv/bin/python scripts/run_forecast.py              # conditional on played results (hybrid)
+.venv/bin/python scripts/run_golden_boot.py           # top-scorer race (goal-share model)
 .venv/bin/python scripts/run_backtest.py              # 2006-2022 match-level validation
 .venv/bin/python scripts/run_tournament_backtest.py   # 2006-2022 whole-tournament validation
 .venv/bin/python scripts/snapshot_odds.py             # capture odds (kickoff-aware)
