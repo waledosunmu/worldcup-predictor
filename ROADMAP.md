@@ -34,10 +34,24 @@ Living list of what's shipped and what's next. Dates are absolute.
   snapshot costs ~6, so this directly governs whether we stay within quota.
 - **Promote the hybrid model** if it keeps beating v0 out-of-sample as results land.
 
+## Shipped (continued)
+- **Hybrid model is live** — the recent-form covariate + Dixon-Coles hybrid replaced the
+  Elo-only Poisson as the production goals model (`run_forecast.py` default; `--model v0`
+  for the baseline). Beats v0 OOS: pooled log loss 0.972→0.963 over 2006–2022.
+- **Most-likely scoreline** per fixture, from the Dixon-Coles joint grid.
+
 ## Later
-- **Groll-style squad covariates** (market value, squad age, Champions-League minutes) —
-  the strongest missing predictors; need external per-tournament squad data, scaffolded
-  behind `COVARIATE_SPEC`.
+- **Groll-style squad covariates** (market value, EA-FC ratings, squad age, CL minutes) —
+  the strongest *missing* predictors, but **researched and deferred** (2026-06): for a
+  public, CI-driven, point-in-time-backtested repo they're a poor fit — EA/Transfermarkt
+  own the data (CC0 mirror tags are cosmetic), and clean no-auth sources only reach back
+  to FIFA 18, so a leak-free 2006–2022 backtest isn't possible without grey-area scraping.
+  The credential-free, licence-clean, fully-backtestable squad-strength signal is Elo +
+  recent form — which the live hybrid already uses. Kept scaffolded behind `COVARIATE_SPEC`,
+  never fabricated. Revisit only if a clean, historically-complete, licence-safe source
+  appears (e.g. Wikipedia rosters + an openly-licensed strength rating).
+- **Golden Boot / top-scorer model** — feasible cleanly via martj42 `goalscorers.csv`
+  (CC0, scorer-level, 1916+): per-player Poisson scoring rates × the Monte-Carlo fixtures.
 - **Scenario / what-if** — let users fix a hypothetical result and see updated
   probabilities (client-side conditional or precomputed).
 - **Finer intraday odds series** — if the movement tracker shows meaningful late drift,

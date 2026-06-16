@@ -24,6 +24,19 @@ IMPLEMENTED (derivable from data/raw/results.csv, strictly backward-looking):
 
 NOT IMPLEMENTED -- external data required (see COVARIATE_SPEC):
   market_value_diff, squad_age_diff, cl_players_diff, confederation, ...
+
+Data-availability finding (2026-06, researched before promoting the hybrid live):
+Groll's strongest covariate -- squad market value / video-game (EA FC) ratings --
+is a poor fit for a public, CI-driven, point-in-time-backtested repo:
+  * Licence/IP: EA owns the player ratings and Transfermarkt asserts DB rights;
+    the "CC0/MIT" tags on Kaggle mirrors are cosmetic, not legal cover. Committing
+    a derived ratings CSV is itself the redistribution that triggers the risk.
+  * Backtest coverage: clean, no-auth EA datasets reach back only to FIFA 18, so a
+    leak-free 2006-2022 backtest (this repo's validation gate) is impossible without
+    grey-area scraping of fifaindex.com for 2006/2010/2014.
+The credential-free, licence-clean, fully-backtestable squad-strength signal is
+Elo + recent form (CC BY-SA / CC0, 1872+), which is exactly the hybrid now live.
+So these covariates stay scaffolded, not fabricated and not bolted on. See ROADMAP.
 """
 
 import numpy as np
@@ -50,7 +63,9 @@ COVARIATE_SPEC = {
         "available": False,
         "differential": True,
         "desc": "log total squad market value, home minus away (Groll's top predictor)",
-        "source": "transfermarkt squad valuations per tournament -- NOT in repo",
+        "source": ("transfermarkt squad valuations / EA-FC ratings per tournament -- "
+                   "NOT in repo. Researched: licence/IP risk for a public repo and no "
+                   "clean no-auth source pre-2018, so not backtestable leak-free."),
     },
     "squad_age_diff": {
         "available": False,
