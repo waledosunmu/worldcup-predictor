@@ -2,7 +2,7 @@
  "captured": "2026-06-15T215728Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-15T215728Z.json",
-  "soccer_fifa_world_cup_2026-06-14T124821Z.json"
+  "(reused 64 markets from previous consensus.json)"
  ],
  "n_outright_books": 5,
  "outright_consensus": {
@@ -279,16 +279,16 @@
    "diff": -0.0008603969254246972
   },
   {
-   "team": "Saudi Arabia",
-   "market": 0.0008560912398215065,
-   "model": 1e-05,
-   "diff": -0.0008460912398215065
-  },
-  {
    "team": "Qatar",
    "market": 0.0008560912398215065,
    "model": 0.0,
    "diff": -0.0008560912398215065
+  },
+  {
+   "team": "Saudi Arabia",
+   "market": 0.0008560912398215065,
+   "model": 1e-05,
+   "diff": -0.0008460912398215065
   },
   {
    "team": "Panama",
@@ -309,16 +309,16 @@
    "diff": -0.000637998821327127
   },
   {
-   "team": "New Zealand",
-   "market": 0.0006713270920750352,
-   "model": 6e-05,
-   "diff": -0.0006113270920750351
-  },
-  {
    "team": "South Africa",
    "market": 0.0006713270920750352,
    "model": 0.0,
    "diff": -0.0006713270920750352
+  },
+  {
+   "team": "New Zealand",
+   "market": 0.0006713270920750352,
+   "model": 6e-05,
+   "diff": -0.0006113270920750351
   },
   {
    "team": "Uzbekistan",
@@ -333,16 +333,16 @@
    "diff": -0.0005402945665555027
   },
   {
-   "team": "Haiti",
-   "market": 0.0005167202887150852,
-   "model": 5e-05,
-   "diff": -0.00046672028871508515
-  },
-  {
    "team": "Jordan",
    "market": 0.0005167202887150852,
    "model": 0.0002,
    "diff": -0.0003167202887150852
+  },
+  {
+   "team": "Haiti",
+   "market": 0.0005167202887150852,
+   "model": 5e-05,
+   "diff": -0.00046672028871508515
   }
  ],
  "matches": [
