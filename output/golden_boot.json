@@ -8,176 +8,176 @@
    "scorer": "Lautaro Mart\u00ednez",
    "team": "Argentina",
    "current": 0,
-   "exp_goals": 4.44,
-   "p_win": 0.21850926767676915
+   "exp_goals": 4.37,
+   "p_win": 0.2101218221582355
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 0,
-   "exp_goals": 4.03,
-   "p_win": 0.16087365764790457
+   "exp_goals": 4.01,
+   "p_win": 0.15980738276429143
   },
   {
    "scorer": "Ra\u00fal Jim\u00e9nez",
    "team": "Mexico",
    "current": 1,
-   "exp_goals": 3.84,
-   "p_win": 0.10968863600288503
+   "exp_goals": 3.85,
+   "p_win": 0.11469792973692879
   },
   {
    "scorer": "Cristiano Ronaldo",
    "team": "Portugal",
    "current": 0,
-   "exp_goals": 3.17,
-   "p_win": 0.07055288672438699
+   "exp_goals": 3.16,
+   "p_win": 0.07067650022200066
   },
   {
    "scorer": "Enner Valencia",
    "team": "Ecuador",
    "current": 0,
-   "exp_goals": 3.11,
-   "p_win": 0.06357087662337688
+   "exp_goals": 3.13,
+   "p_win": 0.06527165318015345
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 0,
-   "exp_goals": 2.96,
-   "p_win": 0.054989162337662364
+   "exp_goals": 2.91,
+   "p_win": 0.051609536796536806
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 1,
    "exp_goals": 2.93,
-   "p_win": 0.03249736796536792
+   "p_win": 0.03362850621600606
   },
   {
    "scorer": "Ismael Saibari",
    "team": "Morocco",
    "current": 1,
    "exp_goals": 2.77,
-   "p_win": 0.024717124458874487
+   "p_win": 0.02505048312798313
   },
   {
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 0,
    "exp_goals": 2.4,
-   "p_win": 0.02337545129870136
-  },
-  {
-   "scorer": "Erling Haaland",
-   "team": "Norway",
-   "current": 0,
-   "exp_goals": 2.22,
-   "p_win": 0.01805976479076486
+   "p_win": 0.024158436729936766
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 0,
-   "exp_goals": 2.23,
-   "p_win": 0.017240598124098193
+   "exp_goals": 2.25,
+   "p_win": 0.018899200002611864
   },
   {
-   "scorer": "C\u00e9sar Montes",
-   "team": "Mexico",
+   "scorer": "Erling Haaland",
+   "team": "Norway",
    "current": 0,
-   "exp_goals": 2.13,
-   "p_win": 0.014817561688311708
+   "exp_goals": 2.23,
+   "p_win": 0.017830043290043344
   },
   {
    "scorer": "Brahim D\u00edaz",
    "team": "Morocco",
    "current": 0,
    "exp_goals": 2.12,
-   "p_win": 0.014672767316017346
+   "p_win": 0.016156722943722997
+  },
+  {
+   "scorer": "C\u00e9sar Montes",
+   "team": "Mexico",
+   "current": 0,
+   "exp_goals": 2.13,
+   "p_win": 0.015048151737151768
   },
   {
    "scorer": "Juli\u00e1n Alvarez",
    "team": "Argentina",
    "current": 0,
-   "exp_goals": 1.97,
-   "p_win": 0.01098798556998555
-  },
-  {
-   "scorer": "Raphinha",
-   "team": "Brazil",
-   "current": 0,
-   "exp_goals": 1.93,
-   "p_win": 0.010532248196248168
+   "exp_goals": 1.94,
+   "p_win": 0.01035885129576303
   },
   {
    "scorer": "Folarin Balogun",
    "team": "United States",
    "current": 2,
    "exp_goals": 2.86,
-   "p_win": 0.010156408369408332
+   "p_win": 0.010006312556724292
   },
   {
-   "scorer": "Viktor Gy\u00f6keres",
-   "team": "Sweden",
-   "current": 1,
-   "exp_goals": 2.33,
-   "p_win": 0.008956080808080793
+   "scorer": "Raphinha",
+   "team": "Brazil",
+   "current": 0,
+   "exp_goals": 1.93,
+   "p_win": 0.009760620915032658
   },
   {
    "scorer": "Daichi Kamada",
    "team": "Japan",
    "current": 1,
    "exp_goals": 2.35,
-   "p_win": 0.008693937950937931
+   "p_win": 0.009733383838383814
+  },
+  {
+   "scorer": "Viktor Gy\u00f6keres",
+   "team": "Sweden",
+   "current": 1,
+   "exp_goals": 2.34,
+   "p_win": 0.009256048265460002
   },
   {
    "scorer": "Amad Diallo",
    "team": "Ivory Coast",
    "current": 1,
    "exp_goals": 2.3,
-   "p_win": 0.008560438672438652
+   "p_win": 0.0089606748251748
   },
   {
    "scorer": "Mikel Merino",
    "team": "Spain",
    "current": 0,
-   "exp_goals": 1.82,
-   "p_win": 0.008087107864357849
-  },
-  {
-   "scorer": "Jonathan David",
-   "team": "Canada",
-   "current": 0,
-   "exp_goals": 1.79,
-   "p_win": 0.007936560245310233
+   "exp_goals": 1.84,
+   "p_win": 0.00894810483960482
   },
   {
    "scorer": "Luis D\u00edaz",
    "team": "Colombia",
    "current": 0,
    "exp_goals": 1.8,
-   "p_win": 0.007869445165945154
+   "p_win": 0.007824846986346974
   },
   {
-   "scorer": "Mohamed Amoura",
-   "team": "Algeria",
+   "scorer": "Jonathan David",
+   "team": "Canada",
    "current": 0,
-   "exp_goals": 1.82,
-   "p_win": 0.007419197330447318
+   "exp_goals": 1.79,
+   "p_win": 0.0076576515151515
   },
   {
    "scorer": "Oh Hyeon-gyu",
    "team": "South Korea",
    "current": 1,
    "exp_goals": 2.23,
-   "p_win": 0.006723863997113991
+   "p_win": 0.006631983627483621
   },
   {
    "scorer": "Breel Embolo",
    "team": "Switzerland",
    "current": 1,
    "exp_goals": 2.22,
-   "p_win": 0.006186581529581522
+   "p_win": 0.006606056998556997
+  },
+  {
+   "scorer": "Mohamed Salah",
+   "team": "Egypt",
+   "current": 0,
+   "exp_goals": 1.71,
+   "p_win": 0.0064846461675579295
   }
  ]
 }
