@@ -4,28 +4,28 @@ As of 2026-06-17. Goal-share model on martj42 goalscorers.csv (CC0); contenders 
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Lautaro Martínez | Argentina | 0 | 4.4 | 21.0% |
-| 2 | Harry Kane | England | 0 | 4.0 | 16.0% |
-| 3 | Raúl Jiménez | Mexico | 1 | 3.9 | 11.5% |
-| 4 | Cristiano Ronaldo | Portugal | 0 | 3.2 | 7.1% |
-| 5 | Enner Valencia | Ecuador | 0 | 3.1 | 6.5% |
-| 6 | Lionel Messi | Argentina | 0 | 2.9 | 5.2% |
-| 7 | Vinícius Júnior | Brazil | 1 | 2.9 | 3.4% |
-| 8 | Ismael Saibari | Morocco | 1 | 2.8 | 2.5% |
-| 9 | Kylian Mbappé | France | 0 | 2.4 | 2.4% |
-| 10 | Mikel Oyarzabal | Spain | 0 | 2.2 | 1.9% |
-| 11 | Erling Haaland | Norway | 0 | 2.2 | 1.8% |
-| 12 | Brahim Díaz | Morocco | 0 | 2.1 | 1.6% |
-| 13 | César Montes | Mexico | 0 | 2.1 | 1.5% |
-| 14 | Julián Alvarez | Argentina | 0 | 1.9 | 1.0% |
-| 15 | Folarin Balogun | United States | 2 | 2.9 | 1.0% |
-| 16 | Raphinha | Brazil | 0 | 1.9 | 1.0% |
-| 17 | Daichi Kamada | Japan | 1 | 2.4 | 1.0% |
-| 18 | Viktor Gyökeres | Sweden | 1 | 2.3 | 0.9% |
-| 19 | Amad Diallo | Ivory Coast | 1 | 2.3 | 0.9% |
-| 20 | Mikel Merino | Spain | 0 | 1.8 | 0.9% |
-| 21 | Luis Díaz | Colombia | 0 | 1.8 | 0.8% |
-| 22 | Jonathan David | Canada | 0 | 1.8 | 0.8% |
-| 23 | Oh Hyeon-gyu | South Korea | 1 | 2.2 | 0.7% |
-| 24 | Breel Embolo | Switzerland | 1 | 2.2 | 0.7% |
-| 25 | Mohamed Salah | Egypt | 0 | 1.7 | 0.6% |
+| 1 | Lionel Messi | Argentina | 3 | 7.1 | 53.1% |
+| 2 | Kylian Mbappé | France | 2 | 4.8 | 9.7% |
+| 3 | Lautaro Martínez | Argentina | 0 | 4.1 | 7.4% |
+| 4 | Harry Kane | England | 0 | 4.0 | 7.3% |
+| 5 | Erling Haaland | Norway | 2 | 4.3 | 5.4% |
+| 6 | Raúl Jiménez | Mexico | 1 | 3.8 | 4.5% |
+| 7 | Cristiano Ronaldo | Portugal | 0 | 3.1 | 2.8% |
+| 8 | Enner Valencia | Ecuador | 0 | 3.1 | 2.6% |
+| 9 | Vinícius Júnior | Brazil | 1 | 2.9 | 1.0% |
+| 10 | Ismael Saibari | Morocco | 1 | 2.8 | 0.7% |
+| 11 | Mikel Oyarzabal | Spain | 0 | 2.2 | 0.5% |
+| 12 | César Montes | Mexico | 0 | 2.1 | 0.5% |
+| 13 | Brahim Díaz | Morocco | 0 | 2.1 | 0.4% |
+| 14 | Raphinha | Brazil | 0 | 1.9 | 0.3% |
+| 15 | Folarin Balogun | United States | 2 | 2.9 | 0.2% |
+| 16 | Daichi Kamada | Japan | 1 | 2.4 | 0.2% |
+| 17 | Amad Diallo | Ivory Coast | 1 | 2.3 | 0.2% |
+| 18 | Julián Alvarez | Argentina | 0 | 1.8 | 0.2% |
+| 19 | Luis Díaz | Colombia | 0 | 1.8 | 0.2% |
+| 20 | Viktor Gyökeres | Sweden | 1 | 2.3 | 0.2% |
+| 21 | Jonathan David | Canada | 0 | 1.8 | 0.2% |
+| 22 | Mikel Merino | Spain | 0 | 1.8 | 0.2% |
+| 23 | Oh Hyeon-gyu | South Korea | 1 | 2.2 | 0.2% |
+| 24 | Mohamed Salah | Egypt | 0 | 1.7 | 0.2% |
+| 25 | Breel Embolo | Switzerland | 1 | 2.2 | 0.2% |
