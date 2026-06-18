@@ -2,7 +2,7 @@
  "captured": "2026-06-18T011846Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-18T011846Z.json",
-  "soccer_fifa_world_cup_2026-06-18T011846Z.json"
+  "(reused 50 markets from previous consensus.json)"
  ],
  "n_outright_books": 5,
  "outright_consensus": {
@@ -267,6 +267,12 @@
    "diff": -0.0011173602643624273
   },
   {
+   "team": "Iran",
+   "market": 0.000945125721730935,
+   "model": 0.00419,
+   "diff": 0.003244874278269065
+  },
+  {
    "team": "Tunisia",
    "market": 0.000945125721730935,
    "model": 8e-05,
@@ -277,12 +283,6 @@
    "market": 0.000945125721730935,
    "model": 1e-05,
    "diff": -0.000935125721730935
-  },
-  {
-   "team": "Iran",
-   "market": 0.000945125721730935,
-   "model": 0.00419,
-   "diff": 0.003244874278269065
   },
   {
    "team": "Panama",
