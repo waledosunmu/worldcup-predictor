@@ -2,7 +2,7 @@
  "captured": "2026-06-20T011327Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-20T011327Z.json",
-  "soccer_fifa_world_cup_2026-06-20T011327Z.json"
+  "(reused 42 markets from previous consensus.json)"
  ],
  "n_outright_books": 5,
  "outright_consensus": {
@@ -285,16 +285,16 @@
    "diff": -0.000903717146903368
   },
   {
-   "team": "New Zealand",
-   "market": 0.000712477372878668,
-   "model": 6e-05,
-   "diff": -0.000652477372878668
-  },
-  {
    "team": "Cape Verde",
    "market": 0.000712477372878668,
    "model": 1e-05,
    "diff": -0.000702477372878668
+  },
+  {
+   "team": "New Zealand",
+   "market": 0.000712477372878668,
+   "model": 6e-05,
+   "diff": -0.000652477372878668
   },
   {
    "team": "South Africa",
@@ -333,16 +333,16 @@
    "diff": -0.0003164780465911537
   },
   {
-   "team": "Qatar",
-   "market": 0.0004939428122924855,
-   "model": 0.0,
-   "diff": -0.0004939428122924855
-  },
-  {
    "team": "Haiti",
    "market": 0.0004939428122924855,
    "model": 5e-05,
    "diff": -0.00044394281229248546
+  },
+  {
+   "team": "Qatar",
+   "market": 0.0004939428122924855,
+   "model": 0.0,
+   "diff": -0.0004939428122924855
   }
  ],
  "matches": [
