@@ -64,16 +64,30 @@ def outright_consensus(event: dict, canon=lambda n: n,
     stale non-qualified teams — and uses the books that cover every universe
     team. Probabilities are overround-corrected per book, then renormalized
     over the universe.
+
+    Mid-tournament, bookmakers drop eliminated teams from their outrights market.
+    When no book covers the full `universe`, the effective universe is shrunk to
+    teams still quoted by at least one book (universe ∩ quoted). This means
+    eliminated teams naturally receive a market probability of 0 (absent from the
+    returned dict, callers should use `.get(team, 0.0)`). Returns ({}, 0) when
+    there are no bookmaker rows at all.
     """
     books = []
     for bk in event.get("bookmakers", []):
         for mkt in bk.get("markets", []):
             if mkt["key"] == "outrights":
                 books.append({canon(o["name"]): o["price"] for o in mkt["outcomes"]})
-    teams = sorted(universe if universe is not None
-                   else set().union(*[set(b) for b in books]))
+    if not books:
+        return {}, 0
+    all_quoted = set().union(*[set(b) for b in books])
+    effective = (universe & all_quoted) if universe is not None else all_quoted
+    teams = sorted(effective)
+    if not teams:
+        return {}, 0
     rows = [implied_probs([prices[t] for t in teams])
             for prices in books if set(teams) <= set(prices)]
+    if not rows:
+        return {t: 0.0 for t in teams}, 0
     p = consensus(rows)
     return dict(zip(teams, map(float, p))), len(rows)
 
