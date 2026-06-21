@@ -2,7 +2,7 @@
  "captured": "2026-06-21T054620Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-21T054620Z.json",
-  "soccer_fifa_world_cup_2026-06-21T054620Z.json"
+  "(reused 37 markets from previous consensus.json)"
  ],
  "n_outright_books": 4,
  "outright_consensus": {
@@ -163,16 +163,16 @@
    "diff": -0.0016631760436893748
   },
   {
-   "team": "Croatia",
-   "market": 0.006301750376460076,
-   "model": 0.01316,
-   "diff": 0.006858249623539924
-  },
-  {
    "team": "Ivory Coast",
    "market": 0.006301750376460076,
    "model": 0.00069,
    "diff": -0.005611750376460076
+  },
+  {
+   "team": "Croatia",
+   "market": 0.006301750376460076,
+   "model": 0.01316,
+   "diff": 0.006858249623539924
   },
   {
    "team": "Austria",
@@ -289,16 +289,16 @@
    "diff": -0.0006832690095131584
   },
   {
-   "team": "Panama",
-   "market": 0.0006624083483065577,
-   "model": 0.00168,
-   "diff": 0.0010175916516934422
-  },
-  {
    "team": "South Africa",
    "market": 0.0006624083483065577,
    "model": 0.0,
    "diff": -0.0006624083483065577
+  },
+  {
+   "team": "Panama",
+   "market": 0.0006624083483065577,
+   "model": 0.00168,
+   "diff": 0.0010175916516934422
   },
   {
    "team": "Uzbekistan",
@@ -307,16 +307,16 @@
    "diff": 1.352025583927787e-05
   },
   {
-   "team": "Jordan",
-   "market": 0.000583023933179014,
-   "model": 0.0002,
-   "diff": -0.000383023933179014
-  },
-  {
    "team": "Iraq",
    "market": 0.000583023933179014,
    "model": 9e-05,
    "diff": -0.000493023933179014
+  },
+  {
+   "team": "Jordan",
+   "market": 0.000583023933179014,
+   "model": 0.0002,
+   "diff": -0.000383023933179014
   },
   {
    "team": "Cura\u00e7ao",
@@ -331,16 +331,16 @@
    "diff": -0.0005069264084770984
   },
   {
-   "team": "Haiti",
-   "market": 0.0,
-   "model": 5e-05,
-   "diff": 5e-05
-  },
-  {
    "team": "Turkey",
    "market": 0.0,
    "model": 0.01282,
    "diff": 0.01282
+  },
+  {
+   "team": "Haiti",
+   "market": 0.0,
+   "model": 5e-05,
+   "diff": 5e-05
   }
  ],
  "matches": [
