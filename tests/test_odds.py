@@ -143,3 +143,43 @@ def test_outright_consensus_skips_books_missing_universe_team():
     ]}
     _, n_books = odds.outright_consensus(event, universe={"Brazil", "France"})
     assert n_books == 1
+
+
+def test_outright_consensus_mid_tournament_eliminated_teams():
+    # Mid-tournament: universe has 3 teams but one (Argentina) has been eliminated
+    # and bookmakers no longer quote it.  The function should shrink the effective
+    # universe to {Brazil, France} and return a valid consensus rather than crashing.
+    event = {"bookmakers": [
+        {"markets": [{"key": "outrights", "outcomes": [
+            {"name": "Brazil", "price": 4.0},
+            {"name": "France", "price": 5.0},
+            # Argentina deliberately absent — eliminated
+        ]}]},
+    ]}
+    probs, n_books = odds.outright_consensus(
+        event, universe={"Brazil", "France", "Argentina"}
+    )
+    assert n_books == 1
+    assert set(probs) == {"Brazil", "France"}  # Argentina dropped (not quoted)
+    assert sum(probs.values()) == pytest.approx(1.0)
+    assert probs["Brazil"] > probs["France"]
+
+
+def test_outright_consensus_no_bookmakers_returns_empty():
+    # No bookmaker data at all (e.g. market not yet open).
+    event = {"bookmakers": []}
+    probs, n_books = odds.outright_consensus(event, universe={"Brazil", "France"})
+    assert probs == {}
+    assert n_books == 0
+
+
+def test_outright_consensus_no_book_covers_any_universe_team():
+    # All quoted teams are outside the universe.
+    event = {"bookmakers": [
+        {"markets": [{"key": "outrights", "outcomes": [
+            {"name": "Tuvalu", "price": 4.0},
+        ]}]},
+    ]}
+    probs, n_books = odds.outright_consensus(event, universe={"Brazil", "France"})
+    assert probs == {}
+    assert n_books == 0
