@@ -87,7 +87,7 @@ def outright_consensus(event: dict, canon=lambda n: n,
     rows = [implied_probs([prices[t] for t in teams])
             for prices in books if set(teams) <= set(prices)]
     if not rows:
-        return {t: 0.0 for t in teams}, 0
+        return {}, 0
     p = consensus(rows)
     return dict(zip(teams, map(float, p))), len(rows)
 
