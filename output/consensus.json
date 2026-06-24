@@ -2,7 +2,7 @@
  "captured": "2026-06-24T010601Z",
  "sources": [
   "soccer_fifa_world_cup_winner_2026-06-24T010601Z.json",
-  "soccer_fifa_world_cup_2026-06-24T010601Z.json"
+  "(reused 26 markets from previous consensus.json)"
  ],
  "n_outright_books": 4,
  "outright_consensus": {
@@ -310,22 +310,10 @@
    "diff": -0.0005615957228465538
   },
   {
-   "team": "Panama",
-   "market": 0.0,
-   "model": 0.00168,
-   "diff": 0.00168
-  },
-  {
    "team": "Turkey",
    "market": 0.0,
    "model": 0.01282,
    "diff": 0.01282
-  },
-  {
-   "team": "Tunisia",
-   "market": 0.0,
-   "model": 8e-05,
-   "diff": 8e-05
   },
   {
    "team": "Haiti",
@@ -338,6 +326,18 @@
    "market": 0.0,
    "model": 0.0002,
    "diff": 0.0002
+  },
+  {
+   "team": "Tunisia",
+   "market": 0.0,
+   "model": 8e-05,
+   "diff": 8e-05
+  },
+  {
+   "team": "Panama",
+   "market": 0.0,
+   "model": 0.00168,
+   "diff": 0.00168
   }
  ],
  "matches": [
