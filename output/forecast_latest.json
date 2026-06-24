@@ -4,15 +4,15 @@
  "model": "elo-poisson-form-dc-conditional",
  "n_sims": 100000,
  "params": {
-  "a": 0.19998982518143657,
-  "b": 0.6445456489965453,
+  "a": 0.19998982195636145,
+  "b": 0.6445456281798343,
   "beta": {
-   "form_diff": 0.07855186072986539
+   "form_diff": 0.078551870972331
   },
   "covariates": [
    "form_diff"
   ],
-  "rho": -0.030133016193129962,
+  "rho": -0.03013302902737914,
   "nll": 24380.81431182339,
   "n": 17901
  },
@@ -147,8 +147,8 @@
    "reach_r16": 0.60898,
    "reach_qf": 0.38826,
    "reach_sf": 0.22276,
-   "reach_final": 0.09951,
-   "champion": 0.04814
+   "reach_final": 0.09952,
+   "champion": 0.04815
   },
   "Morocco": {
    "win_group": 0.36375,
@@ -198,7 +198,7 @@
   "Australia": {
    "win_group": 0.0,
    "reach_r32": 0.96073,
-   "reach_r16": 0.40194,
+   "reach_r16": 0.40193,
    "reach_qf": 0.07046,
    "reach_sf": 0.02683,
    "reach_final": 0.00871,
@@ -216,7 +216,7 @@
   "Germany": {
    "win_group": 1.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.81766,
+   "reach_r16": 0.81767,
    "reach_qf": 0.42315,
    "reach_sf": 0.25789,
    "reach_final": 0.13911,
@@ -255,8 +255,8 @@
    "reach_r16": 0.46266,
    "reach_qf": 0.27335,
    "reach_sf": 0.11858,
-   "reach_final": 0.05027,
-   "champion": 0.01777
+   "reach_final": 0.05026,
+   "champion": 0.01776
   },
   "Japan": {
    "win_group": 0.25009,
@@ -308,8 +308,8 @@
    "reach_r32": 0.76646,
    "reach_r16": 0.39785,
    "reach_qf": 0.15708,
-   "reach_sf": 0.04795,
-   "reach_final": 0.01628,
+   "reach_sf": 0.04796,
+   "reach_final": 0.01629,
    "champion": 0.00449
   },
   "New Zealand": {
@@ -324,9 +324,9 @@
   "Spain": {
    "win_group": 0.89751,
    "reach_r32": 1.0,
-   "reach_r16": 0.76562,
-   "reach_qf": 0.51191,
-   "reach_sf": 0.40952,
+   "reach_r16": 0.76561,
+   "reach_qf": 0.5119,
+   "reach_sf": 0.40951,
    "reach_final": 0.25936,
    "champion": 0.13489
   },
@@ -414,8 +414,8 @@
   "Austria": {
    "win_group": 0.0,
    "reach_r32": 0.96871,
-   "reach_r16": 0.3179,
-   "reach_qf": 0.13594,
+   "reach_r16": 0.31791,
+   "reach_qf": 0.13595,
    "reach_sf": 0.0533,
    "reach_final": 0.01734,
    "champion": 0.00434
@@ -462,7 +462,7 @@
    "reach_r16": 0.79463,
    "reach_qf": 0.49125,
    "reach_sf": 0.21019,
-   "reach_final": 0.11002,
+   "reach_final": 0.11001,
    "champion": 0.04914
   },
   "England": {
