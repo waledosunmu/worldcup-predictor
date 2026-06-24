@@ -310,16 +310,10 @@
    "diff": -0.0005615957228465538
   },
   {
-   "team": "Turkey",
+   "team": "Tunisia",
    "market": 0.0,
-   "model": 0.01282,
-   "diff": 0.01282
-  },
-  {
-   "team": "Haiti",
-   "market": 0.0,
-   "model": 5e-05,
-   "diff": 5e-05
+   "model": 8e-05,
+   "diff": 8e-05
   },
   {
    "team": "Jordan",
@@ -328,16 +322,22 @@
    "diff": 0.0002
   },
   {
-   "team": "Tunisia",
-   "market": 0.0,
-   "model": 8e-05,
-   "diff": 8e-05
-  },
-  {
    "team": "Panama",
    "market": 0.0,
    "model": 0.00168,
    "diff": 0.00168
+  },
+  {
+   "team": "Haiti",
+   "market": 0.0,
+   "model": 5e-05,
+   "diff": 5e-05
+  },
+  {
+   "team": "Turkey",
+   "market": 0.0,
+   "model": 0.01282,
+   "diff": 0.01282
   }
  ],
  "matches": [
