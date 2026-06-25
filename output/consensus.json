@@ -261,16 +261,16 @@
    "diff": -0.0008583919536246486
   },
   {
-   "team": "Saudi Arabia",
-   "market": 0.0007501103038082784,
-   "model": 1e-05,
-   "diff": -0.0007401103038082783
-  },
-  {
    "team": "New Zealand",
    "market": 0.0007501103038082784,
    "model": 6e-05,
    "diff": -0.0006901103038082783
+  },
+  {
+   "team": "Saudi Arabia",
+   "market": 0.0007501103038082784,
+   "model": 1e-05,
+   "diff": -0.0007401103038082783
   },
   {
    "team": "Cape Verde",
@@ -309,10 +309,10 @@
    "diff": 0.01282
   },
   {
-   "team": "Haiti",
+   "team": "Qatar",
    "market": 0.0,
-   "model": 5e-05,
-   "diff": 5e-05
+   "model": 0.0,
+   "diff": 0.0
   },
   {
    "team": "Tunisia",
@@ -321,16 +321,16 @@
    "diff": 8e-05
   },
   {
+   "team": "Haiti",
+   "market": 0.0,
+   "model": 5e-05,
+   "diff": 5e-05
+  },
+  {
    "team": "Jordan",
    "market": 0.0,
    "model": 0.0002,
    "diff": 0.0002
-  },
-  {
-   "team": "Qatar",
-   "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
   },
   {
    "team": "Panama",
