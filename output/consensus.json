@@ -16,7 +16,7 @@
   "Canada": 0.004485190145241147,
   "Cape Verde": 0.0007002520535656098,
   "Colombia": 0.01573386029485491,
-  "Croatia": 0.00591260859488194,
+  "Croatia": 0.005912608594881941,
   "Cura\u00e7ao": 0.0005569557246103904,
   "DR Congo": 0.0009460020888197437,
   "Ecuador": 0.003910991650519297,
@@ -45,7 +45,7 @@
   "Sweden": 0.003231388611482056,
   "Switzerland": 0.0119910082200736,
   "United States": 0.028807901486795646,
-  "Uruguay": 0.0031130975057960643,
+  "Uruguay": 0.0031130975057960648,
   "Uzbekistan": 0.0006327906653723672
  },
  "champion_comparison": [
@@ -147,9 +147,9 @@
   },
   {
    "team": "Croatia",
-   "market": 0.00591260859488194,
+   "market": 0.005912608594881941,
    "model": 0.01316,
-   "diff": 0.0072473914051180595
+   "diff": 0.007247391405118059
   },
   {
    "team": "Ivory Coast",
@@ -195,9 +195,9 @@
   },
   {
    "team": "Uruguay",
-   "market": 0.0031130975057960643,
+   "market": 0.0031130975057960648,
    "model": 0.01356,
-   "diff": 0.010446902494203936
+   "diff": 0.010446902494203934
   },
   {
    "team": "Egypt",
@@ -296,10 +296,10 @@
    "diff": -0.0005569557246103904
   },
   {
-   "team": "Turkey",
+   "team": "Jordan",
    "market": 0.0,
-   "model": 0.01282,
-   "diff": 0.01282
+   "model": 0.0002,
+   "diff": 0.0002
   },
   {
    "team": "Qatar",
@@ -308,22 +308,10 @@
    "diff": 0.0
   },
   {
-   "team": "Jordan",
+   "team": "Czech Republic",
    "market": 0.0,
-   "model": 0.0002,
-   "diff": 0.0002
-  },
-  {
-   "team": "Tunisia",
-   "market": 0.0,
-   "model": 8e-05,
-   "diff": 8e-05
-  },
-  {
-   "team": "Panama",
-   "market": 0.0,
-   "model": 0.00168,
-   "diff": 0.00168
+   "model": 0.0006,
+   "diff": 0.0006
   },
   {
    "team": "Haiti",
@@ -332,10 +320,22 @@
    "diff": 5e-05
   },
   {
-   "team": "Czech Republic",
+   "team": "Panama",
    "market": 0.0,
-   "model": 0.0006,
-   "diff": 0.0006
+   "model": 0.00168,
+   "diff": 0.00168
+  },
+  {
+   "team": "Turkey",
+   "market": 0.0,
+   "model": 0.01282,
+   "diff": 0.01282
+  },
+  {
+   "team": "Tunisia",
+   "market": 0.0,
+   "model": 8e-05,
+   "diff": 8e-05
   }
  ],
  "matches": [
