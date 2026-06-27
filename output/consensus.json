@@ -247,22 +247,16 @@
    "diff": 0.0032047985303241657
   },
   {
-   "team": "DR Congo",
-   "market": 0.0009146412898666257,
-   "model": 0.0001,
-   "diff": -0.0008146412898666257
-  },
-  {
    "team": "South Africa",
    "market": 0.0009146412898666257,
    "model": 0.0,
    "diff": -0.0009146412898666257
   },
   {
-   "team": "New Zealand",
-   "market": 0.000726048558942348,
-   "model": 6e-05,
-   "diff": -0.000666048558942348
+   "team": "DR Congo",
+   "market": 0.0009146412898666257,
+   "model": 0.0001,
+   "diff": -0.0008146412898666257
   },
   {
    "team": "Saudi Arabia",
@@ -271,16 +265,16 @@
    "diff": -0.000716048558942348
   },
   {
+   "team": "New Zealand",
+   "market": 0.000726048558942348,
+   "model": 6e-05,
+   "diff": -0.000666048558942348
+  },
+  {
    "team": "Iraq",
    "market": 0.0006740218450606499,
    "model": 9e-05,
    "diff": -0.0005840218450606499
-  },
-  {
-   "team": "Cape Verde",
-   "market": 0.0006740218450606499,
-   "model": 1e-05,
-   "diff": -0.0006640218450606499
   },
   {
    "team": "Uzbekistan",
@@ -289,16 +283,16 @@
    "diff": -3.402184506064989e-05
   },
   {
+   "team": "Cape Verde",
+   "market": 0.0006740218450606499,
+   "model": 1e-05,
+   "diff": -0.0006640218450606499
+  },
+  {
    "team": "Tunisia",
    "market": 0.0,
    "model": 8e-05,
    "diff": 8e-05
-  },
-  {
-   "team": "Cura\u00e7ao",
-   "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
   },
   {
    "team": "Panama",
@@ -307,16 +301,16 @@
    "diff": 0.00168
   },
   {
-   "team": "Jordan",
-   "market": 0.0,
-   "model": 0.0002,
-   "diff": 0.0002
-  },
-  {
-   "team": "Qatar",
+   "team": "Cura\u00e7ao",
    "market": 0.0,
    "model": 0.0,
    "diff": 0.0
+  },
+  {
+   "team": "Haiti",
+   "market": 0.0,
+   "model": 5e-05,
+   "diff": 5e-05
   },
   {
    "team": "Czech Republic",
@@ -325,10 +319,16 @@
    "diff": 0.0006
   },
   {
-   "team": "Haiti",
+   "team": "Qatar",
    "market": 0.0,
-   "model": 5e-05,
-   "diff": 5e-05
+   "model": 0.0,
+   "diff": 0.0
+  },
+  {
+   "team": "Jordan",
+   "market": 0.0,
+   "model": 0.0002,
+   "diff": 0.0002
   },
   {
    "team": "Turkey",
