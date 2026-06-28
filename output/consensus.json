@@ -207,16 +207,16 @@
    "diff": 0.0014480258962585395
   },
   {
-   "team": "Scotland",
-   "market": 0.0013666038678065314,
-   "model": 0.00128,
-   "diff": -8.660386780653126e-05
-  },
-  {
    "team": "Algeria",
    "market": 0.0013666038678065314,
    "model": 0.00215,
    "diff": 0.0007833961321934686
+  },
+  {
+   "team": "Scotland",
+   "market": 0.0013666038678065314,
+   "model": 0.00128,
+   "diff": -8.660386780653126e-05
   },
   {
    "team": "Paraguay",
@@ -261,25 +261,19 @@
    "diff": -3.459739291549434e-05
   },
   {
-   "team": "Jordan",
+   "team": "Turkey",
    "market": 0.0,
-   "model": 0.0002,
-   "diff": 0.0002
-  },
-  {
-   "team": "New Zealand",
-   "market": 0.0,
-   "model": 6e-05,
-   "diff": 6e-05
-  },
-  {
-   "team": "Panama",
-   "market": 0.0,
-   "model": 0.00168,
-   "diff": 0.00168
+   "model": 0.01282,
+   "diff": 0.01282
   },
   {
    "team": "Qatar",
+   "market": 0.0,
+   "model": 0.0,
+   "diff": 0.0
+  },
+  {
+   "team": "Cura\u00e7ao",
    "market": 0.0,
    "model": 0.0,
    "diff": 0.0
@@ -291,22 +285,10 @@
    "diff": 0.0006
   },
   {
-   "team": "Haiti",
+   "team": "New Zealand",
    "market": 0.0,
-   "model": 5e-05,
-   "diff": 5e-05
-  },
-  {
-   "team": "Iraq",
-   "market": 0.0,
-   "model": 9e-05,
-   "diff": 9e-05
-  },
-  {
-   "team": "Turkey",
-   "market": 0.0,
-   "model": 0.01282,
-   "diff": 0.01282
+   "model": 6e-05,
+   "diff": 6e-05
   },
   {
    "team": "Uruguay",
@@ -315,22 +297,40 @@
    "diff": 0.01356
   },
   {
-   "team": "Saudi Arabia",
-   "market": 0.0,
-   "model": 1e-05,
-   "diff": 1e-05
-  },
-  {
-   "team": "Cura\u00e7ao",
-   "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
-  },
-  {
    "team": "Tunisia",
    "market": 0.0,
    "model": 8e-05,
    "diff": 8e-05
+  },
+  {
+   "team": "Iraq",
+   "market": 0.0,
+   "model": 9e-05,
+   "diff": 9e-05
+  },
+  {
+   "team": "Panama",
+   "market": 0.0,
+   "model": 0.00168,
+   "diff": 0.00168
+  },
+  {
+   "team": "Jordan",
+   "market": 0.0,
+   "model": 0.0002,
+   "diff": 0.0002
+  },
+  {
+   "team": "Haiti",
+   "market": 0.0,
+   "model": 5e-05,
+   "diff": 5e-05
+  },
+  {
+   "team": "Saudi Arabia",
+   "market": 0.0,
+   "model": 1e-05,
+   "diff": 1e-05
   }
  ],
  "matches": [
