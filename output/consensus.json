@@ -215,16 +215,16 @@
    "diff": -0.0012717505905676567
   },
   {
-   "team": "South Africa",
-   "market": 0.001042544516077339,
-   "model": 0.0,
-   "diff": -0.001042544516077339
-  },
-  {
    "team": "DR Congo",
    "market": 0.001042544516077339,
    "model": 0.0001,
    "diff": -0.0009425445160773389
+  },
+  {
+   "team": "South Africa",
+   "market": 0.001042544516077339,
+   "model": 0.0,
+   "diff": -0.001042544516077339
   },
   {
    "team": "Cape Verde",
@@ -233,10 +233,16 @@
    "diff": -0.0007823656256422579
   },
   {
-   "team": "Uzbekistan",
+   "team": "Turkey",
    "market": 0.0,
-   "model": 0.00064,
-   "diff": 0.00064
+   "model": 0.01282,
+   "diff": 0.01282
+  },
+  {
+   "team": "Uruguay",
+   "market": 0.0,
+   "model": 0.01356,
+   "diff": 0.01356
   },
   {
    "team": "Tunisia",
@@ -245,10 +251,28 @@
    "diff": 8e-05
   },
   {
-   "team": "South Korea",
+   "team": "Saudi Arabia",
    "market": 0.0,
-   "model": 0.0029,
-   "diff": 0.0029
+   "model": 1e-05,
+   "diff": 1e-05
+  },
+  {
+   "team": "Qatar",
+   "market": 0.0,
+   "model": 0.0,
+   "diff": 0.0
+  },
+  {
+   "team": "Iraq",
+   "market": 0.0,
+   "model": 9e-05,
+   "diff": 9e-05
+  },
+  {
+   "team": "Jordan",
+   "market": 0.0,
+   "model": 0.0002,
+   "diff": 0.0002
   },
   {
    "team": "Scotland",
@@ -257,16 +281,28 @@
    "diff": 0.00128
   },
   {
-   "team": "Turkey",
+   "team": "Uzbekistan",
    "market": 0.0,
-   "model": 0.01282,
-   "diff": 0.01282
+   "model": 0.00064,
+   "diff": 0.00064
   },
   {
-   "team": "Iraq",
+   "team": "Czech Republic",
    "market": 0.0,
-   "model": 9e-05,
-   "diff": 9e-05
+   "model": 0.0006,
+   "diff": 0.0006
+  },
+  {
+   "team": "Panama",
+   "market": 0.0,
+   "model": 0.00168,
+   "diff": 0.00168
+  },
+  {
+   "team": "New Zealand",
+   "market": 0.0,
+   "model": 6e-05,
+   "diff": 6e-05
   },
   {
    "team": "Haiti",
@@ -281,52 +317,16 @@
    "diff": 0.0
   },
   {
-   "team": "Uruguay",
-   "market": 0.0,
-   "model": 0.01356,
-   "diff": 0.01356
-  },
-  {
    "team": "Iran",
    "market": 0.0,
    "model": 0.00419,
    "diff": 0.00419
   },
   {
-   "team": "Qatar",
+   "team": "South Korea",
    "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
-  },
-  {
-   "team": "Czech Republic",
-   "market": 0.0,
-   "model": 0.0006,
-   "diff": 0.0006
-  },
-  {
-   "team": "New Zealand",
-   "market": 0.0,
-   "model": 6e-05,
-   "diff": 6e-05
-  },
-  {
-   "team": "Jordan",
-   "market": 0.0,
-   "model": 0.0002,
-   "diff": 0.0002
-  },
-  {
-   "team": "Saudi Arabia",
-   "market": 0.0,
-   "model": 1e-05,
-   "diff": 1e-05
-  },
-  {
-   "team": "Panama",
-   "market": 0.0,
-   "model": 0.00168,
-   "diff": 0.00168
+   "model": 0.0029,
+   "diff": 0.0029
   }
  ],
  "matches": [
