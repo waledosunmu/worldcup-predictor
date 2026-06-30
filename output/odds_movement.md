@@ -1,15 +1,15 @@
 # Odds-movement tracker — pre-kickoff market drift
 
-_52 capture(s); 88 match(es) with ≥2 pre-kickoff captures._
+_53 capture(s); 89 match(es) with ≥2 pre-kickoff captures._
 
-**avg favourite-prob move in the final 3h = 1.45pp. Moderate late movement — current cadence is reasonable.**
+**avg favourite-prob move in the final 3h = 1.43pp. Moderate late movement — current cadence is reasonable.**
 
 | Metric | Mean | Median | Max |
 |---|---:|---:|---:|
-| Total pre-kickoff drift (pp) | 4.32 | 2.38 | 24.54 |
-| Final-3h move (pp), 47 match(es) | 1.45 | — | 10.92 |
+| Total pre-kickoff drift (pp) | 4.29 | 2.35 | 24.54 |
+| Final-3h move (pp), 48 match(es) | 1.43 | — | 10.92 |
 
-Mean captures per match: 24.36. Max outright champion-prob swing across captures: 10.53pp.
+Mean captures per match: 24.24. Max outright champion-prob swing across captures: 10.93pp.
 
 ## Biggest movers (favourite probability)
 
@@ -22,7 +22,7 @@ Mean captures per match: 24.36. Max outright champion-prob swing across captures
 | Turkey v United States | 45 | away | 37% | 53% | 15.44 | — |
 | Paraguay v Australia | 45 | draw | 29% | 42% | 12.87 | — |
 | Senegal v Iraq | 46 | home | 68% | 80% | 12.48 | 0.61 |
-| United States v Bosnia and Herzegovina | 9 | home | 59% | 71% | 11.98 | — |
+| United States v Bosnia and Herzegovina | 10 | home | 59% | 71% | 11.99 | — |
 | South Africa v South Korea | 43 | away | 49% | 61% | 11.7 | — |
 | Panama v England | 47 | away | 76% | 85% | 9.66 | 0.85 |
 | Scotland v Morocco | 27 | away | 49% | 58% | 9.5 | 0.31 |
