@@ -69,20 +69,34 @@ def main():
     so_winner = {frozenset((r.home_team, r.away_team)): r.winner
                  for _, r in shootouts[shootouts.date >= "2026-06-01"].iterrows()}
     played_group, ko_winners = {}, {}
+    # Full played-knockout records (teams, score, winner, shootout flag) so the
+    # site can render actual KO results — ko_winners keeps only the winner, which
+    # is all the simulation needs but not enough to show a scoreline.
+    ko_results = []
     for _, r in wc26.iterrows():
         same_group = team_group[r.home_team] == team_group[r.away_team]
         key = frozenset((r.home_team, r.away_team))
         if same_group and r.date <= fmt["dates"]["group_stage"][-10:]:
             played_group[key] = (r.home_team, int(r.home_score), int(r.away_score))
         else:
+            sh, sa = int(r.home_score), int(r.away_score)
             if r.home_score != r.away_score:
-                ko_winners[key] = r.home_team if r.home_score > r.away_score \
-                    else r.away_team
+                winner = r.home_team if r.home_score > r.away_score else r.away_team
+                ko_winners[key] = winner
+                shootout = False
             elif key in so_winner:
-                ko_winners[key] = so_winner[key]
+                winner = so_winner[key]
+                ko_winners[key] = winner
+                shootout = True
             else:
                 print(f"WARNING: drawn KO match without shootout record: "
                       f"{r.home_team} vs {r.away_team} — left unfixed")
+                continue
+            ko_results.append({"date": r.date, "home": r.home_team,
+                               "away": r.away_team, "score_home": sh,
+                               "score_away": sa, "winner": winner,
+                               "shootout": shootout})
+    ko_results.sort(key=lambda x: (x["date"], x["home"]))
     print(f"as of {as_of}: {len(played_group)} group results, "
           f"{len(ko_winners)} knockout results locked in")
 
@@ -145,6 +159,7 @@ def main():
         "n_played_group": len(played_group), "n_played_ko": len(ko_winners),
         "ratings": {t: round(ratings[t], 1) for t in teams48},
         "advancement": out["probs"], "group_fixtures": fixtures,
+        "knockout_results": ko_results,
     }
     with open(ROOT / "output/forecast_latest.json", "w") as f:
         json.dump(payload, f, indent=1)
