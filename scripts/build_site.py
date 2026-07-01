@@ -374,6 +374,32 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
                 f"{prob:.0%}</span>")
 
     groups_body = ""
+
+    # ----- knockout results (newest first) -----
+    # Actual played KO scorelines. Bare results only — no model-vs-market review
+    # like the group section: a legitimate pre-kickoff KO prediction must be
+    # computed as-of before that match (the matchup only exists conditional on
+    # prior rounds), so reading one off the settled bracket would leak. See
+    # CLAUDE.md cardinal rule #1. Show facts here; keep predictions on the bracket.
+    ko_results = forecast.get("knockout_results", [])
+    if ko_results:
+        ko_cards = ""
+        for k in sorted(ko_results, key=lambda x: x["date"], reverse=True):
+            pen = (f' <span class="muted">({k["winner"]} won on penalties)</span>'
+                   if k.get("shootout") else "")
+            ko_cards += (
+                f'<div class="fixture result">'
+                f'<span class="date">{k["date"]} · final</span>'
+                f'<span class="teams">{k["home"]} {k["score_home"]}–'
+                f'{k["score_away"]} {k["away"]}{pen}</span></div>')
+        n = len(ko_results)
+        groups_body += (
+            f'<h2>Knockout results</h2>'
+            f'<p class="legend">Latest knockout-round results — {n} '
+            f'match{"es" if n != 1 else ""} played. Each team\'s simulated path '
+            f'from here is on the <a href="bracket.html">bracket</a> page.</p>'
+            f'{ko_cards}')
+
     if reviewed:
         n = len(reviewed)
         model_called = sum(r["model_hit"] for r in reviewed)
