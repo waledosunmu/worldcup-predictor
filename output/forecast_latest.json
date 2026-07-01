@@ -1223,5 +1223,70 @@
    "score_home": 1,
    "score_away": 0
   }
+ ],
+ "knockout_results": [
+  {
+   "date": "2026-06-28",
+   "home": "South Africa",
+   "away": "Canada",
+   "score_home": 0,
+   "score_away": 1,
+   "winner": "Canada",
+   "shootout": false
+  },
+  {
+   "date": "2026-06-29",
+   "home": "Brazil",
+   "away": "Japan",
+   "score_home": 2,
+   "score_away": 1,
+   "winner": "Brazil",
+   "shootout": false
+  },
+  {
+   "date": "2026-06-29",
+   "home": "Germany",
+   "away": "Paraguay",
+   "score_home": 1,
+   "score_away": 1,
+   "winner": "Paraguay",
+   "shootout": true
+  },
+  {
+   "date": "2026-06-29",
+   "home": "Netherlands",
+   "away": "Morocco",
+   "score_home": 1,
+   "score_away": 1,
+   "winner": "Morocco",
+   "shootout": true
+  },
+  {
+   "date": "2026-06-30",
+   "home": "France",
+   "away": "Sweden",
+   "score_home": 3,
+   "score_away": 0,
+   "winner": "France",
+   "shootout": false
+  },
+  {
+   "date": "2026-06-30",
+   "home": "Ivory Coast",
+   "away": "Norway",
+   "score_home": 1,
+   "score_away": 2,
+   "winner": "Norway",
+   "shootout": false
+  },
+  {
+   "date": "2026-06-30",
+   "home": "Mexico",
+   "away": "Ecuador",
+   "score_home": 2,
+   "score_away": 0,
+   "winner": "Mexico",
+   "shootout": false
+  }
  ]
 }
