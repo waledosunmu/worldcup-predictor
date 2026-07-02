@@ -82,6 +82,29 @@ class Simulator:
             return covariates.expected_goals(dr, z, self.params)
         return expected_goals(dr, self.params)
 
+    def matchup_probs(self, home: str, away: str, host_adv: float = 0.0) -> dict:
+        """Analytic W/D/L + expected goals for a single matchup.
+
+        Uses the same expected-goals means (`_means`) and Dixon-Coles scoreline
+        grid the simulation draws from, but SUMS the grid instead of sampling, so
+        it is deterministic (no RNG; cardinal rule #2). `host_adv=0.0` gives the
+        neutral-venue knockout matchup; pass +100 for a host group game. Result
+        matches the per-fixture W/D/L that run_forecast emits for group fixtures.
+        """
+        lh, la = self._means(home, away, host_adv)
+        rho = self.params["rho"] if self.dixon_coles else 0.0
+        grid = dixoncoles.scoreline_grid(lh, la, rho)
+        n = grid.shape[0]
+        i = np.arange(n)
+        hh, aa = np.meshgrid(i, i, indexing="ij")
+        return {
+            "p_home": round(float(grid[hh > aa].sum()), 4),
+            "p_draw": round(float(np.trace(grid)), 4),
+            "p_away": round(float(grid[hh < aa].sum()), 4),
+            "xg_home": round(float(lh), 2),
+            "xg_away": round(float(la), 2),
+        }
+
     # ---------- match simulation ----------
 
     def _ko_winner(self, a: str, b: str) -> str:

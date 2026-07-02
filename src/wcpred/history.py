@@ -86,7 +86,8 @@ def build_match_predictions(latest: dict, consensus: dict, predicted_at: str) ->
     """
     market_by_pair = {(m["home"], m["away"]): m for m in consensus.get("matches", [])}
     preds = []
-    for fx in latest.get("group_fixtures", []):
+    fixtures = latest.get("group_fixtures", []) + latest.get("knockout_fixtures", [])
+    for fx in fixtures:
         if fx.get("played") or "p_home" not in fx:
             continue
         mk = market_by_pair.get((fx["home"], fx["away"]))

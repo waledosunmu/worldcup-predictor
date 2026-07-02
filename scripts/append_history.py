@@ -92,7 +92,8 @@ def main():
     hist_records = history.upsert_history(hist_records, rec)
 
     new_preds = history.build_match_predictions(latest, consensus, now)
-    played = [fx for fx in latest.get("group_fixtures", []) if fx.get("played")]
+    fixtures = latest.get("group_fixtures", []) + latest.get("knockout_fixtures", [])
+    played = [fx for fx in fixtures if fx.get("played")]
     pred_records = history.merge_match_predictions(pred_records, new_preds, played)
 
     history.write_jsonl(HIST_PATH, hist_records)

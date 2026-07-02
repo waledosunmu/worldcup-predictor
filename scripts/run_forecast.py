@@ -22,11 +22,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from wcpred import covariates, dixoncoles, elo, goals
+from wcpred import dixoncoles, goals, pointwise
 from wcpred.simulate import HOSTS, Simulator, load_format
-
-FIT_WINDOW_YEARS = 28
-FORM_WINDOW = 5
 
 
 def _grid_wdl(grid):
@@ -93,36 +90,27 @@ def main():
                       f"{r.home_team} vs {r.away_team} — left unfixed")
                 continue
             ko_results.append({"date": r.date, "home": r.home_team,
-                               "away": r.away_team, "score_home": sh,
-                               "score_away": sa, "winner": winner,
-                               "shootout": shootout})
+                               "away": r.away_team, "played": True,
+                               "score_home": sh, "score_away": sa,
+                               "winner": winner, "shootout": shootout})
     ko_results.sort(key=lambda x: (x["date"], x["home"]))
     print(f"as of {as_of}: {len(played_group)} group results, "
           f"{len(ko_winners)} knockout results locked in")
 
     # ---- point-in-time ratings and goals model ----
-    hist = elo.rating_history_frame(results[results.date < as_of])
-    hist = covariates.build_form_frame(hist, window=FORM_WINDOW)
-    ratings = elo.compute_ratings(results, as_of=as_of)
-    fit_df = hist[(hist.date >= f"{int(as_of[:4]) - FIT_WINDOW_YEARS}-01-01")
-                  & (hist.tournament != "Friendly")]
-    dr = fit_df.dr.to_numpy()
-    hg = fit_df.home_score.to_numpy()
-    ag = fit_df.away_score.to_numpy()
-    hybrid = args.model == "hybrid"
+    # Shared with the knockout backfill via wcpred.pointwise so both stay one
+    # leak-free methodology (see that module).
+    bundle = pointwise.build_asof_model(results, as_of, args.model)
+    ratings = bundle["ratings"]
+    params = bundle["params"]
+    team_form = bundle["team_form"]
+    hybrid = bundle["hybrid"]
+    model_name = bundle["model_name"]
     if hybrid:
-        Z = covariates._design(fit_df, ["form_diff"])
-        params = dixoncoles.fit_hybrid(dr, hg, ag, Z=Z, covariate_names=["form_diff"],
-                                       x0=goals.fit(dr, hg, ag))
-        team_form = covariates.current_form(hist, window=FORM_WINDOW, as_of=as_of)
-        model_name = "elo-poisson-form-dc-conditional"
         print(f"hybrid goals model: a={params['a']:.4f} b={params['b']:.4f} "
               f"form_beta={params['beta']['form_diff']:.4f} rho={params['rho']:.4f} "
               f"n={params['n']}")
     else:
-        params = goals.fit(dr, hg, ag)
-        team_form = None
-        model_name = "elo-poisson-v0-conditional"
         print(f"v0 goals model: a={params['a']:.4f} b={params['b']:.4f} n={params['n']}")
 
     # ---- simulate ----
@@ -153,13 +141,41 @@ def main():
                       top_scores=_top_scores(grid, 3))
         fixtures.append(fx)
 
+    # ---- knockout fixtures: played (scoreline) + upcoming-known (model W/D/L) ----
+    # Upcoming knockout matchups whose teams are already determined get a neutral-
+    # venue model prediction (same analytic path as group fixtures) so that
+    # append_history can lock a pre-kickoff prediction — giving the knockout stage
+    # the same model-vs-market track record as the group stage. Played knockout
+    # matches carry no live model probs here: today's model has already absorbed
+    # their result, so a pre-kickoff prediction for them comes only from the
+    # point-in-time backfill (scripts/backfill_ko_predictions.py), never from this
+    # settled-bracket run.
+    ko_fixtures = list(ko_results)  # played, with played=True + scoreline
+    group_end = fmt["dates"]["group_stage"][-10:]
+    upcoming = results[(results.tournament == "FIFA World Cup")
+                       & (results.date >= "2026-06-01")
+                       & results.home_score.isna()]
+    for _, r in upcoming.iterrows():
+        h, a = r.home_team, r.away_team
+        if h not in team_group or a not in team_group:
+            continue  # unresolved bracket slot (placeholder team) — skip
+        same_group = team_group[h] == team_group[a]
+        if same_group and r.date <= group_end:
+            continue  # an unplayed group fixture, not a knockout tie
+        probs = sim.matchup_probs(h, a, 0.0)  # knockouts are neutral
+        ko_fixtures.append({"date": r.date, "home": h, "away": a, "played": False,
+                            "p_home": probs["p_home"], "p_draw": probs["p_draw"],
+                            "p_away": probs["p_away"], "xg_home": probs["xg_home"],
+                            "xg_away": probs["xg_away"]})
+    ko_fixtures.sort(key=lambda x: (x["date"], x["home"]))
+
     payload = {
         "generated": as_of, "as_of": as_of, "model": model_name,
         "n_sims": out["n_sims"], "params": params,
         "n_played_group": len(played_group), "n_played_ko": len(ko_winners),
         "ratings": {t: round(ratings[t], 1) for t in teams48},
         "advancement": out["probs"], "group_fixtures": fixtures,
-        "knockout_results": ko_results,
+        "knockout_fixtures": ko_fixtures,
     }
     with open(ROOT / "output/forecast_latest.json", "w") as f:
         json.dump(payload, f, indent=1)

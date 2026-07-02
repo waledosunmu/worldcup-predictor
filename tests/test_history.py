@@ -83,6 +83,33 @@ def test_predictions_refresh_while_unplayed_then_freeze_on_result():
     assert recs[0]["model"]["p_home"] == 0.75  # frozen, unchanged
 
 
+def test_knockout_fixtures_lock_then_freeze_keeping_model():
+    """The forward knockout mechanism: an upcoming KO tie (in knockout_fixtures,
+    no 'group') is locked like a group fixture, then frozen with model+market kept
+    when it is played. This is what gives the knockout stage its track record."""
+    ko = {"home": "Brazil", "away": "Japan", "played": False,
+          "p_home": 0.51, "p_draw": 0.26, "p_away": 0.23}
+    latest = {**_latest(played=True), "knockout_fixtures": [ko]}  # group one is played
+    consensus = {"n_outright_books": 5, "outright_consensus": {},
+                 "matches": [{"home": "Brazil", "away": "Japan", "p_home": 0.54,
+                              "p_draw": 0.27, "p_away": 0.19, "n_books": 48,
+                              "commence": "2026-06-29T17:00:00Z"}]}
+
+    preds = history.build_match_predictions(latest, consensus, "t1")
+    assert [p["key"] for p in preds] == ["Brazil|Japan"]  # the unplayed KO tie
+    assert preds[0]["model"] == {"p_home": 0.51, "p_draw": 0.26, "p_away": 0.23}
+    assert preds[0]["market"]["n_books"] == 48
+
+    recs = history.merge_match_predictions([], preds, [])
+    # tie now played: attach result, freeze, keep the locked model+market
+    played_ko = {"home": "Brazil", "away": "Japan", "played": True,
+                 "score_home": 2, "score_away": 1}
+    recs = history.merge_match_predictions(recs, [], [played_ko])
+    r = recs[0]
+    assert r["played"] and r["result"]["outcome"] == "home"
+    assert r["model"]["p_home"] == 0.51 and r["market"]["n_books"] == 48
+
+
 def test_played_without_prediction_records_null_model():
     recs = history.merge_match_predictions([], [], [_latest(played=True)["group_fixtures"][0]
                                                      | {"home": "Mexico", "away": "South Africa"}])
