@@ -375,59 +375,58 @@ Positive = model is higher. Hover a bar for the team's profile.</p>
 
     groups_body = ""
 
-    # ----- knockout results (newest first) -----
-    # Actual played KO scorelines. Bare results only — no model-vs-market review
-    # like the group section: a legitimate pre-kickoff KO prediction must be
-    # computed as-of before that match (the matchup only exists conditional on
-    # prior rounds), so reading one off the settled bracket would leak. See
-    # CLAUDE.md cardinal rule #1. Show facts here; keep predictions on the bracket.
-    ko_results = forecast.get("knockout_results", [])
-    if ko_results:
-        ko_cards = ""
-        for k in sorted(ko_results, key=lambda x: x["date"], reverse=True):
-            pen = (f' <span class="muted">({k["winner"]} won on penalties)</span>'
-                   if k.get("shootout") else "")
-            ko_cards += (
-                f'<div class="fixture result">'
-                f'<span class="date">{k["date"]} · final</span>'
-                f'<span class="teams">{k["home"]} {k["score_home"]}–'
-                f'{k["score_away"]} {k["away"]}{pen}</span></div>')
-        n = len(ko_results)
-        groups_body += (
-            f'<h2>Knockout results</h2>'
-            f'<p class="legend">Latest knockout-round results — {n} '
-            f'match{"es" if n != 1 else ""} played. Each team\'s simulated path '
-            f'from here is on the <a href="bracket.html">bracket</a> page.</p>'
-            f'{ko_cards}')
+    # ----- results so far (newest first) -----
+    # One unified list. Group matches carry the model-vs-market review (a
+    # pre-kickoff prediction was locked for each). Knockout matches show the bare
+    # scoreline (+ penalty note): no leak-free pre-kickoff prediction was captured
+    # for them, and manufacturing one from the settled bracket would leak the
+    # result (CLAUDE.md cardinal rule #1), so there is nothing to review here yet.
+    result_cards = []  # (date, html); sorted newest-first below
 
-    if reviewed:
+    for r in reviewed:
+        fx = r["fx"]
+        d = fixture_date.get(frozenset((fx["home"], fx["away"])), "")
+        result_cards.append((d,
+            f'<div class="fixture result">'
+            f'<span class="date">{d} · final</span>'
+            f'<span class="teams">{fx["home"]} {fx["score_home"]}–'
+            f'{fx["score_away"]} {fx["away"]}</span>'
+            f'<div class="picks">'
+            f'Model {pickcell(r["model_pick"], r["model_prob"], r["model_hit"], fx["home"], fx["away"])} '
+            f'Market {pickcell(r["market_pick"], r["market_prob"], r["market_hit"], fx["home"], fx["away"])}'
+            f'</div>'
+            f'<details><summary>How the call went</summary>'
+            f'<p>{r["review"]}</p></details></div>'))
+
+    for k in forecast.get("knockout_results", []):
+        pen = (f' <span class="muted">({k["winner"]} won on penalties)</span>'
+               if k.get("shootout") else "")
+        result_cards.append((k["date"],
+            f'<div class="fixture result">'
+            f'<span class="date">{k["date"]} · final</span>'
+            f'<span class="teams">{k["home"]} {k["score_home"]}–'
+            f'{k["score_away"]} {k["away"]}{pen}</span></div>'))
+
+    if result_cards:
+        result_cards.sort(key=lambda x: x[0], reverse=True)
+        cards = "".join(html for _, html in result_cards)
         n = len(reviewed)
-        model_called = sum(r["model_hit"] for r in reviewed)
-        mkt_rev = [r for r in reviewed if r["market_hit"] is not None]
-        market_called = sum(r["market_hit"] for r in mkt_rev)
-        cards = ""
-        for r in reviewed:
-            fx = r["fx"]
-            cards += (
-                f'<div class="fixture result">'
-                f'<span class="date">{fixture_date.get(frozenset((fx["home"], fx["away"])), "")} · final</span>'
-                f'<span class="teams">{fx["home"]} {fx["score_home"]}–'
-                f'{fx["score_away"]} {fx["away"]}</span>'
-                f'<div class="picks">'
-                f'Model {pickcell(r["model_pick"], r["model_prob"], r["model_hit"], fx["home"], fx["away"])} '
-                f'Market {pickcell(r["market_pick"], r["market_prob"], r["market_hit"], fx["home"], fx["away"])}'
-                f'</div>'
-                f'<details><summary>How the call went</summary>'
-                f'<p>{r["review"]}</p></details></div>')
-        mkt_line = (f" the market in <b>{market_called} of {len(mkt_rev)}</b>."
-                    if mkt_rev else ".")
-        groups_body += (
-            f'<h2>Results so far — model vs market</h2>'
-            f'<p class="legend">Who picked the winner? Through {n} completed '
-            f'match{"es" if n != 1 else ""}, the model called <b>{model_called} of '
-            f'{n}</b>;{mkt_line} (Draws count against a pick only when neither '
-            f'side was favoured.) Probabilistic scoring is on the '
-            f'<a href="methodology.html">methodology</a> page.</p>{cards}')
+        if n:
+            model_called = sum(r["model_hit"] for r in reviewed)
+            mkt_rev = [r for r in reviewed if r["market_hit"] is not None]
+            market_called = sum(r["market_hit"] for r in mkt_rev)
+            mkt_line = (f" the market in <b>{market_called} of {len(mkt_rev)}</b>."
+                        if mkt_rev else ".")
+            legend = (
+                f'<p class="legend">Who picked the winner? Through {n} group '
+                f'match{"es" if n != 1 else ""} with a locked pre-kickoff call, the '
+                f'model picked <b>{model_called} of {n}</b>;{mkt_line} (Knockout '
+                f'matches show the result only. Draws count against a pick only when '
+                f'neither side was favoured.) Probabilistic scoring is on the '
+                f'<a href="methodology.html">methodology</a> page.</p>')
+        else:
+            legend = ""
+        groups_body += f'<h2>Results so far</h2>{legend}{cards}'
 
     groups_body += "<h2>Groups &amp; all fixtures</h2>"
     for g in sorted(fmt["groups"]):
