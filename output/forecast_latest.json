@@ -1368,17 +1368,6 @@
   },
   {
    "date": "2026-07-03",
-   "home": "Australia",
-   "away": "Egypt",
-   "played": false,
-   "p_home": 0.3809,
-   "p_draw": 0.2812,
-   "p_away": 0.3379,
-   "xg_home": 1.27,
-   "xg_away": 1.18
-  },
-  {
-   "date": "2026-07-03",
    "home": "Colombia",
    "away": "Ghana",
    "played": false,
