@@ -1387,17 +1387,6 @@
   },
   {
    "date": "2026-07-04",
-   "home": "Canada",
-   "away": "Morocco",
-   "played": false,
-   "p_home": 0.2512,
-   "p_draw": 0.2686,
-   "p_away": 0.4802,
-   "xg_home": 1.0,
-   "xg_away": 1.49
-  },
-  {
-   "date": "2026-07-04",
    "home": "Paraguay",
    "away": "France",
    "played": false,
