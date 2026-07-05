@@ -1,38 +1,38 @@
 {
- "generated": "2026-07-04",
- "as_of": "2026-07-04",
+ "generated": "2026-07-05",
+ "as_of": "2026-07-05",
  "model": "elo-poisson-form-dc-conditional",
  "n_sims": 100000,
  "params": {
-  "a": 0.20013751661891857,
-  "b": 0.644512940245177,
+  "a": 0.2000971354335632,
+  "b": 0.6445901119952312,
   "beta": {
-   "form_diff": 0.07854302426991597
+   "form_diff": 0.07851886686371609
   },
   "covariates": [
    "form_diff"
   ],
-  "rho": -0.03065225418764147,
-  "nll": 24441.074507262456,
-  "n": 17941
+  "rho": -0.030583911248082907,
+  "nll": 24444.493521507706,
+  "n": 17943
  },
  "n_played_group": 72,
- "n_played_ko": 16,
+ "n_played_ko": 18,
  "ratings": {
   "Mexico": 2045.9,
   "South Africa": 1694.6,
   "South Korea": 1841.8,
   "Czech Republic": 1754.3,
-  "Canada": 1873.2,
+  "Canada": 1842.2,
   "Bosnia and Herzegovina": 1675.1,
   "Qatar": 1542.7,
   "Switzerland": 2016.7,
   "Brazil": 2115.9,
-  "Morocco": 2024.7,
+  "Morocco": 2055.7,
   "Haiti": 1666.0,
   "Scotland": 1820.7,
   "United States": 1892.8,
-  "Paraguay": 1909.9,
+  "Paraguay": 1900.2,
   "Australia": 1908.2,
   "Turkey": 1922.2,
   "Germany": 1988.1,
@@ -51,7 +51,7 @@
   "Cape Verde": 1698.9,
   "Saudi Arabia": 1706.0,
   "Uruguay": 1924.1,
-  "France": 2196.1,
+  "France": 2205.8,
   "Senegal": 1880.0,
   "Iraq": 1674.5,
   "Norway": 2001.7,
@@ -73,10 +73,10 @@
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.46292,
-   "reach_sf": 0.24522,
-   "reach_final": 0.09841,
-   "champion": 0.04243
+   "reach_qf": 0.4632,
+   "reach_sf": 0.24378,
+   "reach_final": 0.09804,
+   "champion": 0.04066
   },
   "South Africa": {
    "win_group": 0.0,
@@ -109,19 +109,19 @@
    "win_group": 0.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.37353,
-   "reach_sf": 0.08715,
-   "reach_final": 0.02102,
-   "champion": 0.00467
+   "reach_qf": 0.0,
+   "reach_sf": 0.0,
+   "reach_final": 0.0,
+   "champion": 0.0
   },
   "Bosnia and Herzegovina": {
    "win_group": 0.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.13175,
-   "reach_qf": 0.00708,
-   "reach_sf": 0.00116,
-   "reach_final": 9e-05,
-   "champion": 1e-05
+   "reach_r16": 0.13103,
+   "reach_qf": 0.00347,
+   "reach_sf": 0.00034,
+   "reach_final": 1e-05,
+   "champion": 0.0
   },
   "Qatar": {
    "win_group": 0.0,
@@ -135,29 +135,29 @@
   "Switzerland": {
    "win_group": 1.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.79744,
-   "reach_qf": 0.33648,
-   "reach_sf": 0.09795,
-   "reach_final": 0.03874,
-   "champion": 0.01317
+   "reach_r16": 0.8003,
+   "reach_qf": 0.33367,
+   "reach_sf": 0.09691,
+   "reach_final": 0.03924,
+   "champion": 0.01285
   },
   "Brazil": {
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.67664,
-   "reach_sf": 0.34718,
-   "reach_final": 0.15236,
-   "champion": 0.06864
+   "reach_qf": 0.67902,
+   "reach_sf": 0.35252,
+   "reach_final": 0.155,
+   "champion": 0.06731
   },
   "Morocco": {
    "win_group": 0.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.62647,
-   "reach_sf": 0.21194,
-   "reach_final": 0.07123,
-   "champion": 0.02267
+   "reach_qf": 1.0,
+   "reach_sf": 0.34442,
+   "reach_final": 0.13806,
+   "champion": 0.05154
   },
   "Haiti": {
    "win_group": 0.0,
@@ -180,20 +180,20 @@
   "United States": {
    "win_group": 1.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.58988,
-   "reach_qf": 0.20748,
-   "reach_sf": 0.03951,
-   "reach_final": 0.01063,
-   "champion": 0.00235
+   "reach_r16": 0.58912,
+   "reach_qf": 0.20619,
+   "reach_sf": 0.03936,
+   "reach_final": 0.00912,
+   "champion": 0.00207
   },
   "Paraguay": {
    "win_group": 0.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.14022,
-   "reach_qf": 0.13608,
-   "reach_sf": 0.05635,
-   "reach_final": 0.01264,
-   "champion": 0.00278
+   "reach_r16": 0.0,
+   "reach_qf": 0.0,
+   "reach_sf": 0.0,
+   "reach_final": 0.0,
+   "champion": 0.0
   },
   "Australia": {
    "win_group": 0.0,
@@ -216,11 +216,11 @@
   "Germany": {
    "win_group": 1.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.86825,
-   "reach_qf": 0.1741,
-   "reach_sf": 0.09662,
-   "reach_final": 0.03222,
-   "champion": 0.00993
+   "reach_r16": 0.86897,
+   "reach_qf": 0.20305,
+   "reach_sf": 0.08807,
+   "reach_final": 0.03081,
+   "champion": 0.00996
   },
   "Cura\u00e7ao": {
    "win_group": 0.0,
@@ -270,11 +270,11 @@
   "Sweden": {
    "win_group": 0.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.20256,
-   "reach_qf": 0.02985,
-   "reach_sf": 0.00307,
-   "reach_final": 0.00045,
-   "champion": 3e-05
+   "reach_r16": 0.1997,
+   "reach_qf": 0.02886,
+   "reach_sf": 0.00248,
+   "reach_final": 0.00036,
+   "champion": 1e-05
   },
   "Tunisia": {
    "win_group": 0.0,
@@ -289,19 +289,19 @@
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.68398,
-   "reach_sf": 0.21783,
-   "reach_final": 0.08753,
-   "champion": 0.03019
+   "reach_qf": 0.68564,
+   "reach_sf": 0.2176,
+   "reach_final": 0.07657,
+   "champion": 0.02596
   },
   "Egypt": {
    "win_group": 0.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.10311,
-   "reach_sf": 0.0267,
-   "reach_final": 0.00582,
-   "champion": 0.00091
+   "reach_qf": 0.10207,
+   "reach_sf": 0.02696,
+   "reach_final": 0.00603,
+   "champion": 0.00095
   },
   "Iran": {
    "win_group": 0.0,
@@ -325,10 +325,10 @@
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.68216,
-   "reach_sf": 0.52975,
-   "reach_final": 0.33661,
-   "champion": 0.1983
+   "reach_qf": 0.68277,
+   "reach_sf": 0.53277,
+   "reach_final": 0.31535,
+   "champion": 0.18633
   },
   "Cape Verde": {
    "win_group": 0.0,
@@ -360,11 +360,11 @@
   "France": {
    "win_group": 1.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.85978,
-   "reach_qf": 0.68274,
-   "reach_sf": 0.54678,
-   "reach_final": 0.33394,
-   "champion": 0.19705
+   "reach_r16": 1.0,
+   "reach_qf": 0.79348,
+   "reach_sf": 0.56717,
+   "reach_final": 0.34639,
+   "champion": 0.20477
   },
   "Senegal": {
    "win_group": 0.0,
@@ -388,28 +388,28 @@
    "win_group": 0.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.32336,
-   "reach_sf": 0.1076,
-   "reach_final": 0.02944,
-   "champion": 0.00872
+   "reach_qf": 0.32098,
+   "reach_sf": 0.10596,
+   "reach_final": 0.02873,
+   "champion": 0.00769
   },
   "Argentina": {
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.89689,
-   "reach_sf": 0.64687,
-   "reach_final": 0.43535,
-   "champion": 0.25767
+   "reach_qf": 0.89793,
+   "reach_sf": 0.64701,
+   "reach_final": 0.43562,
+   "champion": 0.25535
   },
   "Algeria": {
    "win_group": 0.0,
    "reach_r32": 1.0,
-   "reach_r16": 0.41012,
-   "reach_qf": 0.10854,
-   "reach_sf": 0.01514,
-   "reach_final": 0.00336,
-   "champion": 0.00044
+   "reach_r16": 0.41088,
+   "reach_qf": 0.10817,
+   "reach_sf": 0.01474,
+   "reach_final": 0.00245,
+   "champion": 0.00049
   },
   "Austria": {
    "win_group": 0.0,
@@ -433,10 +433,10 @@
    "win_group": 0.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.31784,
-   "reach_sf": 0.19777,
-   "reach_final": 0.09073,
-   "champion": 0.03645
+   "reach_qf": 0.31723,
+   "reach_sf": 0.19553,
+   "reach_final": 0.08124,
+   "champion": 0.03346
   },
   "DR Congo": {
    "win_group": 0.0,
@@ -460,19 +460,19 @@
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.63367,
-   "reach_sf": 0.22541,
-   "reach_final": 0.10924,
-   "champion": 0.04478
+   "reach_qf": 0.63747,
+   "reach_sf": 0.22664,
+   "reach_final": 0.10842,
+   "champion": 0.04379
   },
   "England": {
    "win_group": 1.0,
    "reach_r32": 1.0,
    "reach_r16": 1.0,
-   "reach_qf": 0.53708,
-   "reach_sf": 0.3,
-   "reach_final": 0.13019,
-   "champion": 0.05881
+   "reach_qf": 0.5368,
+   "reach_sf": 0.29774,
+   "reach_final": 0.12856,
+   "champion": 0.05681
   },
   "Croatia": {
    "win_group": 0.0,
@@ -567,7 +567,7 @@
    "group": "B",
    "home": "Canada",
    "away": "Bosnia and Herzegovina",
-   "elo_home": 1873,
+   "elo_home": 1842,
    "elo_away": 1675,
    "played": true,
    "score_home": 1,
@@ -577,7 +577,7 @@
    "group": "B",
    "home": "Canada",
    "away": "Qatar",
-   "elo_home": 1873,
+   "elo_home": 1842,
    "elo_away": 1543,
    "played": true,
    "score_home": 6,
@@ -587,7 +587,7 @@
    "group": "B",
    "home": "Canada",
    "away": "Switzerland",
-   "elo_home": 1873,
+   "elo_home": 1842,
    "elo_away": 2017,
    "played": true,
    "score_home": 1,
@@ -628,7 +628,7 @@
    "home": "Brazil",
    "away": "Morocco",
    "elo_home": 2116,
-   "elo_away": 2025,
+   "elo_away": 2056,
    "played": true,
    "score_home": 1,
    "score_away": 1
@@ -657,7 +657,7 @@
    "group": "C",
    "home": "Morocco",
    "away": "Haiti",
-   "elo_home": 2025,
+   "elo_home": 2056,
    "elo_away": 1666,
    "played": true,
    "score_home": 4,
@@ -667,7 +667,7 @@
    "group": "C",
    "home": "Morocco",
    "away": "Scotland",
-   "elo_home": 2025,
+   "elo_home": 2056,
    "elo_away": 1821,
    "played": true,
    "score_home": 1,
@@ -688,7 +688,7 @@
    "home": "United States",
    "away": "Paraguay",
    "elo_home": 1893,
-   "elo_away": 1910,
+   "elo_away": 1900,
    "played": true,
    "score_home": 4,
    "score_away": 1
@@ -717,7 +717,7 @@
    "group": "D",
    "home": "Paraguay",
    "away": "Australia",
-   "elo_home": 1910,
+   "elo_home": 1900,
    "elo_away": 1908,
    "played": true,
    "score_home": 0,
@@ -727,7 +727,7 @@
    "group": "D",
    "home": "Paraguay",
    "away": "Turkey",
-   "elo_home": 1910,
+   "elo_home": 1900,
    "elo_away": 1922,
    "played": true,
    "score_home": 1,
@@ -987,7 +987,7 @@
    "group": "I",
    "home": "France",
    "away": "Senegal",
-   "elo_home": 2196,
+   "elo_home": 2206,
    "elo_away": 1880,
    "played": true,
    "score_home": 3,
@@ -997,7 +997,7 @@
    "group": "I",
    "home": "France",
    "away": "Iraq",
-   "elo_home": 2196,
+   "elo_home": 2206,
    "elo_away": 1674,
    "played": true,
    "score_home": 3,
@@ -1007,7 +1007,7 @@
    "group": "I",
    "home": "France",
    "away": "Norway",
-   "elo_home": 2196,
+   "elo_home": 2206,
    "elo_away": 2002,
    "played": true,
    "score_home": 4,
@@ -1387,14 +1387,23 @@
   },
   {
    "date": "2026-07-04",
+   "home": "Canada",
+   "away": "Morocco",
+   "played": true,
+   "score_home": 0,
+   "score_away": 3,
+   "winner": "Morocco",
+   "shootout": false
+  },
+  {
+   "date": "2026-07-04",
    "home": "Paraguay",
    "away": "France",
-   "played": false,
-   "p_home": 0.0855,
-   "p_draw": 0.1696,
-   "p_away": 0.745,
-   "xg_home": 0.65,
-   "xg_away": 2.3
+   "played": true,
+   "score_home": 0,
+   "score_away": 1,
+   "winner": "France",
+   "shootout": false
   },
   {
    "date": "2026-07-05",
