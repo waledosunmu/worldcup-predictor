@@ -1470,6 +1470,17 @@
    "p_away": 0.5022,
    "xg_home": 0.97,
    "xg_away": 1.54
+  },
+  {
+   "date": "2026-07-09",
+   "home": "France",
+   "away": "Morocco",
+   "played": false,
+   "p_home": 0.5683,
+   "p_draw": 0.245,
+   "p_away": 0.1867,
+   "xg_home": 1.71,
+   "xg_away": 0.87
   }
  ]
 }
