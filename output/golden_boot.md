@@ -4,24 +4,24 @@ As of 2026-07-06. Goal-share model on martj42 goalscorers.csv (CC0); contenders 
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Erling Haaland | Norway | 7 | 9.2 | 41.4% |
-| 2 | Lionel Messi | Argentina | 7 | 8.9 | 29.6% |
-| 3 | Kylian Mbappé | France | 7 | 8.4 | 17.7% |
-| 4 | Harry Kane | England | 6 | 7.8 | 10.9% |
+| 1 | Erling Haaland | Norway | 7 | 9.2 | 40.5% |
+| 2 | Lionel Messi | Argentina | 7 | 8.9 | 29.9% |
+| 3 | Kylian Mbappé | France | 7 | 8.4 | 17.9% |
+| 4 | Harry Kane | England | 6 | 7.8 | 11.3% |
 | 5 | Mikel Oyarzabal | Spain | 4 | 5.2 | 0.3% |
 | 6 | Cristiano Ronaldo | Portugal | 3 | 4.2 | 0.0% |
 | 7 | Ismael Saibari | Morocco | 3 | 4.0 | 0.0% |
-| 8 | Vinícius Júnior | Brazil | 4 | 4.6 | 0.0% |
-| 9 | Ousmane Dembélé | France | 4 | 4.6 | 0.0% |
+| 8 | Ousmane Dembélé | France | 4 | 4.6 | 0.0% |
+| 9 | Vinícius Júnior | Brazil | 4 | 4.6 | 0.0% |
 | 10 | Jude Bellingham | England | 4 | 4.5 | 0.0% |
-| 11 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
-| 12 | Jonathan David | Canada | 3 | 3.8 | 0.0% |
-| 13 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
-| 14 | Johan Manzambi | Switzerland | 3 | 3.5 | 0.0% |
+| 11 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
+| 12 | Johan Manzambi | Switzerland | 3 | 3.5 | 0.0% |
+| 13 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
+| 14 | Jonathan David | Canada | 3 | 3.8 | 0.0% |
 | 15 | Mohamed Salah | Egypt | 1 | 2.0 | 0.0% |
-| 16 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
-| 17 | Matheus Cunha | Brazil | 3 | 3.4 | 0.0% |
-| 18 | Folarin Balogun | United States | 3 | 3.3 | 0.0% |
+| 16 | Folarin Balogun | United States | 3 | 3.3 | 0.0% |
+| 17 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
+| 18 | Matheus Cunha | Brazil | 3 | 3.4 | 0.0% |
 | 19 | Deniz Undav | Germany | 3 | 3.3 | 0.0% |
 | 20 | Kai Havertz | Germany | 3 | 3.3 | 0.0% |
 | 21 | Yoane Wissa | DR Congo | 3 | 3.3 | 0.0% |
