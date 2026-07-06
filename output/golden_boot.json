@@ -5,157 +5,136 @@
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
   {
+   "scorer": "Erling Haaland",
+   "team": "Norway",
+   "current": 7,
+   "exp_goals": 9.25,
+   "p_win": 0.4141243333333306
+  },
+  {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 7,
    "exp_goals": 8.87,
-   "p_win": 0.48813633333332257
+   "p_win": 0.29597433333334344
   },
   {
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 7,
    "exp_goals": 8.41,
-   "p_win": 0.3154623333333437
-  },
-  {
-   "scorer": "Erling Haaland",
-   "team": "Norway",
-   "current": 5,
-   "exp_goals": 7.14,
-   "p_win": 0.11152866666666568
+   "p_win": 0.17696766666666375
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
-   "current": 5,
-   "exp_goals": 6.85,
-   "p_win": 0.07629700000000111
+   "current": 6,
+   "exp_goals": 7.82,
+   "p_win": 0.10906699999999903
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 4,
    "exp_goals": 5.23,
-   "p_win": 0.005692333333333337
+   "p_win": 0.0027599999999999973
   },
   {
    "scorer": "Cristiano Ronaldo",
    "team": "Portugal",
    "current": 3,
    "exp_goals": 4.15,
-   "p_win": 0.0010333333333333336
+   "p_win": 0.000319
   },
   {
    "scorer": "Ismael Saibari",
    "team": "Morocco",
    "current": 3,
    "exp_goals": 4.02,
-   "p_win": 0.0006146666666666666
+   "p_win": 0.00019166666666666665
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 4,
-   "exp_goals": 4.62,
-   "p_win": 0.0005033333333333332
+   "exp_goals": 4.6,
+   "p_win": 0.000147
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 4,
    "exp_goals": 4.6,
-   "p_win": 0.0004289999999999999
+   "p_win": 0.00012933333333333332
+  },
+  {
+   "scorer": "Jude Bellingham",
+   "team": "England",
+   "current": 4,
+   "exp_goals": 4.51,
+   "p_win": 0.00010733333333333333
+  },
+  {
+   "scorer": "Ra\u00fal Jim\u00e9nez",
+   "team": "Mexico",
+   "current": 3,
+   "exp_goals": 3.82,
+   "p_win": 5.7e-05
   },
   {
    "scorer": "Jonathan David",
    "team": "Canada",
    "current": 3,
    "exp_goals": 3.78,
-   "p_win": 0.00017
+   "p_win": 5e-05
   },
   {
-   "scorer": "Isma\u00efla Sarr",
-   "team": "Senegal",
-   "current": 4,
-   "exp_goals": 4.21,
-   "p_win": 2.5666666666666663e-05
-  },
-  {
-   "scorer": "Matheus Cunha",
-   "team": "Brazil",
-   "current": 3,
-   "exp_goals": 3.42,
-   "p_win": 2e-05
-  },
-  {
-   "scorer": "Romelu Lukaku",
-   "team": "Belgium",
-   "current": 2,
-   "exp_goals": 2.49,
-   "p_win": 2e-05
-  },
-  {
-   "scorer": "Ra\u00fal Jim\u00e9nez",
+   "scorer": "Juli\u00e1n Qui\u00f1ones",
    "team": "Mexico",
-   "current": 2,
-   "exp_goals": 2.76,
-   "p_win": 1.3333333333333333e-05
+   "current": 4,
+   "exp_goals": 4.55,
+   "p_win": 4.866666666666666e-05
   },
   {
    "scorer": "Johan Manzambi",
    "team": "Switzerland",
    "current": 3,
    "exp_goals": 3.49,
-   "p_win": 1.0666666666666667e-05
-  },
-  {
-   "scorer": "Deniz Undav",
-   "team": "Germany",
-   "current": 3,
-   "exp_goals": 3.34,
-   "p_win": 1e-05
-  },
-  {
-   "scorer": "Breel Embolo",
-   "team": "Switzerland",
-   "current": 2,
-   "exp_goals": 2.69,
-   "p_win": 1e-05
-  },
-  {
-   "scorer": "Folarin Balogun",
-   "team": "United States",
-   "current": 3,
-   "exp_goals": 3.34,
-   "p_win": 6.666666666666667e-06
-  },
-  {
-   "scorer": "Bradley Barcola",
-   "team": "France",
-   "current": 2,
-   "exp_goals": 2.5,
-   "p_win": 6.666666666666667e-06
+   "p_win": 3.6666666666666666e-05
   },
   {
    "scorer": "Mohamed Salah",
    "team": "Egypt",
    "current": 1,
    "exp_goals": 2.04,
-   "p_win": 5e-06
+   "p_win": 2e-05
   },
   {
-   "scorer": "Luis D\u00edaz",
-   "team": "Colombia",
-   "current": 1,
-   "exp_goals": 1.82,
-   "p_win": 5e-06
+   "scorer": "Isma\u00efla Sarr",
+   "team": "Senegal",
+   "current": 4,
+   "exp_goals": 4.21,
+   "p_win": 0.0
   },
   {
-   "scorer": "Juli\u00e1n Qui\u00f1ones",
-   "team": "Mexico",
+   "scorer": "Matheus Cunha",
+   "team": "Brazil",
    "current": 3,
-   "exp_goals": 3.46,
+   "exp_goals": 3.4,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Folarin Balogun",
+   "team": "United States",
+   "current": 3,
+   "exp_goals": 3.34,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Deniz Undav",
+   "team": "Germany",
+   "current": 3,
+   "exp_goals": 3.34,
    "p_win": 0.0
   },
   {
@@ -177,6 +156,27 @@
    "team": "Netherlands",
    "current": 3,
    "exp_goals": 3.23,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Brian Brobbey",
+   "team": "Netherlands",
+   "current": 3,
+   "exp_goals": 3.09,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Elijah Just",
+   "team": "New Zealand",
+   "current": 3,
+   "exp_goals": 3.0,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Breel Embolo",
+   "team": "Switzerland",
+   "current": 2,
+   "exp_goals": 2.69,
    "p_win": 0.0
   }
  ]
