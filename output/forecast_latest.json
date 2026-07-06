@@ -1438,17 +1438,6 @@
   },
   {
    "date": "2026-07-06",
-   "home": "Portugal",
-   "away": "Spain",
-   "played": false,
-   "p_home": 0.2103,
-   "p_draw": 0.2553,
-   "p_away": 0.5343,
-   "xg_home": 0.92,
-   "xg_away": 1.62
-  },
-  {
-   "date": "2026-07-06",
    "home": "Switzerland",
    "away": "Colombia",
    "played": false,

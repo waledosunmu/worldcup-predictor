@@ -1,19 +1,19 @@
 {
- "n_records": 65,
+ "n_records": 66,
  "n_matches_tracked": 97,
- "mean_captures_per_match": 23.4,
+ "mean_captures_per_match": 23.44,
  "total_drift_pp": {
-  "mean": 4.14,
+  "mean": 4.13,
   "median": 2.34,
   "max": 24.54
  },
  "final_window_move_pp": {
-  "mean": 1.28,
+  "mean": 1.3,
   "max": 10.92,
-  "n_matches": 59
+  "n_matches": 60
  },
  "outright_max_swing_pp": 18.85,
- "verdict": "avg favourite-prob move in the final 3h = 1.28pp. Moderate late movement \u2014 current cadence is reasonable.",
+ "verdict": "avg favourite-prob move in the final 3h = 1.30pp. Moderate late movement \u2014 current cadence is reasonable.",
  "per_match": [
   {
    "home": "Tunisia",
@@ -698,17 +698,6 @@
    "final_window_move_pp": null
   },
   {
-   "home": "United States",
-   "away": "Belgium",
-   "commence": "2026-07-07T00:00:00Z",
-   "n_captures": 8,
-   "favourite": "away",
-   "open_prob": 0.3497,
-   "close_prob": 0.3671,
-   "total_drift_pp": 1.74,
-   "final_window_move_pp": null
-  },
-  {
    "home": "Japan",
    "away": "Sweden",
    "commence": "2026-06-25T23:00:00Z",
@@ -841,15 +830,15 @@
    "final_window_move_pp": null
   },
   {
-   "home": "Argentina",
-   "away": "Egypt",
-   "commence": "2026-07-07T16:00:00Z",
-   "n_captures": 4,
+   "home": "United States",
+   "away": "Belgium",
+   "commence": "2026-07-07T00:00:00Z",
+   "n_captures": 9,
    "favourite": "home",
-   "open_prob": 0.7128,
-   "close_prob": 0.7048,
-   "total_drift_pp": 0.8,
-   "final_window_move_pp": null
+   "open_prob": 0.3723,
+   "close_prob": 0.3805,
+   "total_drift_pp": 0.82,
+   "final_window_move_pp": 2.53
   },
   {
    "home": "Netherlands",
@@ -894,6 +883,17 @@
    "close_prob": 0.749,
    "total_drift_pp": 0.7,
    "final_window_move_pp": 1.37
+  },
+  {
+   "home": "Switzerland",
+   "away": "Colombia",
+   "commence": "2026-07-07T20:00:00Z",
+   "n_captures": 5,
+   "favourite": "away",
+   "open_prob": 0.4281,
+   "close_prob": 0.422,
+   "total_drift_pp": 0.61,
+   "final_window_move_pp": null
   },
   {
    "home": "Sweden",
@@ -995,6 +995,17 @@
    "final_window_move_pp": null
   },
   {
+   "home": "France",
+   "away": "Morocco",
+   "commence": "2026-07-09T20:00:00Z",
+   "n_captures": 3,
+   "favourite": "home",
+   "open_prob": 0.6138,
+   "close_prob": 0.6109,
+   "total_drift_pp": 0.3,
+   "final_window_move_pp": null
+  },
+  {
    "home": "Canada",
    "away": "Bosnia and Herzegovina",
    "commence": "2026-06-12T19:00:00Z",
@@ -1015,17 +1026,6 @@
    "close_prob": 0.7614,
    "total_drift_pp": 0.27,
    "final_window_move_pp": 0.7
-  },
-  {
-   "home": "Switzerland",
-   "away": "Colombia",
-   "commence": "2026-07-07T20:00:00Z",
-   "n_captures": 4,
-   "favourite": "away",
-   "open_prob": 0.4281,
-   "close_prob": 0.4255,
-   "total_drift_pp": 0.26,
-   "final_window_move_pp": null
   },
   {
    "home": "Germany",
@@ -1050,6 +1050,17 @@
    "final_window_move_pp": null
   },
   {
+   "home": "Argentina",
+   "away": "Egypt",
+   "commence": "2026-07-07T16:00:00Z",
+   "n_captures": 5,
+   "favourite": "home",
+   "open_prob": 0.7128,
+   "close_prob": 0.7141,
+   "total_drift_pp": 0.13,
+   "final_window_move_pp": null
+  },
+  {
    "home": "Australia",
    "away": "Turkey",
    "commence": "2026-06-14T04:00:00Z",
@@ -1058,17 +1069,6 @@
    "open_prob": 0.5682,
    "close_prob": 0.5675,
    "total_drift_pp": 0.06,
-   "final_window_move_pp": null
-  },
-  {
-   "home": "France",
-   "away": "Morocco",
-   "commence": "2026-07-09T20:00:00Z",
-   "n_captures": 2,
-   "favourite": "home",
-   "open_prob": 0.6138,
-   "close_prob": 0.6142,
-   "total_drift_pp": 0.04,
    "final_window_move_pp": null
   },
   {
