@@ -1479,6 +1479,17 @@
    "xg_away": 0.87
   },
   {
+   "date": "2026-07-10",
+   "home": "Spain",
+   "away": "Belgium",
+   "played": false,
+   "p_home": 0.5696,
+   "p_draw": 0.2446,
+   "p_away": 0.1858,
+   "xg_home": 1.71,
+   "xg_away": 0.87
+  },
+  {
    "date": "2026-07-11",
    "home": "Norway",
    "away": "England",
