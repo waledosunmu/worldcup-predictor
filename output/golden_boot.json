@@ -9,105 +9,105 @@
    "team": "Norway",
    "current": 7,
    "exp_goals": 9.22,
-   "p_win": 0.4062523333333317
+   "p_win": 0.39232900000000054
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 7,
-   "exp_goals": 8.87,
-   "p_win": 0.2966376666666768
+   "exp_goals": 8.96,
+   "p_win": 0.3191490000000115
   },
   {
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 7,
    "exp_goals": 8.39,
-   "p_win": 0.17238333333333009
+   "p_win": 0.1669559999999954
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
-   "exp_goals": 7.88,
-   "p_win": 0.11857499999999811
+   "exp_goals": 7.87,
+   "p_win": 0.11590199999999853
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 4,
    "exp_goals": 5.43,
-   "p_win": 0.004941333333333339
-  },
-  {
-   "scorer": "Vin\u00edcius J\u00fanior",
-   "team": "Brazil",
-   "current": 4,
-   "exp_goals": 4.6,
-   "p_win": 0.0002623333333333334
+   "p_win": 0.0047056666666666705
   },
   {
    "scorer": "Ismael Saibari",
    "team": "Morocco",
    "current": 3,
    "exp_goals": 4.02,
-   "p_win": 0.00023166666666666664
+   "p_win": 0.000199
+  },
+  {
+   "scorer": "Vin\u00edcius J\u00fanior",
+   "team": "Brazil",
+   "current": 4,
+   "exp_goals": 4.6,
+   "p_win": 0.00014700000000000002
   },
   {
    "scorer": "Juli\u00e1n Qui\u00f1ones",
    "team": "Mexico",
    "current": 4,
    "exp_goals": 4.55,
-   "p_win": 0.00012633333333333333
-  },
-  {
-   "scorer": "Ousmane Demb\u00e9l\u00e9",
-   "team": "France",
-   "current": 4,
-   "exp_goals": 4.6,
-   "p_win": 0.000125
-  },
-  {
-   "scorer": "Jude Bellingham",
-   "team": "England",
-   "current": 4,
-   "exp_goals": 4.52,
-   "p_win": 0.00011899999999999999
-  },
-  {
-   "scorer": "Jonathan David",
-   "team": "Canada",
-   "current": 3,
-   "exp_goals": 3.78,
-   "p_win": 0.000114
-  },
-  {
-   "scorer": "Cristiano Ronaldo",
-   "team": "Portugal",
-   "current": 3,
-   "exp_goals": 3.89,
-   "p_win": 9.999999999999998e-05
+   "p_win": 0.000147
   },
   {
    "scorer": "Ra\u00fal Jim\u00e9nez",
    "team": "Mexico",
    "current": 3,
    "exp_goals": 3.82,
+   "p_win": 9.133333333333334e-05
+  },
+  {
+   "scorer": "Jonathan David",
+   "team": "Canada",
+   "current": 3,
+   "exp_goals": 3.78,
+   "p_win": 9.133333333333334e-05
+  },
+  {
+   "scorer": "Ousmane Demb\u00e9l\u00e9",
+   "team": "France",
+   "current": 4,
+   "exp_goals": 4.6,
    "p_win": 8.066666666666666e-05
   },
   {
-   "scorer": "Romelu Lukaku",
-   "team": "Belgium",
+   "scorer": "Jude Bellingham",
+   "team": "England",
+   "current": 4,
+   "exp_goals": 4.52,
+   "p_win": 8.066666666666666e-05
+  },
+  {
+   "scorer": "Cristiano Ronaldo",
+   "team": "Portugal",
    "current": 3,
-   "exp_goals": 3.58,
-   "p_win": 1.8999999999999998e-05
+   "exp_goals": 3.89,
+   "p_win": 7.333333333333333e-05
   },
   {
    "scorer": "Johan Manzambi",
    "team": "Switzerland",
    "current": 3,
    "exp_goals": 3.51,
-   "p_win": 1.8999999999999998e-05
+   "p_win": 2.1333333333333335e-05
+  },
+  {
+   "scorer": "Romelu Lukaku",
+   "team": "Belgium",
+   "current": 3,
+   "exp_goals": 3.58,
+   "p_win": 2e-05
   },
   {
    "scorer": "Isma\u00efla Sarr",
@@ -121,14 +121,7 @@
    "team": "Brazil",
    "current": 3,
    "exp_goals": 3.4,
-   "p_win": 3.3333333333333333e-06
-  },
-  {
-   "scorer": "Yoane Wissa",
-   "team": "DR Congo",
-   "current": 3,
-   "exp_goals": 3.27,
-   "p_win": 3.3333333333333333e-06
+   "p_win": 0.0
   },
   {
    "scorer": "Deniz Undav",
@@ -142,6 +135,13 @@
    "team": "Germany",
    "current": 3,
    "exp_goals": 3.28,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Yoane Wissa",
+   "team": "DR Congo",
+   "current": 3,
+   "exp_goals": 3.27,
    "p_win": 0.0
   },
   {
