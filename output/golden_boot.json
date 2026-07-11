@@ -1,6 +1,6 @@
 {
- "as_of": "2026-07-10",
- "generated": "2026-07-10",
+ "as_of": "2026-07-11",
+ "generated": "2026-07-11",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -9,105 +9,105 @@
    "team": "Argentina",
    "current": 8,
    "exp_goals": 9.94,
-   "p_win": 0.40709833333332945
+   "p_win": 0.4103086666666635
   },
   {
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 8,
-   "exp_goals": 9.63,
-   "p_win": 0.3035716666666773
+   "exp_goals": 9.6,
+   "p_win": 0.29795700000001024
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 9.22,
-   "p_win": 0.22766833333333736
+   "p_win": 0.2302020000000039
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
-   "exp_goals": 7.87,
-   "p_win": 0.0588050000000005
+   "exp_goals": 7.85,
+   "p_win": 0.05774700000000041
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 4,
-   "exp_goals": 5.46,
-   "p_win": 0.0018836666666666665
+   "exp_goals": 5.61,
+   "p_win": 0.0029386666666666667
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 5,
-   "exp_goals": 5.76,
-   "p_win": 0.0008323333333333333
-  },
-  {
-   "scorer": "Jude Bellingham",
-   "team": "England",
-   "current": 4,
-   "exp_goals": 4.52,
-   "p_win": 4.066666666666666e-05
-  },
-  {
-   "scorer": "Cristiano Ronaldo",
-   "team": "Portugal",
-   "current": 3,
-   "exp_goals": 3.89,
-   "p_win": 3.1666666666666666e-05
-  },
-  {
-   "scorer": "Juli\u00e1n Qui\u00f1ones",
-   "team": "Mexico",
-   "current": 4,
-   "exp_goals": 4.55,
-   "p_win": 2.5e-05
-  },
-  {
-   "scorer": "Ismael Saibari",
-   "team": "Morocco",
-   "current": 3,
-   "exp_goals": 3.92,
-   "p_win": 1.6666666666666664e-05
-  },
-  {
-   "scorer": "Jonathan David",
-   "team": "Canada",
-   "current": 3,
-   "exp_goals": 3.78,
-   "p_win": 1e-05
-  },
-  {
-   "scorer": "Breel Embolo",
-   "team": "Switzerland",
-   "current": 2,
-   "exp_goals": 2.78,
-   "p_win": 6.666666666666667e-06
-  },
-  {
-   "scorer": "Ra\u00fal Jim\u00e9nez",
-   "team": "Mexico",
-   "current": 3,
-   "exp_goals": 3.82,
-   "p_win": 5e-06
-  },
-  {
-   "scorer": "Romelu Lukaku",
-   "team": "Belgium",
-   "current": 3,
-   "exp_goals": 3.57,
-   "p_win": 5e-06
+   "exp_goals": 5.75,
+   "p_win": 0.0006866666666666665
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 4,
    "exp_goals": 4.6,
-   "p_win": 0.0
+   "p_win": 3.1666666666666666e-05
+  },
+  {
+   "scorer": "Jude Bellingham",
+   "team": "England",
+   "current": 4,
+   "exp_goals": 4.54,
+   "p_win": 3e-05
+  },
+  {
+   "scorer": "Ismael Saibari",
+   "team": "Morocco",
+   "current": 3,
+   "exp_goals": 3.92,
+   "p_win": 2.6666666666666667e-05
+  },
+  {
+   "scorer": "Cristiano Ronaldo",
+   "team": "Portugal",
+   "current": 3,
+   "exp_goals": 3.89,
+   "p_win": 2.5e-05
+  },
+  {
+   "scorer": "Romelu Lukaku",
+   "team": "Belgium",
+   "current": 3,
+   "exp_goals": 3.51,
+   "p_win": 2e-05
+  },
+  {
+   "scorer": "Juli\u00e1n Qui\u00f1ones",
+   "team": "Mexico",
+   "current": 4,
+   "exp_goals": 4.55,
+   "p_win": 1.1666666666666665e-05
+  },
+  {
+   "scorer": "Jonathan David",
+   "team": "Canada",
+   "current": 3,
+   "exp_goals": 3.78,
+   "p_win": 5e-06
+  },
+  {
+   "scorer": "Johan Manzambi",
+   "team": "Switzerland",
+   "current": 3,
+   "exp_goals": 3.65,
+   "p_win": 5e-06
+  },
+  {
+   "scorer": "Lautaro Mart\u00ednez",
+   "team": "Argentina",
+   "current": 1,
+   "exp_goals": 1.89,
+   "p_win": 5e-06
   },
   {
    "scorer": "Isma\u00efla Sarr",
@@ -117,10 +117,10 @@
    "p_win": 0.0
   },
   {
-   "scorer": "Johan Manzambi",
-   "team": "Switzerland",
+   "scorer": "Ra\u00fal Jim\u00e9nez",
+   "team": "Mexico",
    "current": 3,
-   "exp_goals": 3.65,
+   "exp_goals": 3.82,
    "p_win": 0.0
   },
   {
@@ -162,7 +162,7 @@
    "scorer": "Cody Gakpo",
    "team": "Netherlands",
    "current": 3,
-   "exp_goals": 3.23,
+   "exp_goals": 3.24,
    "p_win": 0.0
   },
   {
