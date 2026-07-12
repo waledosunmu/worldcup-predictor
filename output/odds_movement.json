@@ -1,10 +1,10 @@
 {
- "n_records": 72,
- "n_matches_tracked": 100,
- "mean_captures_per_match": 22.97,
+ "n_records": 73,
+ "n_matches_tracked": 101,
+ "mean_captures_per_match": 22.76,
  "total_drift_pp": {
-  "mean": 4.03,
-  "median": 2.33,
+  "mean": 3.99,
+  "median": 2.32,
   "max": 24.54
  },
  "final_window_move_pp": {
@@ -927,6 +927,17 @@
    "close_prob": 0.7208,
    "total_drift_pp": 0.54,
    "final_window_move_pp": 0.24
+  },
+  {
+   "home": "France",
+   "away": "Spain",
+   "commence": "2026-07-14T19:00:00Z",
+   "n_captures": 2,
+   "favourite": "home",
+   "open_prob": 0.4084,
+   "close_prob": 0.4138,
+   "total_drift_pp": 0.54,
+   "final_window_move_pp": null
   },
   {
    "home": "Brazil",
