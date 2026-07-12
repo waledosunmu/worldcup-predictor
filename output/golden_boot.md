@@ -4,22 +4,22 @@ As of 2026-07-12. Goal-share model on martj42 goalscorers.csv (CC0); contenders 
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Lionel Messi | Argentina | 8 | 9.9 | 41.9% |
-| 2 | Kylian Mbappé | France | 8 | 9.6 | 31.5% |
-| 3 | Erling Haaland | Norway | 7 | 8.9 | 17.5% |
-| 4 | Harry Kane | England | 6 | 8.1 | 8.7% |
-| 5 | Mikel Oyarzabal | Spain | 4 | 5.5 | 0.3% |
+| 1 | Lionel Messi | Argentina | 8 | 10.1 | 45.2% |
+| 2 | Kylian Mbappé | France | 8 | 9.6 | 29.8% |
+| 3 | Erling Haaland | Norway | 7 | 8.9 | 17.0% |
+| 4 | Harry Kane | England | 6 | 8.1 | 7.7% |
+| 5 | Mikel Oyarzabal | Spain | 4 | 5.5 | 0.2% |
 | 6 | Ousmane Dembélé | France | 5 | 5.8 | 0.1% |
-| 7 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
-| 8 | Ismael Saibari | Morocco | 3 | 3.9 | 0.0% |
-| 9 | Vinícius Júnior | Brazil | 4 | 4.6 | 0.0% |
-| 10 | Johan Manzambi | Switzerland | 3 | 3.6 | 0.0% |
-| 11 | Jude Bellingham | England | 4 | 4.6 | 0.0% |
-| 12 | Mikel Merino | Spain | 2 | 3.0 | 0.0% |
-| 13 | Cristiano Ronaldo | Portugal | 3 | 3.9 | 0.0% |
-| 14 | Jonathan David | Canada | 3 | 3.8 | 0.0% |
-| 15 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
-| 16 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
+| 7 | Ismael Saibari | Morocco | 3 | 3.9 | 0.0% |
+| 8 | Vinícius Júnior | Brazil | 4 | 4.6 | 0.0% |
+| 9 | Jude Bellingham | England | 4 | 4.6 | 0.0% |
+| 10 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
+| 11 | Mikel Merino | Spain | 2 | 3.0 | 0.0% |
+| 12 | Cristiano Ronaldo | Portugal | 3 | 3.9 | 0.0% |
+| 13 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
+| 14 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
+| 15 | Jonathan David | Canada | 3 | 3.8 | 0.0% |
+| 16 | Johan Manzambi | Switzerland | 3 | 3.6 | 0.0% |
 | 17 | Romelu Lukaku | Belgium | 3 | 3.5 | 0.0% |
 | 18 | Matheus Cunha | Brazil | 3 | 3.4 | 0.0% |
 | 19 | Charles De Ketelaere | Belgium | 3 | 3.4 | 0.0% |
