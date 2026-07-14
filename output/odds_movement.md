@@ -1,15 +1,15 @@
 # Odds-movement tracker — pre-kickoff market drift
 
-_74 capture(s); 102 match(es) with ≥2 pre-kickoff captures._
+_75 capture(s); 102 match(es) with ≥2 pre-kickoff captures._
 
-**avg favourite-prob move in the final 3h = 1.25pp. Moderate late movement — current cadence is reasonable.**
+**avg favourite-prob move in the final 3h = 1.24pp. Moderate late movement — current cadence is reasonable.**
 
 | Metric | Mean | Median | Max |
 |---|---:|---:|---:|
-| Total pre-kickoff drift (pp) | 3.95 | 2.31 | 24.54 |
-| Final-3h move (pp), 65 match(es) | 1.25 | — | 10.92 |
+| Total pre-kickoff drift (pp) | 3.97 | 2.31 | 24.54 |
+| Final-3h move (pp), 66 match(es) | 1.24 | — | 10.92 |
 
-Mean captures per match: 22.57. Max outright champion-prob swing across captures: 24.1pp.
+Mean captures per match: 22.59. Max outright champion-prob swing across captures: 24.1pp.
 
 ## Biggest movers (favourite probability)
 

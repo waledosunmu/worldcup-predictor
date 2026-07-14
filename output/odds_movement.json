@@ -1,19 +1,19 @@
 {
- "n_records": 74,
+ "n_records": 75,
  "n_matches_tracked": 102,
- "mean_captures_per_match": 22.57,
+ "mean_captures_per_match": 22.59,
  "total_drift_pp": {
-  "mean": 3.95,
+  "mean": 3.97,
   "median": 2.31,
   "max": 24.54
  },
  "final_window_move_pp": {
-  "mean": 1.25,
+  "mean": 1.24,
   "max": 10.92,
-  "n_matches": 65
+  "n_matches": 66
  },
  "outright_max_swing_pp": 24.1,
- "verdict": "avg favourite-prob move in the final 3h = 1.25pp. Moderate late movement \u2014 current cadence is reasonable.",
+ "verdict": "avg favourite-prob move in the final 3h = 1.24pp. Moderate late movement \u2014 current cadence is reasonable.",
  "per_match": [
   {
    "home": "Tunisia",
@@ -775,6 +775,17 @@
    "final_window_move_pp": 0.52
   },
   {
+   "home": "France",
+   "away": "Spain",
+   "commence": "2026-07-14T19:00:00Z",
+   "n_captures": 4,
+   "favourite": "home",
+   "open_prob": 0.4084,
+   "close_prob": 0.3977,
+   "total_drift_pp": 1.06,
+   "final_window_move_pp": 0.86
+  },
+  {
    "home": "Uruguay",
    "away": "Spain",
    "commence": "2026-06-27T00:00:00Z",
@@ -863,6 +874,17 @@
    "final_window_move_pp": 1.29
   },
   {
+   "home": "England",
+   "away": "Argentina",
+   "commence": "2026-07-15T19:00:00Z",
+   "n_captures": 3,
+   "favourite": "home",
+   "open_prob": 0.3682,
+   "close_prob": 0.3603,
+   "total_drift_pp": 0.8,
+   "final_window_move_pp": null
+  },
+  {
    "home": "Netherlands",
    "away": "Japan",
    "commence": "2026-06-14T20:00:00Z",
@@ -916,17 +938,6 @@
    "close_prob": 0.511,
    "total_drift_pp": 0.59,
    "final_window_move_pp": 1.36
-  },
-  {
-   "home": "England",
-   "away": "Argentina",
-   "commence": "2026-07-15T19:00:00Z",
-   "n_captures": 2,
-   "favourite": "home",
-   "open_prob": 0.3682,
-   "close_prob": 0.3624,
-   "total_drift_pp": 0.58,
-   "final_window_move_pp": null
   },
   {
    "home": "Germany",
@@ -1079,17 +1090,6 @@
    "favourite": "home",
    "open_prob": 0.566,
    "close_prob": 0.568,
-   "total_drift_pp": 0.2,
-   "final_window_move_pp": null
-  },
-  {
-   "home": "France",
-   "away": "Spain",
-   "commence": "2026-07-14T19:00:00Z",
-   "n_captures": 3,
-   "favourite": "home",
-   "open_prob": 0.4084,
-   "close_prob": 0.4064,
    "total_drift_pp": 0.2,
    "final_window_move_pp": null
   },
