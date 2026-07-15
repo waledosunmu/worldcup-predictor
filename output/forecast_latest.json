@@ -1514,17 +1514,6 @@
    "score_away": 2,
    "winner": "Spain",
    "shootout": false
-  },
-  {
-   "date": "2026-07-15",
-   "home": "England",
-   "away": "Argentina",
-   "played": false,
-   "p_home": 0.2585,
-   "p_draw": 0.2704,
-   "p_away": 0.4712,
-   "xg_home": 1.02,
-   "xg_away": 1.47
   }
  ]
 }
