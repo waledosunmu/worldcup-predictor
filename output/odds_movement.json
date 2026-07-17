@@ -1,10 +1,10 @@
 {
- "n_records": 77,
- "n_matches_tracked": 102,
- "mean_captures_per_match": 22.6,
+ "n_records": 78,
+ "n_matches_tracked": 104,
+ "mean_captures_per_match": 22.2,
  "total_drift_pp": {
-  "mean": 3.97,
-  "median": 2.31,
+  "mean": 3.9,
+  "median": 2.28,
   "max": 24.54
  },
  "final_window_move_pp": {
@@ -12,7 +12,7 @@
   "max": 10.92,
   "n_matches": 67
  },
- "outright_max_swing_pp": 48.3,
+ "outright_max_swing_pp": 48.35,
  "verdict": "avg favourite-prob move in the final 3h = 1.23pp. Moderate late movement \u2014 current cadence is reasonable.",
  "per_match": [
   {
@@ -929,6 +929,17 @@
    "final_window_move_pp": 1.37
   },
   {
+   "home": "France",
+   "away": "England",
+   "commence": "2026-07-18T21:00:00Z",
+   "n_captures": 2,
+   "favourite": "home",
+   "open_prob": 0.507,
+   "close_prob": 0.5134,
+   "total_drift_pp": 0.64,
+   "final_window_move_pp": null
+  },
+  {
    "home": "Sweden",
    "away": "Tunisia",
    "commence": "2026-06-15T02:00:00Z",
@@ -1091,6 +1102,17 @@
    "open_prob": 0.566,
    "close_prob": 0.568,
    "total_drift_pp": 0.2,
+   "final_window_move_pp": null
+  },
+  {
+   "home": "Spain",
+   "away": "Argentina",
+   "commence": "2026-07-19T19:00:00Z",
+   "n_captures": 2,
+   "favourite": "home",
+   "open_prob": 0.4187,
+   "close_prob": 0.4205,
+   "total_drift_pp": 0.18,
    "final_window_move_pp": null
   },
   {
