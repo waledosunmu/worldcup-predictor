@@ -4,28 +4,28 @@ As of 2026-07-19. Goal-share model on martj42 goalscorers.csv (CC0); contenders 
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Lionel Messi | Argentina | 8 | 10.0 | 48.4% |
-| 2 | Kylian Mbappé | France | 8 | 9.3 | 24.7% |
-| 3 | Erling Haaland | Norway | 7 | 8.9 | 18.2% |
-| 4 | Harry Kane | England | 6 | 7.8 | 6.5% |
-| 5 | Mikel Oyarzabal | Spain | 5 | 6.7 | 1.5% |
-| 6 | Jude Bellingham | England | 6 | 6.8 | 0.5% |
-| 7 | Ousmane Dembélé | France | 5 | 5.6 | 0.0% |
+| 1 | Kylian Mbappé | France | 10 | 11.4 | 70.0% |
+| 2 | Lionel Messi | Argentina | 8 | 10.0 | 21.0% |
+| 3 | Erling Haaland | Norway | 7 | 8.9 | 6.7% |
+| 4 | Harry Kane | England | 6 | 7.6 | 1.3% |
+| 5 | Jude Bellingham | England | 7 | 7.8 | 0.5% |
+| 6 | Mikel Oyarzabal | Spain | 5 | 6.7 | 0.4% |
+| 7 | Ousmane Dembélé | France | 6 | 6.7 | 0.1% |
 | 8 | Vinícius Júnior | Brazil | 4 | 4.6 | 0.0% |
-| 9 | Ismael Saibari | Morocco | 3 | 4.0 | 0.0% |
-| 10 | Cristiano Ronaldo | Portugal | 3 | 3.9 | 0.0% |
+| 9 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
+| 10 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
 | 11 | Lautaro Martínez | Argentina | 3 | 4.1 | 0.0% |
-| 12 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
-| 13 | Mikel Merino | Spain | 2 | 3.1 | 0.0% |
-| 14 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
-| 15 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
-| 16 | Jonathan David | Canada | 3 | 3.7 | 0.0% |
-| 17 | Johan Manzambi | Switzerland | 3 | 3.5 | 0.0% |
-| 18 | Romelu Lukaku | Belgium | 3 | 3.5 | 0.0% |
+| 12 | Ismael Saibari | Morocco | 3 | 4.0 | 0.0% |
+| 13 | Cristiano Ronaldo | Portugal | 3 | 3.9 | 0.0% |
+| 14 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
+| 15 | Jonathan David | Canada | 3 | 3.7 | 0.0% |
+| 16 | Johan Manzambi | Switzerland | 3 | 3.5 | 0.0% |
+| 17 | Romelu Lukaku | Belgium | 3 | 3.5 | 0.0% |
+| 18 | Bradley Barcola | France | 3 | 3.5 | 0.0% |
 | 19 | Matheus Cunha | Brazil | 3 | 3.4 | 0.0% |
-| 20 | Deniz Undav | Germany | 3 | 3.4 | 0.0% |
-| 21 | Charles De Ketelaere | Belgium | 3 | 3.4 | 0.0% |
-| 22 | Kai Havertz | Germany | 3 | 3.3 | 0.0% |
-| 23 | Yoane Wissa | DR Congo | 3 | 3.3 | 0.0% |
-| 24 | Folarin Balogun | United States | 3 | 3.3 | 0.0% |
-| 25 | Cody Gakpo | Netherlands | 3 | 3.2 | 0.0% |
+| 20 | Bukayo Saka | England | 3 | 3.4 | 0.0% |
+| 21 | Deniz Undav | Germany | 3 | 3.4 | 0.0% |
+| 22 | Charles De Ketelaere | Belgium | 3 | 3.4 | 0.0% |
+| 23 | Kai Havertz | Germany | 3 | 3.3 | 0.0% |
+| 24 | Yoane Wissa | DR Congo | 3 | 3.3 | 0.0% |
+| 25 | Folarin Balogun | United States | 3 | 3.3 | 0.0% |
