@@ -1,6 +1,6 @@
 {
- "as_of": "2026-07-19",
- "generated": "2026-07-19",
+ "as_of": "2026-07-20",
+ "generated": "2026-07-20",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -9,62 +9,69 @@
    "team": "France",
    "current": 10,
    "exp_goals": 11.38,
-   "p_win": 0.6998963333333265
+   "p_win": 0.7030746666666596
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
-   "exp_goals": 10.02,
-   "p_win": 0.20984466666666757
+   "exp_goals": 10.01,
+   "p_win": 0.2071456666666673
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 8.89,
-   "p_win": 0.06723633333333418
+   "p_win": 0.06736133333333398
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
    "exp_goals": 7.62,
-   "p_win": 0.01311633333333334
+   "p_win": 0.013423000000000008
   },
   {
    "scorer": "Jude Bellingham",
    "team": "England",
    "current": 7,
    "exp_goals": 7.76,
-   "p_win": 0.00510666666666668
+   "p_win": 0.004556333333333341
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
-   "exp_goals": 6.68,
-   "p_win": 0.00425233333333334
+   "exp_goals": 6.66,
+   "p_win": 0.004024000000000006
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
    "exp_goals": 6.65,
-   "p_win": 0.0005473333333333332
+   "p_win": 0.00037166666666666663
   },
   {
-   "scorer": "Vin\u00edcius J\u00fanior",
-   "team": "Brazil",
-   "current": 4,
-   "exp_goals": 4.6,
-   "p_win": 0.0
+   "scorer": "Lautaro Mart\u00ednez",
+   "team": "Argentina",
+   "current": 3,
+   "exp_goals": 4.08,
+   "p_win": 3.6666666666666666e-05
   },
   {
    "scorer": "Juli\u00e1n Qui\u00f1ones",
    "team": "Mexico",
    "current": 4,
    "exp_goals": 4.55,
+   "p_win": 6.666666666666667e-06
+  },
+  {
+   "scorer": "Vin\u00edcius J\u00fanior",
+   "team": "Brazil",
+   "current": 4,
+   "exp_goals": 4.6,
    "p_win": 0.0
   },
   {
@@ -75,17 +82,10 @@
    "p_win": 0.0
   },
   {
-   "scorer": "Lautaro Mart\u00ednez",
-   "team": "Argentina",
-   "current": 3,
-   "exp_goals": 4.09,
-   "p_win": 0.0
-  },
-  {
    "scorer": "Ismael Saibari",
    "team": "Morocco",
    "current": 3,
-   "exp_goals": 3.95,
+   "exp_goals": 3.94,
    "p_win": 0.0
   },
   {
