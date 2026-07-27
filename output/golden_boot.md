@@ -1,6 +1,6 @@
 # Golden Boot race — 2026 World Cup
 
-As of 2026-07-26. Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.
+As of 2026-07-27. Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
