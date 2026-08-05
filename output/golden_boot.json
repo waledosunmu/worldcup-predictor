@@ -1,6 +1,6 @@
 {
- "as_of": "2026-08-04",
- "generated": "2026-08-04",
+ "as_of": "2026-08-05",
+ "generated": "2026-08-05",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
