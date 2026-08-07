@@ -23,10 +23,58 @@
    "diff": -0.22273686902010698
   },
   {
-   "team": "Australia",
+   "team": "Cape Verde",
    "market": 0.0,
-   "model": 0.00361,
-   "diff": 0.00361
+   "model": 1e-05,
+   "diff": 1e-05
+  },
+  {
+   "team": "Colombia",
+   "market": 0.0,
+   "model": 0.04762,
+   "diff": 0.04762
+  },
+  {
+   "team": "Scotland",
+   "market": 0.0,
+   "model": 0.00128,
+   "diff": 0.00128
+  },
+  {
+   "team": "Turkey",
+   "market": 0.0,
+   "model": 0.01282,
+   "diff": 0.01282
+  },
+  {
+   "team": "Ghana",
+   "market": 0.0,
+   "model": 0.0,
+   "diff": 0.0
+  },
+  {
+   "team": "Brazil",
+   "market": 0.0,
+   "model": 0.0512,
+   "diff": 0.0512
+  },
+  {
+   "team": "Egypt",
+   "market": 0.0,
+   "model": 0.00081,
+   "diff": 0.00081
+  },
+  {
+   "team": "Senegal",
+   "market": 0.0,
+   "model": 0.00464,
+   "diff": 0.00464
+  },
+  {
+   "team": "South Africa",
+   "market": 0.0,
+   "model": 0.0,
+   "diff": 0.0
   },
   {
    "team": "Iraq",
@@ -41,76 +89,10 @@
    "diff": 0.01351
   },
   {
-   "team": "Austria",
-   "market": 0.0,
-   "model": 0.00234,
-   "diff": 0.00234
-  },
-  {
-   "team": "Panama",
-   "market": 0.0,
-   "model": 0.00168,
-   "diff": 0.00168
-  },
-  {
-   "team": "Switzerland",
-   "market": 0.0,
-   "model": 0.01278,
-   "diff": 0.01278
-  },
-  {
-   "team": "Egypt",
-   "market": 0.0,
-   "model": 0.00081,
-   "diff": 0.00081
-  },
-  {
-   "team": "Jordan",
-   "market": 0.0,
-   "model": 0.0002,
-   "diff": 0.0002
-  },
-  {
-   "team": "Cura\u00e7ao",
-   "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
-  },
-  {
-   "team": "England",
-   "market": 0.0,
-   "model": 0.07181,
-   "diff": 0.07181
-  },
-  {
-   "team": "Turkey",
-   "market": 0.0,
-   "model": 0.01282,
-   "diff": 0.01282
-  },
-  {
-   "team": "Colombia",
-   "market": 0.0,
-   "model": 0.04762,
-   "diff": 0.04762
-  },
-  {
-   "team": "Senegal",
-   "market": 0.0,
-   "model": 0.00464,
-   "diff": 0.00464
-  },
-  {
    "team": "Algeria",
    "market": 0.0,
    "model": 0.00215,
    "diff": 0.00215
-  },
-  {
-   "team": "Mexico",
-   "market": 0.0,
-   "model": 0.0187,
-   "diff": 0.0187
   },
   {
    "team": "Bosnia and Herzegovina",
@@ -119,28 +101,52 @@
    "diff": 0.0
   },
   {
-   "team": "Uzbekistan",
+   "team": "DR Congo",
    "market": 0.0,
-   "model": 0.00064,
-   "diff": 0.00064
+   "model": 0.0001,
+   "diff": 0.0001
   },
   {
-   "team": "South Africa",
+   "team": "Cura\u00e7ao",
    "market": 0.0,
    "model": 0.0,
    "diff": 0.0
   },
   {
-   "team": "Uruguay",
+   "team": "Netherlands",
    "market": 0.0,
-   "model": 0.01356,
-   "diff": 0.01356
+   "model": 0.02389,
+   "diff": 0.02389
   },
   {
-   "team": "Tunisia",
+   "team": "South Korea",
    "market": 0.0,
-   "model": 8e-05,
-   "diff": 8e-05
+   "model": 0.0029,
+   "diff": 0.0029
+  },
+  {
+   "team": "Iran",
+   "market": 0.0,
+   "model": 0.00419,
+   "diff": 0.00419
+  },
+  {
+   "team": "New Zealand",
+   "market": 0.0,
+   "model": 6e-05,
+   "diff": 6e-05
+  },
+  {
+   "team": "Qatar",
+   "market": 0.0,
+   "model": 0.0,
+   "diff": 0.0
+  },
+  {
+   "team": "Switzerland",
+   "market": 0.0,
+   "model": 0.01278,
+   "diff": 0.01278
   },
   {
    "team": "Morocco",
@@ -149,22 +155,34 @@
    "diff": 0.01656
   },
   {
-   "team": "Czech Republic",
+   "team": "Haiti",
    "market": 0.0,
-   "model": 0.0006,
-   "diff": 0.0006
+   "model": 5e-05,
+   "diff": 5e-05
   },
   {
-   "team": "Scotland",
+   "team": "Ivory Coast",
    "market": 0.0,
-   "model": 0.00128,
-   "diff": 0.00128
+   "model": 0.00069,
+   "diff": 0.00069
   },
   {
-   "team": "Ecuador",
+   "team": "Canada",
    "market": 0.0,
-   "model": 0.03318,
-   "diff": 0.03318
+   "model": 0.00601,
+   "diff": 0.00601
+  },
+  {
+   "team": "Japan",
+   "market": 0.0,
+   "model": 0.01908,
+   "diff": 0.01908
+  },
+  {
+   "team": "Uruguay",
+   "market": 0.0,
+   "model": 0.01356,
+   "diff": 0.01356
   },
   {
    "team": "Croatia",
@@ -179,70 +197,16 @@
    "diff": 0.001
   },
   {
-   "team": "Japan",
-   "market": 0.0,
-   "model": 0.01908,
-   "diff": 0.01908
-  },
-  {
-   "team": "Ghana",
-   "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
-  },
-  {
-   "team": "South Korea",
-   "market": 0.0,
-   "model": 0.0029,
-   "diff": 0.0029
-  },
-  {
-   "team": "Sweden",
-   "market": 0.0,
-   "model": 0.00021,
-   "diff": 0.00021
-  },
-  {
-   "team": "Canada",
-   "market": 0.0,
-   "model": 0.00601,
-   "diff": 0.00601
-  },
-  {
-   "team": "Brazil",
-   "market": 0.0,
-   "model": 0.0512,
-   "diff": 0.0512
-  },
-  {
-   "team": "Haiti",
-   "market": 0.0,
-   "model": 5e-05,
-   "diff": 5e-05
-  },
-  {
-   "team": "New Zealand",
-   "market": 0.0,
-   "model": 6e-05,
-   "diff": 6e-05
-  },
-  {
-   "team": "Cape Verde",
-   "market": 0.0,
-   "model": 1e-05,
-   "diff": 1e-05
-  },
-  {
-   "team": "Ivory Coast",
-   "market": 0.0,
-   "model": 0.00069,
-   "diff": 0.00069
-  },
-  {
    "team": "Germany",
    "market": 0.0,
    "model": 0.02367,
    "diff": 0.02367
+  },
+  {
+   "team": "Panama",
+   "market": 0.0,
+   "model": 0.00168,
+   "diff": 0.00168
   },
   {
    "team": "Belgium",
@@ -251,10 +215,40 @@
    "diff": 0.01236
   },
   {
-   "team": "Saudi Arabia",
+   "team": "Ecuador",
    "market": 0.0,
-   "model": 1e-05,
-   "diff": 1e-05
+   "model": 0.03318,
+   "diff": 0.03318
+  },
+  {
+   "team": "England",
+   "market": 0.0,
+   "model": 0.07181,
+   "diff": 0.07181
+  },
+  {
+   "team": "Australia",
+   "market": 0.0,
+   "model": 0.00361,
+   "diff": 0.00361
+  },
+  {
+   "team": "Sweden",
+   "market": 0.0,
+   "model": 0.00021,
+   "diff": 0.00021
+  },
+  {
+   "team": "Austria",
+   "market": 0.0,
+   "model": 0.00234,
+   "diff": 0.00234
+  },
+  {
+   "team": "Uzbekistan",
+   "market": 0.0,
+   "model": 0.00064,
+   "diff": 0.00064
   },
   {
    "team": "Paraguay",
@@ -263,22 +257,10 @@
    "diff": 0.0048
   },
   {
-   "team": "Iran",
+   "team": "Jordan",
    "market": 0.0,
-   "model": 0.00419,
-   "diff": 0.00419
-  },
-  {
-   "team": "Portugal",
-   "market": 0.0,
-   "model": 0.03857,
-   "diff": 0.03857
-  },
-  {
-   "team": "Qatar",
-   "market": 0.0,
-   "model": 0.0,
-   "diff": 0.0
+   "model": 0.0002,
+   "diff": 0.0002
   },
   {
    "team": "France",
@@ -287,16 +269,34 @@
    "diff": 0.10377
   },
   {
-   "team": "Netherlands",
+   "team": "Saudi Arabia",
    "market": 0.0,
-   "model": 0.02389,
-   "diff": 0.02389
+   "model": 1e-05,
+   "diff": 1e-05
   },
   {
-   "team": "DR Congo",
+   "team": "Portugal",
    "market": 0.0,
-   "model": 0.0001,
-   "diff": 0.0001
+   "model": 0.03857,
+   "diff": 0.03857
+  },
+  {
+   "team": "Tunisia",
+   "market": 0.0,
+   "model": 8e-05,
+   "diff": 8e-05
+  },
+  {
+   "team": "Czech Republic",
+   "market": 0.0,
+   "model": 0.0006,
+   "diff": 0.0006
+  },
+  {
+   "team": "Mexico",
+   "market": 0.0,
+   "model": 0.0187,
+   "diff": 0.0187
   }
  ],
  "matches": [
