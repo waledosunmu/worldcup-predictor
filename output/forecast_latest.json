@@ -1,6 +1,6 @@
 {
- "generated": "2026-08-15",
- "as_of": "2026-08-15",
+ "generated": "2026-08-16",
+ "as_of": "2026-08-16",
  "model": "elo-poisson-form-dc-conditional",
  "n_sims": 100000,
  "params": {
