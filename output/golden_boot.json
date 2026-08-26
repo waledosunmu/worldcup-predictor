@@ -9,49 +9,49 @@
    "team": "France",
    "current": 10,
    "exp_goals": 11.38,
-   "p_win": 0.7031713333333262
+   "p_win": 0.7028563333333262
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
    "exp_goals": 10.01,
-   "p_win": 0.20702233333333392
+   "p_win": 0.20726733333333391
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 8.89,
-   "p_win": 0.06737133333333398
+   "p_win": 0.06739966666666733
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
    "exp_goals": 7.62,
-   "p_win": 0.013419666666666675
+   "p_win": 0.01345300000000001
   },
   {
    "scorer": "Jude Bellingham",
    "team": "England",
    "current": 7,
    "exp_goals": 7.76,
-   "p_win": 0.004576333333333341
+   "p_win": 0.004606333333333341
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.66,
-   "p_win": 0.004024000000000006
+   "p_win": 0.004009000000000006
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
    "exp_goals": 6.65,
-   "p_win": 0.00037166666666666663
+   "p_win": 0.000365
   },
   {
    "scorer": "Lautaro Mart\u00ednez",
