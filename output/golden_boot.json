@@ -1,6 +1,6 @@
 {
- "as_of": "2026-08-26",
- "generated": "2026-08-26",
+ "as_of": "2026-08-27",
+ "generated": "2026-08-27",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -9,14 +9,14 @@
    "team": "France",
    "current": 10,
    "exp_goals": 11.38,
-   "p_win": 0.7028563333333262
+   "p_win": 0.7029363333333262
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
    "exp_goals": 10.01,
-   "p_win": 0.20726733333333391
+   "p_win": 0.2072073333333339
   },
   {
    "scorer": "Erling Haaland",
@@ -30,7 +30,7 @@
    "team": "England",
    "current": 6,
    "exp_goals": 7.62,
-   "p_win": 0.01345300000000001
+   "p_win": 0.013426333333333344
   },
   {
    "scorer": "Jude Bellingham",
@@ -44,7 +44,7 @@
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.66,
-   "p_win": 0.004009000000000006
+   "p_win": 0.004015666666666673
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
