@@ -1,6 +1,6 @@
 {
- "as_of": "2026-09-05",
- "generated": "2026-09-05",
+ "as_of": "2026-09-06",
+ "generated": "2026-09-06",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -9,69 +9,76 @@
    "team": "France",
    "current": 10,
    "exp_goals": 11.38,
-   "p_win": 0.7029363333333262
+   "p_win": 0.6755729999999889
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
-   "exp_goals": 10.01,
-   "p_win": 0.2072073333333339
+   "exp_goals": 10.16,
+   "p_win": 0.234174666666669
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 8.89,
-   "p_win": 0.06739966666666733
+   "p_win": 0.06833133333333413
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
    "exp_goals": 7.62,
-   "p_win": 0.013426333333333344
+   "p_win": 0.012949000000000006
   },
   {
    "scorer": "Jude Bellingham",
    "team": "England",
    "current": 7,
    "exp_goals": 7.76,
-   "p_win": 0.004606333333333341
+   "p_win": 0.004409666666666676
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.66,
-   "p_win": 0.004015666666666673
+   "p_win": 0.004110666666666673
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
    "exp_goals": 6.65,
-   "p_win": 0.000365
+   "p_win": 0.000395
   },
   {
    "scorer": "Lautaro Mart\u00ednez",
    "team": "Argentina",
    "current": 3,
-   "exp_goals": 4.08,
-   "p_win": 3.6666666666666666e-05
+   "exp_goals": 4.17,
+   "p_win": 4.666666666666666e-05
   },
   {
-   "scorer": "Juli\u00e1n Qui\u00f1ones",
+   "scorer": "Ra\u00fal Jim\u00e9nez",
    "team": "Mexico",
-   "current": 4,
-   "exp_goals": 4.55,
-   "p_win": 6.666666666666667e-06
+   "current": 3,
+   "exp_goals": 3.82,
+   "p_win": 1e-05
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 4,
    "exp_goals": 4.6,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Juli\u00e1n Qui\u00f1ones",
+   "team": "Mexico",
+   "current": 4,
+   "exp_goals": 4.55,
    "p_win": 0.0
   },
   {
@@ -92,14 +99,7 @@
    "scorer": "Cristiano Ronaldo",
    "team": "Portugal",
    "current": 3,
-   "exp_goals": 3.89,
-   "p_win": 0.0
-  },
-  {
-   "scorer": "Ra\u00fal Jim\u00e9nez",
-   "team": "Mexico",
-   "current": 3,
-   "exp_goals": 3.82,
+   "exp_goals": 3.87,
    "p_win": 0.0
   },
   {
