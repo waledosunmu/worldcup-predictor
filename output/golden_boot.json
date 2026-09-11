@@ -1,6 +1,6 @@
 {
- "as_of": "2026-09-10",
- "generated": "2026-09-10",
+ "as_of": "2026-09-11",
+ "generated": "2026-09-11",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -9,49 +9,56 @@
    "team": "France",
    "current": 10,
    "exp_goals": 11.46,
-   "p_win": 0.6892956666666576
+   "p_win": 0.6812953333333243
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
-   "exp_goals": 10.16,
-   "p_win": 0.225112333333335
+   "exp_goals": 10.22,
+   "p_win": 0.23551366666666876
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 8.88,
-   "p_win": 0.062270666666667224
+   "p_win": 0.06249200000000059
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
-   "exp_goals": 7.69,
-   "p_win": 0.013945666666666702
+   "exp_goals": 7.55,
+   "p_win": 0.010211999999999971
+  },
+  {
+   "scorer": "Jude Bellingham",
+   "team": "England",
+   "current": 7,
+   "exp_goals": 7.82,
+   "p_win": 0.0051586666666666794
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.78,
-   "p_win": 0.004689000000000009
-  },
-  {
-   "scorer": "Jude Bellingham",
-   "team": "England",
-   "current": 7,
-   "exp_goals": 7.79,
-   "p_win": 0.004375000000000008
+   "p_win": 0.005005000000000006
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
    "exp_goals": 6.6,
-   "p_win": 0.0003016666666666667
+   "p_win": 0.0002566666666666667
+  },
+  {
+   "scorer": "Lautaro Mart\u00ednez",
+   "team": "Argentina",
+   "current": 3,
+   "exp_goals": 4.2,
+   "p_win": 5.666666666666667e-05
   },
   {
    "scorer": "Cristiano Ronaldo",
@@ -79,13 +86,6 @@
    "team": "Senegal",
    "current": 4,
    "exp_goals": 4.21,
-   "p_win": 0.0
-  },
-  {
-   "scorer": "Lautaro Mart\u00ednez",
-   "team": "Argentina",
-   "current": 3,
-   "exp_goals": 4.17,
    "p_win": 0.0
   },
   {
@@ -138,17 +138,10 @@
    "p_win": 0.0
   },
   {
-   "scorer": "Deniz Undav",
-   "team": "Germany",
-   "current": 3,
-   "exp_goals": 3.41,
-   "p_win": 0.0
-  },
-  {
    "scorer": "Bukayo Saka",
    "team": "England",
    "current": 3,
-   "exp_goals": 3.4,
+   "exp_goals": 3.41,
    "p_win": 0.0
   },
   {
@@ -159,10 +152,17 @@
    "p_win": 0.0
   },
   {
+   "scorer": "Deniz Undav",
+   "team": "Germany",
+   "current": 3,
+   "exp_goals": 3.36,
+   "p_win": 0.0
+  },
+  {
    "scorer": "Kai Havertz",
    "team": "Germany",
    "current": 3,
-   "exp_goals": 3.27,
+   "exp_goals": 3.28,
    "p_win": 0.0
   },
   {
