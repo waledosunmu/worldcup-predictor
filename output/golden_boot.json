@@ -1,6 +1,6 @@
 {
- "as_of": "2026-10-10",
- "generated": "2026-10-10",
+ "as_of": "2026-10-11",
+ "generated": "2026-10-11",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -8,70 +8,77 @@
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 10,
-   "exp_goals": 11.57,
-   "p_win": 0.6916239999999936
+   "exp_goals": 11.7,
+   "p_win": 0.7080109999999953
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
-   "exp_goals": 10.25,
-   "p_win": 0.23067733333333465
+   "exp_goals": 10.31,
+   "p_win": 0.22631433333333476
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
-   "exp_goals": 8.88,
-   "p_win": 0.05785900000000028
+   "exp_goals": 8.85,
+   "p_win": 0.050314333333333405
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
-   "exp_goals": 7.54,
-   "p_win": 0.009191666666666645
-  },
-  {
-   "scorer": "Jude Bellingham",
-   "team": "England",
-   "current": 7,
-   "exp_goals": 7.82,
-   "p_win": 0.005366666666666678
+   "exp_goals": 7.57,
+   "p_win": 0.008561333333333318
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.79,
-   "p_win": 0.0049463333333333425
+   "p_win": 0.0036870000000000006
+  },
+  {
+   "scorer": "Jude Bellingham",
+   "team": "England",
+   "current": 7,
+   "exp_goals": 7.73,
+   "p_win": 0.0027379999999999965
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
-   "exp_goals": 6.64,
-   "p_win": 0.0003233333333333334
-  },
-  {
-   "scorer": "Ismael Saibari",
-   "team": "Morocco",
-   "current": 3,
-   "exp_goals": 3.93,
-   "p_win": 6.666666666666667e-06
+   "exp_goals": 6.7,
+   "p_win": 0.0003273333333333334
   },
   {
    "scorer": "Lautaro Mart\u00ednez",
    "team": "Argentina",
    "current": 3,
-   "exp_goals": 4.21,
-   "p_win": 5e-06
+   "exp_goals": 4.25,
+   "p_win": 3e-05
+  },
+  {
+   "scorer": "Mikel Merino",
+   "team": "Spain",
+   "current": 2,
+   "exp_goals": 3.19,
+   "p_win": 1e-05
+  },
+  {
+   "scorer": "Jonathan David",
+   "team": "Canada",
+   "current": 3,
+   "exp_goals": 3.72,
+   "p_win": 6.666666666666667e-06
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 4,
-   "exp_goals": 4.62,
+   "exp_goals": 4.68,
    "p_win": 0.0
   },
   {
@@ -89,6 +96,13 @@
    "p_win": 0.0
   },
   {
+   "scorer": "Ismael Saibari",
+   "team": "Morocco",
+   "current": 3,
+   "exp_goals": 3.93,
+   "p_win": 0.0
+  },
+  {
    "scorer": "Cristiano Ronaldo",
    "team": "Portugal",
    "current": 3,
@@ -103,13 +117,6 @@
    "p_win": 0.0
   },
   {
-   "scorer": "Jonathan David",
-   "team": "Canada",
-   "current": 3,
-   "exp_goals": 3.72,
-   "p_win": 0.0
-  },
-  {
    "scorer": "Johan Manzambi",
    "team": "Switzerland",
    "current": 3,
@@ -120,35 +127,35 @@
    "scorer": "Romelu Lukaku",
    "team": "Belgium",
    "current": 3,
-   "exp_goals": 3.53,
-   "p_win": 0.0
-  },
-  {
-   "scorer": "Bradley Barcola",
-   "team": "France",
-   "current": 3,
-   "exp_goals": 3.46,
+   "exp_goals": 3.56,
    "p_win": 0.0
   },
   {
    "scorer": "Matheus Cunha",
    "team": "Brazil",
    "current": 3,
-   "exp_goals": 3.42,
+   "exp_goals": 3.45,
    "p_win": 0.0
   },
   {
    "scorer": "Bukayo Saka",
    "team": "England",
    "current": 3,
-   "exp_goals": 3.41,
+   "exp_goals": 3.42,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Bradley Barcola",
+   "team": "France",
+   "current": 3,
+   "exp_goals": 3.4,
    "p_win": 0.0
   },
   {
    "scorer": "Charles De Ketelaere",
    "team": "Belgium",
    "current": 3,
-   "exp_goals": 3.38,
+   "exp_goals": 3.4,
    "p_win": 0.0
   },
   {
@@ -170,13 +177,6 @@
    "team": "DR Congo",
    "current": 3,
    "exp_goals": 3.27,
-   "p_win": 0.0
-  },
-  {
-   "scorer": "Cody Gakpo",
-   "team": "Netherlands",
-   "current": 3,
-   "exp_goals": 3.24,
    "p_win": 0.0
   }
  ]
