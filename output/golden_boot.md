@@ -1,12 +1,12 @@
 # Golden Boot race — 2026 World Cup
 
-As of 2026-10-12. Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.
+As of 2026-10-13. Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Kylian Mbappé | France | 10 | 11.7 | 70.8% |
-| 2 | Lionel Messi | Argentina | 8 | 10.3 | 22.7% |
-| 3 | Erling Haaland | Norway | 7 | 8.8 | 5.0% |
+| 1 | Kylian Mbappé | France | 10 | 11.7 | 70.6% |
+| 2 | Lionel Messi | Argentina | 8 | 10.3 | 22.9% |
+| 3 | Erling Haaland | Norway | 7 | 8.8 | 4.8% |
 | 4 | Harry Kane | England | 6 | 7.6 | 0.9% |
 | 5 | Mikel Oyarzabal | Spain | 5 | 6.8 | 0.4% |
 | 6 | Jude Bellingham | England | 7 | 7.7 | 0.3% |
@@ -15,7 +15,7 @@ As of 2026-10-12. Goal-share model on martj42 goalscorers.csv (CC0); contenders 
 | 9 | Ismael Saibari | Morocco | 3 | 3.9 | 0.0% |
 | 10 | Raúl Jiménez | Mexico | 3 | 3.8 | 0.0% |
 | 11 | Vinícius Júnior | Brazil | 4 | 4.7 | 0.0% |
-| 12 | Cristiano Ronaldo | Portugal | 3 | 3.9 | 0.0% |
+| 12 | Cristiano Ronaldo | Portugal | 3 | 3.8 | 0.0% |
 | 13 | Jonathan David | Canada | 3 | 3.7 | 0.0% |
 | 14 | Julián Quiñones | Mexico | 4 | 4.5 | 0.0% |
 | 15 | Ismaïla Sarr | Senegal | 4 | 4.2 | 0.0% |
