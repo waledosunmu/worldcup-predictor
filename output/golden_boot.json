@@ -1,6 +1,6 @@
 {
- "as_of": "2026-10-14",
- "generated": "2026-10-14",
+ "as_of": "2026-10-15",
+ "generated": "2026-10-15",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -8,57 +8,50 @@
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 10,
-   "exp_goals": 11.7,
-   "p_win": 0.7044159999999948
+   "exp_goals": 11.78,
+   "p_win": 0.7145109999999951
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
    "exp_goals": 10.31,
-   "p_win": 0.22389600000000126
+   "p_win": 0.21773433333333428
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 8.88,
-   "p_win": 0.052452666666666765
+   "p_win": 0.04931600000000002
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
    "exp_goals": 7.67,
-   "p_win": 0.010975333333333314
+   "p_win": 0.010506999999999973
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.82,
-   "p_win": 0.004421666666666672
+   "p_win": 0.0038790000000000022
   },
   {
    "scorer": "Jude Bellingham",
    "team": "England",
    "current": 7,
    "exp_goals": 7.78,
-   "p_win": 0.003402666666666669
+   "p_win": 0.0034453333333333345
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
-   "exp_goals": 6.7,
-   "p_win": 0.00037400000000000004
-  },
-  {
-   "scorer": "Lautaro Mart\u00ednez",
-   "team": "Argentina",
-   "current": 3,
-   "exp_goals": 4.25,
-   "p_win": 4.166666666666667e-05
+   "exp_goals": 6.73,
+   "p_win": 0.0005873333333333332
   },
   {
    "scorer": "Cristiano Ronaldo",
@@ -96,6 +89,13 @@
    "p_win": 0.0
   },
   {
+   "scorer": "Lautaro Mart\u00ednez",
+   "team": "Argentina",
+   "current": 3,
+   "exp_goals": 4.25,
+   "p_win": 0.0
+  },
+  {
    "scorer": "Isma\u00efla Sarr",
    "team": "Senegal",
    "current": 4,
@@ -120,7 +120,7 @@
    "scorer": "Romelu Lukaku",
    "team": "Belgium",
    "current": 3,
-   "exp_goals": 3.56,
+   "exp_goals": 3.57,
    "p_win": 0.0
   },
   {
@@ -141,14 +141,14 @@
    "scorer": "Bradley Barcola",
    "team": "France",
    "current": 3,
-   "exp_goals": 3.4,
+   "exp_goals": 3.42,
    "p_win": 0.0
   },
   {
    "scorer": "Charles De Ketelaere",
    "team": "Belgium",
    "current": 3,
-   "exp_goals": 3.4,
+   "exp_goals": 3.41,
    "p_win": 0.0
   },
   {
@@ -169,7 +169,7 @@
    "scorer": "Kai Havertz",
    "team": "Germany",
    "current": 3,
-   "exp_goals": 3.25,
+   "exp_goals": 3.26,
    "p_win": 0.0
   },
   {
