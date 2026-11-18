@@ -1,6 +1,6 @@
 {
- "as_of": "2026-11-17",
- "generated": "2026-11-17",
+ "as_of": "2026-11-18",
+ "generated": "2026-11-18",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -8,64 +8,71 @@
    "scorer": "Kylian Mbapp\u00e9",
    "team": "France",
    "current": 10,
-   "exp_goals": 11.78,
-   "p_win": 0.7228866666666627
+   "exp_goals": 11.86,
+   "p_win": 0.7359363333333303
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
    "exp_goals": 10.21,
-   "p_win": 0.19977833333333328
+   "p_win": 0.1900379999999996
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
-   "exp_goals": 8.95,
-   "p_win": 0.05554333333333354
+   "exp_goals": 8.91,
+   "p_win": 0.04975966666666666
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
-   "exp_goals": 7.75,
-   "p_win": 0.012776666666666672
+   "exp_goals": 7.83,
+   "p_win": 0.013884666666666693
+  },
+  {
+   "scorer": "Jude Bellingham",
+   "team": "England",
+   "current": 7,
+   "exp_goals": 7.92,
+   "p_win": 0.005451333333333341
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.88,
-   "p_win": 0.00472333333333334
-  },
-  {
-   "scorer": "Jude Bellingham",
-   "team": "England",
-   "current": 7,
-   "exp_goals": 7.81,
-   "p_win": 0.003771666666666671
+   "p_win": 0.004495000000000006
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
-   "exp_goals": 6.73,
-   "p_win": 0.0004983333333333333
+   "exp_goals": 6.77,
+   "p_win": 0.00039666666666666664
   },
   {
-   "scorer": "Lautaro Mart\u00ednez",
-   "team": "Argentina",
-   "current": 3,
-   "exp_goals": 4.1,
-   "p_win": 1.1666666666666665e-05
+   "scorer": "Mikel Merino",
+   "team": "Spain",
+   "current": 2,
+   "exp_goals": 3.34,
+   "p_win": 2e-05
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 4,
    "exp_goals": 4.87,
-   "p_win": 1e-05
+   "p_win": 1.3333333333333333e-05
+  },
+  {
+   "scorer": "Lautaro Mart\u00ednez",
+   "team": "Argentina",
+   "current": 3,
+   "exp_goals": 4.1,
+   "p_win": 5e-06
   },
   {
    "scorer": "Juli\u00e1n Qui\u00f1ones",
@@ -134,14 +141,14 @@
    "scorer": "Bukayo Saka",
    "team": "England",
    "current": 3,
-   "exp_goals": 3.47,
+   "exp_goals": 3.52,
    "p_win": 0.0
   },
   {
    "scorer": "Bradley Barcola",
    "team": "France",
    "current": 3,
-   "exp_goals": 3.42,
+   "exp_goals": 3.44,
    "p_win": 0.0
   },
   {
@@ -149,13 +156,6 @@
    "team": "Belgium",
    "current": 3,
    "exp_goals": 3.41,
-   "p_win": 0.0
-  },
-  {
-   "scorer": "Mikel Merino",
-   "team": "Spain",
-   "current": 2,
-   "exp_goals": 3.34,
    "p_win": 0.0
   },
   {
