@@ -4,7 +4,7 @@ As of 2026-11-19. Goal-share model on martj42 goalscorers.csv (CC0); contenders 
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Kylian Mbappé | France | 10 | 11.7 | 71.3% |
+| 1 | Kylian Mbappé | France | 10 | 11.7 | 71.4% |
 | 2 | Lionel Messi | Argentina | 8 | 10.2 | 20.2% |
 | 3 | Erling Haaland | Norway | 7 | 8.9 | 5.6% |
 | 4 | Harry Kane | England | 6 | 7.8 | 1.6% |
