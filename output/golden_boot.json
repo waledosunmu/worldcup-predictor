@@ -1,6 +1,6 @@
 {
- "as_of": "2026-11-19",
- "generated": "2026-11-19",
+ "as_of": "2026-11-20",
+ "generated": "2026-11-20",
  "n_sims": 50000,
  "note": "Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.",
  "players": [
@@ -9,56 +9,56 @@
    "team": "France",
    "current": 10,
    "exp_goals": 11.71,
-   "p_win": 0.7136286666666612
+   "p_win": 0.7017239999999945
   },
   {
    "scorer": "Lionel Messi",
    "team": "Argentina",
    "current": 8,
-   "exp_goals": 10.21,
-   "p_win": 0.20189866666666678
+   "exp_goals": 10.29,
+   "p_win": 0.2180373333333347
   },
   {
    "scorer": "Erling Haaland",
    "team": "Norway",
    "current": 7,
    "exp_goals": 8.91,
-   "p_win": 0.05643366666666695
+   "p_win": 0.05322566666666687
   },
   {
    "scorer": "Harry Kane",
    "team": "England",
    "current": 6,
    "exp_goals": 7.83,
-   "p_win": 0.015810333333333378
+   "p_win": 0.014977333333333365
   },
   {
    "scorer": "Mikel Oyarzabal",
    "team": "Spain",
    "current": 5,
    "exp_goals": 6.99,
-   "p_win": 0.006145666666666669
+   "p_win": 0.006026666666666671
   },
   {
    "scorer": "Jude Bellingham",
    "team": "England",
    "current": 7,
    "exp_goals": 7.92,
-   "p_win": 0.005736333333333335
+   "p_win": 0.0056323333333333355
   },
   {
    "scorer": "Ousmane Demb\u00e9l\u00e9",
    "team": "France",
    "current": 6,
    "exp_goals": 6.7,
-   "p_win": 0.00032833333333333336
+   "p_win": 0.000325
   },
   {
    "scorer": "Vin\u00edcius J\u00fanior",
    "team": "Brazil",
    "current": 4,
-   "exp_goals": 4.87,
-   "p_win": 1.833333333333333e-05
+   "exp_goals": 4.92,
+   "p_win": 5.166666666666666e-05
   },
   {
    "scorer": "Juli\u00e1n Qui\u00f1ones",
@@ -75,17 +75,17 @@
    "p_win": 0.0
   },
   {
-   "scorer": "Lautaro Mart\u00ednez",
-   "team": "Argentina",
-   "current": 3,
-   "exp_goals": 4.11,
-   "p_win": 0.0
-  },
-  {
    "scorer": "Ismael Saibari",
    "team": "Morocco",
    "current": 3,
    "exp_goals": 3.95,
+   "p_win": 0.0
+  },
+  {
+   "scorer": "Lautaro Mart\u00ednez",
+   "team": "Argentina",
+   "current": 3,
+   "exp_goals": 3.92,
    "p_win": 0.0
   },
   {
@@ -117,15 +117,15 @@
    "p_win": 0.0
   },
   {
-   "scorer": "Romelu Lukaku",
-   "team": "Belgium",
+   "scorer": "Matheus Cunha",
+   "team": "Brazil",
    "current": 3,
-   "exp_goals": 3.58,
+   "exp_goals": 3.61,
    "p_win": 0.0
   },
   {
-   "scorer": "Matheus Cunha",
-   "team": "Brazil",
+   "scorer": "Romelu Lukaku",
+   "team": "Belgium",
    "current": 3,
    "exp_goals": 3.58,
    "p_win": 0.0
@@ -169,14 +169,14 @@
    "scorer": "Kai Havertz",
    "team": "Germany",
    "current": 3,
-   "exp_goals": 3.27,
+   "exp_goals": 3.28,
    "p_win": 0.0
   },
   {
    "scorer": "Deniz Undav",
    "team": "Germany",
    "current": 3,
-   "exp_goals": 3.27,
+   "exp_goals": 3.28,
    "p_win": 0.0
   }
  ]
