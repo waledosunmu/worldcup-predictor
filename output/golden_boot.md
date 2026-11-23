@@ -1,10 +1,10 @@
 # Golden Boot race — 2026 World Cup
 
-As of 2026-11-22. Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.
+As of 2026-11-23. Goal-share model on martj42 goalscorers.csv (CC0); contenders are recent scorers for 2026 finalists, not official squads. Own goals excluded, penalties counted.
 
 | # | Player | Team | Goals so far | Exp. total | P(Golden Boot) |
 |--:|---|---|--:|--:|--:|
-| 1 | Kylian Mbappé | France | 10 | 11.7 | 70.2% |
+| 1 | Kylian Mbappé | France | 10 | 11.7 | 70.1% |
 | 2 | Lionel Messi | Argentina | 8 | 10.3 | 21.8% |
 | 3 | Erling Haaland | Norway | 7 | 8.9 | 5.3% |
 | 4 | Harry Kane | England | 6 | 7.8 | 1.5% |
